@@ -1,0 +1,2 @@
+.section-title h2 { color: #0ff; position: relative; }
+.section-title h2::after { content: ''; width: 50px; height: 3px; background: #0ff; display: block; margin: 10px auto; }
