@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Stages - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --bg-light: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --sidebar-width: 280px;
+            --border: #e2e8f0;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: #ffffff;
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            border-right: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .sidebar .brand {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            padding-left: 12px;
+        }
+
+        .sidebar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 10px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .sidebar a:hover, .sidebar a.active {
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+
+        .sidebar a i { margin-right: 12px; width: 20px; }
+
+        /* --- CONTENU PRINCIPAL --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 60px 80px;
+            width: 100%;
+        }
+
+        .page-header {
+            margin-bottom: 50px;
+        }
+
+        .page-header h1 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* --- CARTES DE STAGE --- */
+        .stage-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .stage-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .company-logo {
+            width: 54px; height: 54px;
+            background: #eff6ff;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary); font-size: 1.6rem;
+            margin-bottom: 25px;
+        }
+
+        .date-badge {
+            background: #eff6ff;
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .btn-details {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: auto;
+            transition: 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-details:hover {
+            background: #4338ca;
+            color: white;
+        }
+
+        /* --- MODALES --- */
+        .modal-content {
+            border-radius: 24px;
+            border: none;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #f1f5f9;
+            padding: 25px 35px;
+        }
+
+        .info-pill {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 18px;
+        }
+
+        @media (max-width: 991px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 40px 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Accueil</a>
+        <a href="#" class="active"><i class="fa-solid fa-briefcase"></i> Expériences</a>
+    </nav>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Mes Stages en Entreprise</h1>
+            <p>Détail des missions réalisées durant mon parcours en BTS SIO.</p>
+        </header>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="stage-card">
+                    <div class="company-logo"><i class="fa-solid fa-laptop-code"></i></div>
+                    <span class="date-badge">2025 | STAGE SIO1</span>
+                    <h3 class="h5 fw-bold mb-1">Valorisens</h3>
+                    <p class="text-primary fw-medium mb-3">Développeur Web</p>
+                    <p class="text-muted mb-4">Refonte du site vitrine et amélioration des performances techniques pour le référencement.</p>
+                    <button class="btn-details" data-bs-toggle="modal" data-bs-target="#modal-v">Voir les missions détaillées</button>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="stage-card">
+                    <div class="company-logo"><i class="fa-solid fa-network-wired"></i></div>
+                    <span class="date-badge">2026 | STAGE SIO2</span>
+                    <h3 class="h5 fw-bold mb-1">Mairie de Savigny</h3>
+                    <p class="text-primary fw-medium mb-3">Assistant Informatique</p>
+                    <p class="text-muted mb-4">Gestion du parc informatique, support aux utilisateurs et maintenance des services municipaux.</p>
+                    <button class="btn-details" data-bs-toggle="modal" data-bs-target="#modal-m">Voir les missions détaillées</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="modal-v" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Mission : Valorisens</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4">
+                        <div class="col-md-5">
+                            <div class="info-pill">
+                                <p class="mb-2"><strong>Localisation :</strong> Melun</p>
+                                <p class="mb-2"><strong>Technos :</strong> WordPress / SEO</p>
+                                <p class="mb-0"><strong>Encadrement :</strong> Équipe Tech</p>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <h6 class="fw-bold mb-3">Objectifs atteints :</h6>
+                            <ul class="text-muted">
+                                <li class="mb-2">Optimisation des balises meta et de la structure Hn.</li>
+                                <li class="mb-2">Création de templates personnalisés avec Elementor Pro.</li>
+                                <li class="mb-2">Réduction du temps de chargement des pages de 40%.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-m" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Mission : Mairie de Savigny</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4">
+                        <div class="col-md-5">
+                            <div class="info-pill">
+                                <p class="mb-2"><strong>Localisation :</strong> Savigny-le-Temple</p>
+                                <p class="mb-2"><strong>Parc :</strong> +200 Postes</p>
+                                <p class="mb-0"><strong>Services :</strong> Multi-sites</p>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <h6 class="fw-bold mb-3">Objectifs atteints :</h6>
+                            <ul class="text-muted">
+                                <li class="mb-2">Installation et configuration de postes clients (W11).</li>
+                                <li class="mb-2">Support de proximité (matériel et logiciel).</li>
+                                <li class="mb-2">Aide à la gestion des droits via Active Directory.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
