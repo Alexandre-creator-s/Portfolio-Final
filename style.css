@@ -589,7 +589,7 @@ body {
 .title-pro {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #0f172a;
+    color: #4f46e5;
     margin-bottom: 25px;
     position: relative;
     padding-bottom: 15px;
@@ -603,7 +603,7 @@ body {
     left: 0;
     width: 60px;
     height: 4px;
-    background: #4f46e5; /* Ton bleu indigo */
+    background: var(--accent); /* Ton bleu indigo */
     border-radius: 2px;
 }
 
@@ -667,7 +667,7 @@ body {
 
 /* Bouton d'action */
 .btn-pro-action {
-    background: #4f46e5;
+    background: var(--accent);
     color: white;
     padding: 16px 40px;
     border-radius: 12px;
@@ -682,9 +682,9 @@ body {
 }
 
 .btn-pro-action:hover {
-    background: #4338ca;
-    color: white;
-    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+    background: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
 }
 
 /* Responsive pour mobiles */
@@ -1219,3 +1219,4 @@ body {
     }
 
 }
+
