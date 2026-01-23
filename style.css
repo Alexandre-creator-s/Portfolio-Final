@@ -320,101 +320,194 @@ body {
 }
 
 /* ============================= */
-/* 8. BTS SIO */
+/* 8. BTS SIO (Design Pro)       */
 /* ============================= */
 #bts-sio {
-  padding: 140px 0;
-  background: var(--bg-light);
+  padding: 100px 0;
+  background: var(--bg-light); /* Utilise ta variable de fond clair */
 }
 
+/* Texte d'introduction */
 .intro-text {
   font-size: 1.15rem;
+  color: var(--text-dark); /* Plus sombre pour la lisibilité */
+  max-width: 850px;
+  margin: 0 auto 15px;
+  line-height: 1.8;
+  font-weight: 500;
+}
+.intro-text-secondary {
+  font-size: 1rem;
   color: var(--text-light);
-  text-align: justify;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  line-height: 1.7;
   font-style: italic;
-  max-width: 900px;
-  margin: 0 auto 60px;
-  line-height: 1.9;
 }
 
+/* Boîtes d'informations clés (nouvelles) */
+.info-box {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  height: 100%; /* Important pour la grille */
+}
+.info-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.12);
+  border-color: var(--primary);
+}
+.info-box i {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 15px;
+  display: block; /* Pour centrer l'icône */
+}
+.info-box h4 {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.info-box p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Cartes des options (SISR/SLAM) */
 .option-card {
   background: white;
-  padding: 35px;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border);
   height: 100%;
   position: relative;
-  transition: all 0.4s ease;
   overflow: hidden;
+  transition: all 0.4s ease;
+  display: flex; /* Flexbox pour organiser le contenu */
+  flex-direction: column;
 }
+
 .option-card:hover {
   transform: translateY(-12px);
-  box-shadow: 0 20px 50px rgba(99,102,241,0.15);
+  box-shadow: 0 20px 50px rgba(99, 102, 241, 0.15);
+  border-color: var(--primary);
 }
 
-.option-card h4 {
-  color: var(--text);
-  font-weight: 600;
-  margin-bottom: 18px;
+/* Icône en haut de la carte */
+.card-header-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--bg-light); /* Couleur de fond clair */
+  border-radius: 50%; /* Cercle */
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 1.4rem;
+  justify-content: center;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+.card-header-icon i {
+  font-size: 2.2rem;
+  color: var(--primary); /* Couleur principale */
+  transition: all 0.3s ease;
+}
+.option-card:hover .card-header-icon {
+  background: var(--primary); /* Inverse les couleurs au survol */
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+.option-card:hover .card-header-icon i {
+  color: white;
+}
+
+
+.option-card h4 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--text);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Espacement entre icône et titre */
 }
 .option-card h4 i {
-  font-size: 2rem;
-  color: var(--primary);    
-  transition: all 0.3s ease;
-}
-.option-card:hover h4 i {
-  color: var(--accent);         
+  font-size: 1.8rem; /* Plus petit que l'icône de header */
+  color: var(--primary);
 }
 
-.badge-chosen {
-  background: var(--accent);   
-  color: white;
-  font-size: 0.85rem;
-  padding: 6px 16px;
-  border-radius: 50px;
-  font-weight: 600;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  box-shadow: 0 4px 15px rgba(6,182,212,0.3);
-}
-
-.option-card p {
+.card-description {
   color: var(--text-light);
-  font-size: 1.05rem;
-  line-height: 1.9;
-  margin-bottom: 20px;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  flex-grow: 1; /* Pour que les cartes aient la même hauteur */
 }
 
+/* Liste des métiers */
+.job-list-wrapper {
+  margin-top: auto; /* Pousse la liste vers le bas */
+  padding-top: 20px;
+  border-top: 1px dashed var(--border); /* Ligne de séparation */
+}
+.job-list-wrapper h6 {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
 .job-list {
   list-style: none;
-  padding-left: 0;
-  margin-top: 25px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Auto-ajustement des colonnes */
+  gap: 10px;
 }
 .job-list li {
-  padding: 10px 0;
-  position: relative;
-  padding-left: 30px;
-  color: var(--text);
-  font-weight: 500;
-  font-size: 1.05rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
 }
 .job-list li::before {
-  content: '→';
-  color: var(--accent);      
-  font-weight: bold;
-  position: absolute;
-  left: 0;
-  font-size: 1.3em;
-  transition: all 0.3s ease;
+  content: '\f00c'; /* Icône check (Font Awesome) */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px;
+  color: var(--accent);
+  font-size: 0.8em;
 }
-.option-card:hover .job-list li::before {
-  color: var(--primary);
-  transform: translateX(5px);
+
+/* Badge "Ma Spécialité" */
+.badge-chosen {
+  background: var(--accent);
+  color: white;
+  font-size: 0.75rem;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-weight: 700;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+}
+
+/* Style spécifique pour la carte SLAM sélectionnée */
+.slam-card.chosen {
+  border-color: var(--primary); /* Bordure plus marquée */
+}
+.slam-card.chosen .card-header-icon {
+  background: var(--primary);
+}
+.slam-card.chosen .card-header-icon i {
+  color: white;
 }
 
 /* ============================= */
@@ -1219,5 +1312,6 @@ body {
     }
 
 }
+
 
 
