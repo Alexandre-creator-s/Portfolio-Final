@@ -511,6 +511,132 @@ body {
 }
 
 /* ============================= */
+/*          COMPETENCES 
+/* ============================= */
+#skills {
+  padding: 120px 0;
+  background: #ffffff;
+}
+
+/* Sous-titre pour le style */
+.subtitle {
+  display: block;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--primary);
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.skills-intro {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  text-align: center; /* Centré pour plus de classe */
+  max-width: 800px;
+  margin: 0 auto 70px;
+  line-height: 1.8;
+  position: relative;
+}
+
+/* La Carte de Compétence */
+.skill-card {
+  background: #ffffff;
+  padding: 35px 20px;
+  border-radius: 24px;
+  text-align: center;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effet de brillance au survol */
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.12);
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+/* Conteneur de l'icône */
+.icon-box {
+  width: 80px;
+  height: 80px;
+  background: #f8fafc;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: all 0.4s ease;
+}
+
+.skill-card:hover .icon-box {
+  background: #eff6ff;
+  transform: rotate(5deg);
+}
+
+.skill-icon {
+  width: 45px;
+  height: 45px;
+  transition: transform 0.4s ease;
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.1);
+}
+
+.skill-card p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1e293b;
+  z-index: 1;
+}
+
+/* Badge de Niveau */
+.level-badge {
+  margin-top: 15px;
+  background: #f1f5f9;
+  color: #64748b;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.skill-card:hover .level-badge {
+  background: var(--primary);
+  color: white;
+}
+
+
+/* ============================= */
 /* 9. COMPÉTENCES & OUTILS */
 /* ============================= */
 #skills,
@@ -599,6 +725,80 @@ body {
   font-weight: 600;
   letter-spacing: 0.8px;
 }
+#tools {
+  padding: 120px 0;
+  background-color: #f8fafc; /* Fond légèrement gris pour différencier de Skills */
+}
+
+.tools-intro {
+  font-size: 1.1rem;
+  color: #64748b;
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 60px;
+  line-height: 1.8;
+}
+
+.tool-card {
+  background: white;
+  padding: 40px 20px 25px;
+  border-radius: 24px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Pour le badge flottant */
+}
+
+/* Badge de catégorie en haut de la carte */
+.tool-badge {
+  position: absolute;
+  top: 15px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 1px;
+  background: #f1f5f9;
+  padding: 2px 10px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-12px);
+  border-color: var(--primary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+
+.tool-card:hover .tool-badge {
+  background: var(--primary);
+  color: white;
+}
+
+.tool-icon {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  transition: transform 0.4s ease;
+}
+
+.tool-card:hover .tool-icon {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+.tool-card p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #1e293b;
+  text-transform: uppercase;
+}
+
 
 /* ============================= */
 /* 10.1. PARCOURS SCOLAIRE        */
@@ -1312,6 +1512,7 @@ body {
     }
 
 }
+
 
 
 
