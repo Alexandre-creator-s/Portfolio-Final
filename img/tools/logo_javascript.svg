@@ -1,0 +1,20 @@
+<svg width="200" height="200" viewBox="0 0 200 200"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Fond -->
+  <rect x="10" y="10" width="180" height="180" rx="20" ry="20"
+        fill="#F7DF1E"/>
+
+  <!-- Texte JS -->
+  <text
+    x="100"
+    y="125"
+    text-anchor="middle"
+    font-size="90"
+    font-family="Arial, Helvetica, sans-serif"
+    font-weight="bold"
+    fill="black">
+    JS
+  </text>
+
+</svg>

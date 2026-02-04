@@ -1,0 +1,21 @@
+<svg width="200" height="200" viewBox="0 0 200 200"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Hexagone -->
+  <polygon
+    points="100,10 180,55 180,145 100,190 20,145 20,55"
+    fill="#00599C"/>
+
+  <!-- Lettre C -->
+  <text
+    x="100"
+    y="130"
+    text-anchor="middle"
+    font-size="110"
+    font-family="Arial, Helvetica, sans-serif"
+    font-weight="bold"
+    fill="white">
+    C
+  </text>
+
+</svg>
