@@ -3,231 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Stages - Portfolio</title>
+    <title>Expériences Professionnelles | Alexandre Guiblain</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
             --primary: #4f46e5;
+            --primary-light: #eef2ff;
             --bg-light: #f8fafc;
             --text-main: #1e293b;
             --text-muted: #64748b;
             --sidebar-width: 280px;
             --border: #e2e8f0;
+            --radius: 16px;
+            --dark-navy: #0f172a;
         }
 
         body {
             background-color: var(--bg-light);
             color: var(--text-main);
             font-family: 'Poppins', sans-serif;
-            margin: 0;
             display: flex;
+            overflow-x: hidden;
         }
 
         /* --- SIDEBAR --- */
         .sidebar {
             width: var(--sidebar-width);
-            background-color: #1e293b;
+            background-color: var(--dark-navy);
             padding: 40px 24px;
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            height: 100vh;
-            border-right: 1px solid var(--border);
-            z-index: 1000;
+            display: flex; flex-direction: column;
+            position: fixed; height: 100vh; z-index: 1000;
         }
-
-        .sidebar .brand {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 40px;
-            padding-left: 12px;
-        }
-
+        .sidebar .brand { color: white; font-weight: 700; font-size: 1.4rem; margin-bottom: 50px; text-align: center; }
         .sidebar a {
-            color: var(--text-muted);
-            text-decoration: none;
-            padding: 12px 16px;
-            border-radius: 10px;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            font-weight: 500;
-            margin-bottom: 8px;
+            color: #94a3b8; text-decoration: none; padding: 12px 20px; border-radius: 12px;
+            transition: 0.3s; display: flex; align-items: center; margin-bottom: 8px;
         }
+        .sidebar a:hover, .sidebar a.active { background: var(--primary); color: white; }
+        .sidebar a i { margin-right: 15px; }
 
-        .sidebar a:hover, .sidebar a.active {
-            background: rgba(99, 102, 241, 0.2);
-            color: white;
-        }
-
-        .sidebar a i { margin-right: 12px; width: 20px; }
-
-        /* --- CONTENU PRINCIPAL --- */
+        /* --- MAIN CONTENT --- */
         .main-content {
             margin-left: var(--sidebar-width);
-            padding: 60px 80px;
-            width: 100%;
+            padding: 60px; width: 100%;
         }
 
-        .page-header {
-            margin-bottom: 50px;
+        /* --- TIMELINE --- */
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px 0;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--border);
+            top: 0; bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
         }
 
-        .page-header h1 {
-            font-weight: 700;
-            font-size: 2.5rem;
-            color: #0f172a;
-            margin-bottom: 10px;
+        .timeline-block {
+            position: relative;
+            width: 50%;
+            padding: 10px 40px;
+            box-sizing: border-box;
         }
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; text-align: left; }
 
-        .page-header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
+        .dot {
+            position: absolute;
+            width: 18px; height: 18px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 25px; z-index: 1;
         }
+        .left .dot { right: -9px; }
+        .right .dot { left: -9px; }
 
-        /* --- CARTES DE STAGE --- */
         .stage-card {
-            background: #ffffff;
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 35px;
-            transition: all 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+            display: inline-block;
+            width: 100%;
+            max-width: 400px;
         }
-
         .stage-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
             border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
         }
 
         .company-logo {
-            width: 54px; height: 54px;
-            background: #eff6ff;
+            width: 50px; height: 50px;
+            background: var(--primary-light);
             border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
-            color: var(--primary); font-size: 1.6rem;
-            margin-bottom: 25px;
+            color: var(--primary); font-size: 1.4rem;
+            margin-bottom: 15px;
         }
+        .left .company-logo { margin-left: auto; }
 
         .date-badge {
-            background: #eff6ff;
-            color: var(--primary);
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 50px;
-            margin-bottom: 15px;
-            display: inline-block;
+            font-size: 0.7rem; font-weight: 700;
+            padding: 4px 12px; border-radius: 50px;
+            background: var(--primary-light); color: var(--primary);
+            text-transform: uppercase; margin-bottom: 10px; display: inline-block;
         }
 
         .btn-details {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 10px;
-            font-weight: 600;
-            margin-top: auto;
-            transition: 0.3s;
-            text-decoration: none;
-            text-align: center;
+            background: #f1f5f9; border: none; padding: 8px 18px;
+            border-radius: 10px; font-size: 0.85rem; font-weight: 600;
+            margin-top: 15px; transition: 0.3s;
         }
+        .btn-details:hover { background: var(--primary); color: white; }
 
-        .btn-details:hover {
-            background: #4338ca;
-            color: white;
-        }
-
-        /* --- MODALES --- */
+        /* --- STYLE DES MODALES HARMONISÉ --- */
         .modal-content {
-            border-radius: 24px;
+            border-radius: var(--radius);
+            border: none;
+            overflow: hidden;
+        }
+        .modal-header {
+            background-color: var(--dark-navy);
+            color: white;
             border: none;
         }
-
-        .modal-header {
-            border-bottom: 1px solid #f1f5f9;
-            padding: 25px 35px;
-        }
-
-        .info-pill {
-            background: var(--bg-light);
+        .info-pill-custom {
+            background-color: var(--primary-light);
+            color: var(--text-main);
             border: 1px solid var(--border);
-            padding: 25px;
-            border-radius: 18px;
+            padding: 20px;
+            border-radius: var(--radius);
+        }
+        .modal-title-section {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .btn-rapport {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            transition: 0.3s;
+        }
+        .btn-rapport:hover {
+            background-color: #3730a3;
+            color: white;
+            transform: translateY(-2px);
         }
 
         @media (max-width: 991px) {
             .sidebar { display: none; }
-            .main-content { margin-left: 0; padding: 40px 25px; }
+            .main-content { margin-left: 0; padding: 30px; }
+            .timeline-container::after { left: 31px; }
+            .timeline-block { width: 100%; padding-left: 70px; text-align: left !important; }
+            .left .dot, .right .dot { left: 22px; right: auto; }
+            .left .company-logo { margin-left: 0; }
+            .right { left: 0; }
         }
     </style>
 </head>
 <body>
 
     <nav class="sidebar">
+        <div class="brand">PORTFOLIO</div>
         <a href="index.html"><i class="fa-solid fa-house"></i> Accueil</a>
         <a href="#" class="active"><i class="fa-solid fa-briefcase"></i> Expériences</a>
     </nav>
 
     <main class="main-content">
-        <header class="page-header">
-            <h1>Mes Stages en Entreprise</h1>
-            <p>Détail des missions réalisées durant mon parcours en BTS SIO.</p>
+        <header class="page-header text-center" data-aos="fade-down">
+            <h1 class="fw-bold" style="color: var(--dark-navy);">Mon Parcours</h1>
+            <p class="text-muted">Une progression constante dans le monde de l'informatique.</p>
         </header>
 
-        <div class="row g-4">
-
-            <div class="col-lg-6">
+        <div class="timeline-container">
+            
+            <div class="timeline-block left" data-aos="fade-right">
+                <div class="dot"></div>
                 <div class="stage-card">
-                    <div class="company-logo"><i class="fa-solid fa-network-wired"></i></div>
-                    <span class="date-badge">2026 | STAGE SIO2</span>
-                    <h3 class="h5 fw-bold mb-1">Mairie de Savigny</h3>
-                    <p class="text-primary fw-medium mb-3">Assistant Informatique</p>
-                    <p class="text-muted mb-4">Gestion du parc informatique, support aux utilisateurs et maintenance des services municipaux.</p>
-                    <button class="btn-details" data-bs-toggle="modal" data-bs-target="#modal-m">Voir les missions détaillées</button>
+                    <div class="company-logo"><i class="fa-solid fa-city"></i></div>
+                    <span class="date-badge">Jan - Fév 2026</span>
+                    <h5 class="fw-bold mb-1">Mairie de Savigny</h5>
+                    <p class="small fw-semibold" style="color: var(--primary);">Assistant Informatique (SIO 2)</p>
+                    <button class="btn-details" data-bs-toggle="modal" data-bs-target="#modal-m">Détails</button>
                 </div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="timeline-block right" data-aos="fade-left">
+                <div class="dot"></div>
                 <div class="stage-card">
-                    <div class="company-logo"><i class="fa-solid fa-laptop-code"></i></div>
-                    <span class="date-badge">2025 | STAGE SIO1</span>
-                    <h3 class="h5 fw-bold mb-1">Valorisens</h3>
-                    <p class="text-primary fw-medium mb-3">Développeur Web</p>
-                    <p class="text-muted mb-4">Refonte du site vitrine et amélioration des performances techniques pour le référencement.</p>
-                    <button class="btn-details" data-bs-toggle="modal" data-bs-target="#modal-v">Voir les missions détaillées</button>
+                    <div class="company-logo"><i class="fa-solid fa-code"></i></div>
+                    <span class="date-badge">Mai - Juin 2025</span>
+                    <h5 class="fw-bold mb-1">Valorisens</h5>
+                    <p class="small fw-semibold" style="color: var(--primary);">Développeur Web (SIO 1)</p>
+                    <button class="btn-details" data-bs-toggle="modal" data-bs-target="#modal-v">Détails</button>
                 </div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="timeline-block left" data-aos="fade-right">
+                <div class="dot"></div>
                 <div class="stage-card">
-                    <div class="company-logo"><i class="fa-solid fa-network-wired"></i></div>
-                    <span class="date-badge">2024 | STAGE BAC PRO SN Terminal</span>
-                    <h3 class="h5 fw-bold mb-1">AKTO</h3>
-                    <p class="text-primary fw-medium mb-3">Assistant Informatique</p>
-                    <p class="text-muted mb-4">????????</p>
-                    <button class="btn-details" data-bs-toggle="modal" data-bs-target="#">Voir les missions détaillées</button>
+                    <div class="company-logo"><i class="fa-solid fa-building-user"></i></div>
+                    <span class="date-badge">2024</span>
+                    <h5 class="fw-bold mb-1">AKTO</h5>
+                    <p class="small fw-semibold" style="color: var(--primary);">Support Informatique (Bac Pro)</p>
+                    <button class="btn-details">Détails</button>
                 </div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="timeline-block right" data-aos="fade-left">
+                <div class="dot"></div>
                 <div class="stage-card">
-                    <div class="company-logo"><i class="fa-solid fa-network-wired"></i></div>
-                    <span class="date-badge">2023 | STAGE BAC PRO SN Priemière</span>
-                    <h3 class="h5 fw-bold mb-1">RTE</h3>
-                    <p class="text-primary fw-medium mb-3">Assistant Informatique</p>
-                    <p class="text-muted mb-4">???????</p>
-                    <button class="btn-details" data-bs-toggle="modal" data-bs-target="#">Voir les missions détaillées</button>
+                    <div class="company-logo"><i class="fa-solid fa-bolt"></i></div>
+                    <span class="date-badge">2023</span>
+                    <h5 class="fw-bold mb-1">RTE</h5>
+                    <p class="small fw-semibold" style="color: var(--primary);">Maintenance Réseau (Bac Pro)</p>
+                    <button class="btn-details">Détails</button>
                 </div>
             </div>
+
         </div>
     </main>
 
@@ -235,24 +242,38 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold">Mission : Valorisens</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-code me-2"></i>Mission : Valorisens</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">
                     <div class="row g-4">
                         <div class="col-md-5">
-                            <div class="info-pill">
-                                <p class="mb-2"><strong>Localisation :</strong> Melun</p>
-                                <p class="mb-2"><strong>Technos :</strong> WordPress / SEO</p>
-                                <p class="mb-0"><strong>Encadrement :</strong> Équipe Tech</p>
+                            <div class="info-pill-custom">
+                                <p class="mb-2"><strong><i class="fa-solid fa-location-dot me-2" style="color: var(--primary);"></i>Localisation :</strong> Melun</p>
+                                <p class="mb-2"><strong><i class="fa-solid fa-layer-group me-2" style="color: var(--primary);"></i>Technos :</strong> WordPress / SEO</p>
+                                <p class="mb-0"><strong><i class="fa-solid fa-user-tie me-2" style="color: var(--primary);"></i>Encadrement :</strong> Équipe Tech</p>
+                            </div>
+                            <div class="mt-4">
+                                <a href="GUIBLAIN-Alexandre-rapport de stage-SIO1 1.pdf" target="_blank" class="btn btn-rapport w-100 rounded-3 fw-bold p-2">
+                                    <i class="fa-solid fa-file-pdf me-2"></i>Rapport de Stage
+                                </a>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <h6 class="fw-bold mb-3">Objectifs atteints :</h6>
-                            <ul class="text-muted">
-                                <li class="mb-2">Optimisation des balises meta et de la structure Hn.</li>
-                                <li class="mb-2">Création de templates personnalisés avec Elementor Pro.</li>
-                                <li class="mb-2">Réduction du temps de chargement des pages de 40%.</li>
+                            <h6 class="modal-title-section text-uppercase small">Objectifs atteints</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-3 d-flex align-items-start">
+                                    <i class="fa-solid fa-circle-check mt-1 me-2" style="color: var(--primary);"></i>
+                                    <span class="text-muted">Optimisation des balises meta et de la structure Hn.</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-start">
+                                    <i class="fa-solid fa-circle-check mt-1 me-2" style="color: var(--primary);"></i>
+                                    <span class="text-muted">Création de templates personnalisés avec Elementor Pro.</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-start">
+                                    <i class="fa-solid fa-circle-check mt-1 me-2" style="color: var(--primary);"></i>
+                                    <span class="text-muted">Réduction du temps de chargement des pages de 40%.</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -261,29 +282,42 @@
         </div>
     </div>
 
-
     <div class="modal fade" id="modal-m" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold">Mission : Mairie de Savigny</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-city me-2"></i>Mission : Mairie de Savigny</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">
                     <div class="row g-4">
                         <div class="col-md-5">
-                            <div class="info-pill">
-                                <p class="mb-2"><strong>Localisation :</strong> Savigny-le-Temple</p>
-                                <p class="mb-2"><strong>Parc :</strong> +200 Postes</p>
-                                <p class="mb-0"><strong>Services :</strong> Multi-sites</p>
+                            <div class="info-pill-custom">
+                                <p class="mb-2"><strong><i class="fa-solid fa-location-dot me-2" style="color: var(--primary);"></i>Localisation :</strong> Savigny-le-Temple</p>
+                                <p class="mb-2"><strong><i class="fa-solid fa-desktop me-2" style="color: var(--primary);"></i>Parc :</strong> +200 Postes</p>
+                                <p class="mb-0"><strong><i class="fa-solid fa-network-wired me-2" style="color: var(--primary);"></i>Services :</strong> Multi-sites</p>
+                            </div>
+                            <div class="mt-4">
+                                <a href="documents/rapport-mairie.pdf" target="_blank" class="btn btn-rapport w-100 rounded-3 fw-bold p-2">
+                                    <i class="fa-solid fa-file-pdf me-2"></i>Rapport de Stage
+                                </a>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <h6 class="fw-bold mb-3">Objectifs atteints :</h6>
-                            <ul class="text-muted">
-                                <li class="mb-2">Installation et configuration de postes clients (W11).</li>
-                                <li class="mb-2">Support de proximité (matériel et logiciel).</li>
-                                <li class="mb-2">Aide à la gestion des droits via Active Directory.</li>
+                            <h6 class="modal-title-section text-uppercase small">Objectifs atteints</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-3 d-flex align-items-start">
+                                    <i class="fa-solid fa-circle-check mt-1 me-2" style="color: var(--primary);"></i>
+                                    <span class="text-muted">Installation et configuration de postes clients (W11).</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-start">
+                                    <i class="fa-solid fa-circle-check mt-1 me-2" style="color: var(--primary);"></i>
+                                    <span class="text-muted">Support de proximité (matériel et logiciel).</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-start">
+                                    <i class="fa-solid fa-circle-check mt-1 me-2" style="color: var(--primary);"></i>
+                                    <span class="text-muted">Aide à la gestion des droits via Active Directory.</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -293,6 +327,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>
-
