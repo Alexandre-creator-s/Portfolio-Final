@@ -509,7 +509,74 @@ body {
 .slam-card.chosen .card-header-icon i {
   color: white;
 }
+/* --- Boutons d'action BTS --- */
+.bts-action-btn {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    min-width: 280px;
+    border: 1px solid var(--border);
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
 
+.bts-action-btn .btn-icon {
+    font-size: 1.8rem;
+    margin-right: 15px;
+    color: var(--primary);
+}
+
+.bts-action-btn .btn-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.bts-action-btn .btn-text span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light);
+}
+
+.bts-action-btn .btn-text strong {
+    font-size: 1rem;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+/* Hover Effects */
+.bts-action-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15);
+    border-color: var(--primary);
+}
+
+/* Style spécifique au bouton primaire (Référentiel) */
+.primary-btn:hover .btn-icon {
+    color: var(--primary);
+}
+
+/* Style spécifique au bouton secondaire (Campus) */
+.secondary-btn:hover {
+    background-color: var(--primary);
+}
+
+.secondary-btn:hover .btn-text strong,
+.secondary-btn:hover .btn-text span,
+.secondary-btn:hover .btn-icon {
+    color: white;
+}
+
+/* Mobile adjust */
+@media (max-width: 576px) {
+    .bts-action-btn {
+        width: 100%;
+    }
+}
 /* ============================= */
 /*          COMPETENCES 
 /* ============================= */
@@ -1512,6 +1579,7 @@ body {
     }
 
 }
+
 
 
 
