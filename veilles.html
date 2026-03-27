@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille Technologique — Alexandre Guiblain</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@1,400&display=swap');
+
+:root {
+  --blue:       #2563eb;
+  --blue-light: #3b82f6;
+  --blue-pale:  #eff6ff;
+  --blue-mid:   #dbeafe;
+  --cyan:       #06b6d4;
+  --cyan-pale:  #ecfeff;
+  --purple:     #7c3aed;
+  --purple-pale:#f5f3ff;
+  --green:      #16a34a;
+  --green-pale: #f0fdf4;
+  --orange:     #ea580c;
+  --orange-pale:#fff7ed;
+  --text:       #1e293b;
+  --muted:      #64748b;
+  --light:      #94a3b8;
+  --bg:         #f8fafc;
+  --bg-card:    #ffffff;
+  --border:     #e2e8f0;
+  --shadow:     0 2px 12px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
+  --shadow-md:  0 6px 24px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.05);
+  --shadow-lg:  0 12px 40px rgba(37,99,235,.12), 0 4px 12px rgba(0,0,0,.06);
+  --font: 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif;
+  --font-serif: 'Lora', Georgia, serif;
+  --radius: 16px;
+}
+[data-theme="dark"] {
+  --text: #f1f5f9; --muted: #94a3b8; --light: #64748b;
+  --bg: #0f172a; --bg-card: #1e293b; --border: #334155;
+  --blue-pale: #1e3a5f; --blue-mid: #1d4ed8;
+  --cyan-pale: #0e3a3f; --purple-pale: #2d1f52;
+  --green-pale: #0f2d1a; --orange-pale: #2d1505;
+  --shadow: 0 2px 12px rgba(0,0,0,.4); --shadow-md: 0 6px 24px rgba(0,0,0,.4);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.5);
+}
+[data-theme="dark"] .topbar { background: rgba(15,23,42,.96); }
+[data-theme="dark"] .page-hero { background: linear-gradient(160deg,#0f172a 0%,#1a2050 60%,#0f172a 100%); }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--text); background: var(--bg); overflow-x: hidden; transition: background .3s, color .3s; line-height: 1.6; }
+
+/* ── SCROLL PROGRESS ── */
+#pbar {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  transition: width .1s linear; border-radius: 0 2px 2px 0;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  position: fixed; top: 3px; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,.92); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 60px; height: 62px;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: var(--shadow); transition: transform .35s ease, background .3s;
+}
+.topbar.hidden { transform: translateY(-100%); }
+.back-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--blue); font-weight: 700; font-size: 14px;
+  text-decoration: none; padding: 8px 16px;
+  background: var(--blue-pale); border-radius: 10px;
+  transition: all .25s; border: 1.5px solid var(--blue-mid);
+}
+.back-btn:hover { background: var(--blue); color: #fff; transform: translateX(-3px); }
+.topbar-title { font-size: 15px; font-weight: 700; color: var(--text); }
+.theme-toggle {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--bg); border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 17px; transition: all .25s;
+}
+.theme-toggle:hover { border-color: var(--blue); background: var(--blue-pale); }
+
+/* ── HERO ── */
+.page-hero {
+  background: linear-gradient(160deg, var(--blue-pale) 0%, #f0f7ff 50%, #fff 100%);
+  padding: 120px 60px 80px; text-align: center; position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: ''; position: absolute; right: -120px; top: -120px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(37,99,235,.07) 0%, transparent 65%);
+}
+.page-hero::after {
+  content: ''; position: absolute; left: -80px; bottom: -60px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(6,182,212,.06) 0%, transparent 65%);
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--blue-pale); border: 1.5px solid var(--blue-mid);
+  color: var(--blue); font-size: 12px; font-weight: 700;
+  padding: 6px 16px; border-radius: 100px; letter-spacing: .5px;
+  margin-bottom: 20px; position: relative; z-index: 1;
+}
+.hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); animation: pulse 1.8s ease infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.2} }
+.hero-h1 {
+  font-size: clamp(36px,6vw,60px); font-weight: 800;
+  color: var(--text); letter-spacing: -2px; line-height: 1.1;
+  margin-bottom: 12px; position: relative; z-index: 1;
+}
+.hero-h1 span { background: linear-gradient(135deg, var(--blue), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-sub {
+  font-size: 16px; color: var(--muted); max-width: 580px;
+  margin: 0 auto 48px; line-height: 1.75; position: relative; z-index: 1;
+  font-family: var(--font-serif); font-style: italic;
+}
+.hero-stats {
+  display: flex; justify-content: center; gap: 0;
+  max-width: 640px; margin: 0 auto;
+  background: var(--bg-card); border-radius: var(--radius);
+  border: 1px solid var(--border); overflow: hidden;
+  box-shadow: var(--shadow-md); position: relative; z-index: 1;
+}
+.hero-stat { flex: 1; padding: 20px 28px; text-align: center; border-right: 1px solid var(--border); }
+.hero-stat:last-child { border-right: none; }
+.hero-stat-n { font-size: 28px; font-weight: 800; color: var(--blue); line-height: 1; }
+.hero-stat-l { font-size: 12px; color: var(--muted); margin-top: 5px; }
+
+/* ── CONTENT WRAPPER ── */
+.content { max-width: 900px; margin: 0 auto; padding: 72px 60px 80px; }
+
+/* ── INTRO CARD ── */
+.intro-card {
+  background: var(--bg-card); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 36px;
+  box-shadow: var(--shadow); margin-bottom: 64px;
+  position: relative; overflow: hidden;
+}
+.intro-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 5px; background: linear-gradient(180deg, var(--blue), var(--cyan));
+  border-radius: 4px 0 0 4px;
+}
+.intro-card-title { font-size: 13px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+.intro-card-text { font-size: 15.5px; color: var(--muted); line-height: 1.85; }
+.intro-card-text strong { color: var(--text); }
+
+/* ── PHASE HEADING ── */
+.phase-heading {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 36px;
+}
+.phase-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue); color: #fff;
+  font-size: 11px; font-weight: 800; letter-spacing: 1px;
+  padding: 7px 16px; border-radius: 100px; flex-shrink: 0;
+}
+.phase-line { flex: 1; height: 1px; background: var(--border); }
+.phase-title { font-size: 20px; font-weight: 800; color: var(--text); }
+
+/* ── ENTRY CARD ── */
+.entry {
+  background: var(--bg-card); border: 1.5px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow); margin-bottom: 28px;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.4,0,.2,1), box-shadow .3s, border-color .3s;
+}
+.entry.on { opacity: 1; transform: translateY(0); }
+.entry:hover { box-shadow: var(--shadow-lg); border-color: var(--blue-mid); }
+
+.entry-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 22px 28px; cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background .2s;
+  user-select: none;
+}
+.entry-header:hover { background: var(--bg); }
+.entry-date-badge {
+  padding: 6px 14px; border-radius: 100px;
+  font-size: 11px; font-weight: 800; letter-spacing: .5px;
+  flex-shrink: 0; text-transform: uppercase;
+}
+.entry-title-wrap { flex: 1; }
+.entry-title { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 3px; }
+.entry-subtitle { font-size: 13px; color: var(--muted); }
+.entry-chevron {
+  font-size: 14px; color: var(--light); transition: transform .3s;
+  flex-shrink: 0;
+}
+.entry.open .entry-chevron { transform: rotate(180deg); }
+
+.entry-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height .5s cubic-bezier(.4,0,.2,1), padding .3s;
+  padding: 0 28px;
+}
+.entry.open .entry-body { max-height: 1200px; padding: 28px; }
+
+.entry-text { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
+.entry-text strong { color: var(--text); }
+.entry-text em { font-style: italic; color: var(--muted); }
+
+.entry-highlight {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--blue-pale); border: 1px solid var(--blue-mid);
+  border-radius: 12px; padding: 16px; margin-bottom: 16px;
+  font-size: 14px; color: var(--text); line-height: 1.7;
+}
+.entry-highlight-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+.entry-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+.entry-chip {
+  padding: 5px 13px; border-radius: 8px;
+  font-size: 12px; font-weight: 700;
+  border: 1.5px solid transparent;
+}
+
+.entry-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: var(--blue); font-size: 13px; font-weight: 700;
+  text-decoration: none; padding: 8px 16px;
+  background: var(--blue-pale); border-radius: 8px; border: 1px solid var(--blue-mid);
+  transition: all .2s;
+}
+.entry-link:hover { background: var(--blue); color: #fff; }
+
+/* ── ZOOM TECHNIQUE ── */
+.zoom-section {
+  background: var(--bg-card); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 36px;
+  box-shadow: var(--shadow); margin-bottom: 64px;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s, transform .6s;
+}
+.zoom-section.on { opacity: 1; transform: translateY(0); }
+.zoom-title {
+  font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.zoom-sub { font-size: 14.5px; color: var(--muted); font-style: italic; margin-bottom: 28px; }
+.zoom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 22px; }
+.zoom-item {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px;
+  transition: all .3s;
+}
+.zoom-item:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.zoom-item-name {
+  font-size: 15px; font-weight: 800; color: var(--blue); margin-bottom: 6px;
+  display: flex; align-items: center; gap: 8px;
+}
+.zoom-item-tag {
+  font-size: 10px; padding: 2px 8px; border-radius: 6px;
+  background: var(--blue-pale); color: var(--blue); font-weight: 700;
+}
+.zoom-item-desc { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+.zoom-callout {
+  background: linear-gradient(135deg, var(--blue-pale), var(--cyan-pale));
+  border: 1px solid var(--blue-mid); border-radius: 12px;
+  padding: 18px; font-size: 14px; color: var(--text); line-height: 1.75;
+}
+.zoom-callout strong { color: var(--blue); }
+
+/* ── SYNTHÈSE ── */
+.synthese-card {
+  background: linear-gradient(135deg, var(--blue) 0%, #1d4ed8 50%, #0e7490 100%);
+  border-radius: var(--radius); padding: 44px;
+  color: #fff; margin-bottom: 64px;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s, transform .6s;
+  position: relative; overflow: hidden;
+}
+.synthese-card::before {
+  content: ''; position: absolute; right: -60px; top: -60px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: rgba(255,255,255,.06);
+}
+.synthese-card.on { opacity: 1; transform: translateY(0); }
+.synthese-tag {
+  font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+  text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 14px;
+}
+.synthese-title { font-size: 24px; font-weight: 800; margin-bottom: 16px; line-height: 1.3; }
+.synthese-text { font-size: 15px; line-height: 1.85; color: rgba(255,255,255,.9); margin-bottom: 22px; }
+.synthese-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.synthese-pill {
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
+  color: #fff; font-size: 12.5px; font-weight: 700;
+  padding: 7px 16px; border-radius: 100px;
+}
+
+/* ── FOOTER ── */
+.page-footer {
+  background: var(--text); color: #94a3b8;
+  padding: 44px 60px; text-align: center;
+}
+.footer-name { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.footer-sub { font-size: 13px; margin-bottom: 20px; }
+.footer-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: #fff; text-decoration: none; font-weight: 700;
+  font-size: 14px; background: var(--blue); padding: 12px 24px;
+  border-radius: 10px; transition: all .25s;
+}
+.footer-back:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 780px) {
+  .topbar { padding: 0 20px; }
+  .page-hero, .content { padding-left: 20px; padding-right: 20px; }
+  .page-hero { padding-top: 100px; }
+  .content { padding: 48px 20px 60px; }
+  .hero-stats { flex-direction: column; }
+  .hero-stat { border-right: none; border-bottom: 1px solid var(--border); }
+  .hero-stat:last-child { border-bottom: none; }
+  .zoom-grid { grid-template-columns: 1fr; }
+  .synthese-card { padding: 28px; }
+  .page-footer { padding: 36px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div id="pbar"></div>
+
+<!-- TOPBAR -->
+<div class="topbar" id="topbar">
+  <a href="index.html" class="back-btn">← Retour au portfolio</a>
+  <span class="topbar-title">Veille Technologique · Alexandre Guiblain</span>
+  <button class="theme-toggle" id="theme-toggle">🌙</button>
+</div>
+
+<!-- HERO -->
+<header class="page-hero">
+  <div class="hero-tag"><span class="hero-tag-dot"></span> BTS SIO SLAM · 2025–2026</div>
+  <h1 class="hero-h1">🚀 Veille <span>Technologique</span></h1>
+  <p class="hero-sub">L'Écosystème des Langages & Performance — Comment Python réussit sa mutation vers la haute performance en absorbant Rust et en révolutionnant ses mécanismes internes.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-n">4</div><div class="hero-stat-l">Phases de veille</div></div>
+    <div class="hero-stat"><div class="hero-stat-n">18</div><div class="hero-stat-l">Mois couverts</div></div>
+    <div class="hero-stat"><div class="hero-stat-n">8+</div><div class="hero-stat-l">Sujets analysés</div></div>
+    <div class="hero-stat"><div class="hero-stat-n">2026</div><div class="hero-stat-l">Mise à jour</div></div>
+  </div>
+</header>
+
+<!-- CONTENU -->
+<div class="content">
+
+  <!-- INTRO -->
+  <div class="intro-card reveal-el">
+    <div class="intro-card-title">🎯 Introduction & État de l'art</div>
+    <p class="intro-card-text">
+      Le paysage du développement logiciel traverse une phase de mutation sans précédent. Alors que <strong>Python domine outrageusement le secteur de la Data Science</strong>, ses limites structurelles — notamment le verrouillage global de l'interprète ou <strong>GIL</strong> — l'ont longtemps pénalisé face à des langages de système.<br><br>
+      Ma veille se concentre sur une problématique centrale : <strong>Comment l'écosystème Python réussit-il sa mutation vers la haute performance</strong> en absorbant les technologies de sécurité mémoire comme Rust et en révolutionnant ses propres mécanismes internes pour répondre aux exigences de l'IA moderne ?
+    </p>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase-heading reveal-el">
+    <span class="phase-badge">📅 PHASE 1</span>
+    <div class="phase-line"></div>
+    <span style="font-size:13px;color:var(--muted);font-weight:600;flex-shrink:0">LA RUPTURE TECHNIQUE · DÉBUT 2025</span>
+  </div>
+
+  <!-- Entrée Jan 2025 -->
+  <div class="entry reveal-el" id="e1">
+    <div class="entry-header" onclick="toggleEntry('e1')">
+      <span class="entry-date-badge" style="background:var(--blue-pale);color:var(--blue)">Janvier 2025</span>
+      <div class="entry-title-wrap">
+        <div class="entry-title">Le "Free-Threading" et l'ère Post-GIL</div>
+        <div class="entry-subtitle">Python 3.13 — No-GIL · Compilateur JIT · CPython</div>
+      </div>
+      <span class="entry-chevron">▼</span>
+    </div>
+    <div class="entry-body">
+      <p class="entry-text">
+        L'arrivée de <strong>Python 3.13</strong> a marqué un tournant historique avec le support expérimental du <strong>No-GIL</strong>. Pour un développeur, cela signifie la fin de l'impossibilité d'exécuter plusieurs threads simultanément sur différents cœurs CPU. Cette mise à jour est cruciale pour les <strong>serveurs web haute disponibilité</strong> et les calculs de pré-traitement de données massives.
+      </p>
+      <div class="entry-highlight">
+        <span class="entry-highlight-icon">⚡</span>
+        <span>Parallèlement, l'introduction d'un premier <strong>compilateur JIT (Just-In-Time)</strong> de base permet de transformer les bytecodes fréquemment utilisés en code machine natif, offrant un gain de performance immédiat de <strong>15% sur les boucles intensives</strong>.</span>
+      </div>
+      <div class="entry-chips">
+        <span class="entry-chip" style="background:var(--blue-pale);color:var(--blue);border-color:var(--blue-mid)">Python 3.13</span>
+        <span class="entry-chip" style="background:var(--purple-pale);color:var(--purple);border-color:#c4b5fd">No-GIL</span>
+        <span class="entry-chip" style="background:var(--orange-pale);color:var(--orange);border-color:#fed7aa">JIT Compiler</span>
+        <span class="entry-chip" style="background:var(--green-pale);color:var(--green);border-color:#bbf7d0">CPython</span>
+      </div>
+      <a href="https://docs.python.org/3.13/whatsnew/3.13.html" target="_blank" class="entry-link">🔗 Explorer les changements internes de CPython</a>
+    </div>
+  </div>
+
+  <!-- Entrée Fév 2025 -->
+  <div class="entry reveal-el" id="e2">
+    <div class="entry-header" onclick="toggleEntry('e2')">
+      <span class="entry-date-badge" style="background:var(--cyan-pale);color:var(--cyan)">Février 2025</span>
+      <div class="entry-title-wrap">
+        <div class="entry-title">Polars : La Data Science à la vitesse de Rust</div>
+        <div class="entry-subtitle">Polars vs Pandas · Apache Arrow · Multithread</div>
+      </div>
+      <span class="entry-chevron">▼</span>
+    </div>
+    <div class="entry-body">
+      <p class="entry-text">
+        Ma veille a mis en lumière le <strong>déclin relatif de Pandas face à Polars</strong>. Ce dernier, écrit entièrement en <strong>Rust</strong>, utilise le modèle de données <strong>Apache Arrow</strong> pour optimiser l'utilisation du cache processeur. Contrairement à Pandas qui traite les données de manière séquentielle, Polars est <strong>nativement multithreadé</strong>.
+      </p>
+      <div class="entry-highlight">
+        <span class="entry-highlight-icon">📊</span>
+        <span>Dans mes tests, j'ai observé que la lecture et le filtrage de fichiers CSV de plusieurs gigaoctets sont <strong>jusqu'à 10 fois plus rapides</strong>. C'est l'exemple parfait de "l'ombre de Rust" qui vient booster l'accessibilité de Python.</span>
+      </div>
+      <div class="entry-chips">
+        <span class="entry-chip" style="background:var(--cyan-pale);color:var(--cyan);border-color:#a5f3fc">Polars</span>
+        <span class="entry-chip" style="background:var(--orange-pale);color:var(--orange);border-color:#fed7aa">Rust</span>
+        <span class="entry-chip" style="background:var(--blue-pale);color:var(--blue);border-color:var(--blue-mid)">Apache Arrow</span>
+        <span class="entry-chip" style="background:var(--green-pale);color:var(--green);border-color:#bbf7d0">x10 Performance</span>
+      </div>
+      <a href="https://pola.rs/" target="_blank" class="entry-link">🔗 Consulter le benchmark Polars vs Pandas</a>
+    </div>
+  </div>
+
+  <!-- PHASE 2 : CHRONOLOGIE -->
+  <div class="phase-heading reveal-el" style="margin-top:56px">
+    <span class="phase-badge" style="background:var(--purple)">📅 PHASE 2</span>
+    <div class="phase-line"></div>
+    <span style="font-size:13px;color:var(--muted);font-weight:600;flex-shrink:0">DE L'OUTILLAGE À L'AGENTIQUE · 2025–2026</span>
+  </div>
+
+  <!-- Entrée Mai 2025 -->
+  <div class="entry reveal-el" id="e3">
+    <div class="entry-header" onclick="toggleEntry('e3')">
+      <span class="entry-date-badge" style="background:var(--purple-pale);color:var(--purple)">Mai 2025</span>
+      <div class="entry-title-wrap">
+        <div class="entry-title">Révolution du Packaging : L'unification par "uv"</div>
+        <div class="entry-subtitle">uv · Astral · Rust · CI/CD · pip replacement</div>
+      </div>
+      <span class="entry-chevron">▼</span>
+    </div>
+    <div class="entry-body">
+      <p class="entry-text">
+        Le packaging Python a toujours été un point noir (<em>pip, venv, poetry, conda</em>). L'émergence de <strong>uv</strong> (par Astral) a radicalement changé ma productivité. Développé en Rust, il permet de créer des environnements virtuels en <strong>moins de 0.1 seconde</strong>. Sa capacité à gérer les versions de Python sans outil externe (comme <em>pyenv</em>) simplifie drastiquement le déploiement continu (<strong>CI/CD</strong>).
+      </p>
+      <div class="entry-highlight">
+        <span class="entry-highlight-icon">🚀</span>
+        <span>J'ai <strong>personnellement migré l'intégralité de mon workflow</strong> vers cet outil, supprimant ainsi les conflits de dépendances chronophages. Un changement concret et immédiat dans ma façon de travailler.</span>
+      </div>
+      <div class="entry-chips">
+        <span class="entry-chip" style="background:var(--purple-pale);color:var(--purple);border-color:#c4b5fd">uv</span>
+        <span class="entry-chip" style="background:var(--orange-pale);color:var(--orange);border-color:#fed7aa">Rust</span>
+        <span class="entry-chip" style="background:var(--blue-pale);color:var(--blue);border-color:var(--blue-mid)">CI/CD</span>
+        <span class="entry-chip" style="background:var(--green-pale);color:var(--green);border-color:#bbf7d0">0.1s env</span>
+      </div>
+      <a href="https://docs.astral.sh/uv/" target="_blank" class="entry-link">🔗 Analyse technique du gestionnaire uv</a>
+    </div>
+  </div>
+
+  <!-- Entrée Sept 2025 -->
+  <div class="entry reveal-el" id="e4">
+    <div class="entry-header" onclick="toggleEntry('e4')">
+      <span class="entry-date-badge" style="background:var(--green-pale);color:var(--green)">Septembre 2025</span>
+      <div class="entry-title-wrap">
+        <div class="entry-title">L'essor des Small Language Models (SLM) & IA Locale</div>
+        <div class="entry-subtitle">Llama 3.2 · Microsoft Phi-4 · Ollama · GPU local</div>
+      </div>
+      <span class="entry-chevron">▼</span>
+    </div>
+    <div class="entry-body">
+      <p class="entry-text">
+        Fin 2025, la tendance s'est déplacée du <strong>Cloud vers le Local</strong>. Avec des modèles comme <strong>Llama 3.2 Lightweight</strong> ou <strong>Microsoft Phi-4</strong>, la priorité est devenue la <strong>confidentialité des données</strong>. Ma veille s'est portée sur <strong>Ollama</strong> et l'intégration de bibliothèques Python capables d'orchestrer ces modèles directement sur le GPU de l'utilisateur.
+      </p>
+      <div class="entry-highlight">
+        <span class="entry-highlight-icon">🔒</span>
+        <span>Cela réduit drastiquement les <strong>coûts d'inférence</strong> et permet de développer des outils de traitement de documents ultra-sensibles <strong>sans aucune fuite de données externe</strong>.</span>
+      </div>
+      <div class="entry-chips">
+        <span class="entry-chip" style="background:var(--green-pale);color:var(--green);border-color:#bbf7d0">Llama 3.2</span>
+        <span class="entry-chip" style="background:var(--blue-pale);color:var(--blue);border-color:var(--blue-mid)">Microsoft Phi-4</span>
+        <span class="entry-chip" style="background:var(--cyan-pale);color:var(--cyan);border-color:#a5f3fc">Ollama</span>
+        <span class="entry-chip" style="background:var(--orange-pale);color:var(--orange);border-color:#fed7aa">IA Locale</span>
+        <span class="entry-chip" style="background:var(--purple-pale);color:var(--purple);border-color:#c4b5fd">Confidentialité</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entrée Jan 2026 -->
+  <div class="entry reveal-el" id="e5">
+    <div class="entry-header" onclick="toggleEntry('e5')">
+      <span class="entry-date-badge" style="background:var(--orange-pale);color:var(--orange)">Janvier 2026</span>
+      <div class="entry-title-wrap">
+        <div class="entry-title">Systèmes Agentiques : Au-delà du simple Chatbot</div>
+        <div class="entry-subtitle">LangGraph · PydanticAI · Agents autonomes · Architecte IA</div>
+      </div>
+      <span class="entry-chevron">▼</span>
+    </div>
+    <div class="entry-body">
+      <p class="entry-text">
+        Le début de l'année 2026 marque l'avènement des <strong>Agents Autonomes</strong>. Grâce à <strong>LangGraph</strong> et <strong>PydanticAI</strong>, nous ne codons plus des scripts linéaires mais des systèmes capables de <strong>raisonner, de tester leur propre code</strong> et de corriger leurs erreurs en boucle fermée. Le rôle du développeur mute : nous devenons des <strong>"Architectes de Systèmes d'Agents"</strong>.
+      </p>
+      <div class="entry-highlight">
+        <span class="entry-highlight-icon">🤖</span>
+        <span>J'ai suivi de près comment ces <strong>graphes d'états</strong> permettent de créer des applications capables de gérer des <em>workflows complexes</em> — comme la rédaction complète d'une documentation technique à partir d'un code source.</span>
+      </div>
+      <div class="entry-chips">
+        <span class="entry-chip" style="background:var(--orange-pale);color:var(--orange);border-color:#fed7aa">LangGraph</span>
+        <span class="entry-chip" style="background:var(--blue-pale);color:var(--blue);border-color:var(--blue-mid)">PydanticAI</span>
+        <span class="entry-chip" style="background:var(--purple-pale);color:var(--purple);border-color:#c4b5fd">Agents autonomes</span>
+        <span class="entry-chip" style="background:var(--green-pale);color:var(--green);border-color:#bbf7d0">GraphStates</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZOOM TECHNIQUE -->
+  <div class="zoom-section reveal-el" style="margin-top:56px">
+    <div class="zoom-title">🔬 Zoom Technique : La Synergie Python × Rust</div>
+    <p class="zoom-sub">Pourquoi Rust est devenu le "Cortex" de l'écosystème Python ?</p>
+    <p class="entry-text" style="margin-bottom:24px">
+      Une observation majeure de ma veille est que <strong>les outils les plus populaires de 2026 ne sont plus écrits en Python, mais ils sont consommés en Python.</strong>
+    </p>
+    <div class="zoom-grid">
+      <div class="zoom-item">
+        <div class="zoom-item-name">⚡ Ruff <span class="zoom-item-tag">Linter</span></div>
+        <p class="zoom-item-desc">A remplacé Flake8 et Black. Écrit en Rust, il traite des <strong>millions de lignes de code par seconde</strong>. Gain de productivité immédiat dans chaque pipeline CI.</p>
+      </div>
+      <div class="zoom-item">
+        <div class="zoom-item-name">🛡️ Pydantic V2 <span class="zoom-item-tag">Validation</span></div>
+        <p class="zoom-item-desc">Le moteur de validation utilisé par FastAPI a été <strong>réécrit en Rust</strong>, multipliant les performances par <strong>20×</strong>. Impact direct sur toutes les APIs Python modernes.</p>
+      </div>
+      <div class="zoom-item">
+        <div class="zoom-item-name">📦 uv <span class="zoom-item-tag">Packaging</span></div>
+        <p class="zoom-item-desc">Gestionnaire de paquets et d'environnements virtuels en Rust. Remplace pip + venv + pyenv. Crée un environnement en <strong>moins de 0.1 seconde</strong>.</p>
+      </div>
+      <div class="zoom-item">
+        <div class="zoom-item-name">🐻 Polars <span class="zoom-item-tag">DataFrame</span></div>
+        <p class="zoom-item-desc">Alternative à Pandas entièrement en Rust avec Apache Arrow. <strong>10× plus rapide</strong> sur des fichiers CSV massifs grâce au multithreading natif.</p>
+      </div>
+    </div>
+    <div class="zoom-callout">
+      💡 <strong>Analyse :</strong> Cette stratégie permet aux développeurs de garder la <strong>simplicité syntaxique de Python</strong> tout en bénéficiant de la sécurité mémoire et de la vitesse brute de Rust. Pour un étudiant en informatique, cela souligne l'importance de comprendre les <strong>concepts de bas niveau</strong> (mémoire, threads) même pour travailler sur des langages de haut niveau.
+    </div>
+  </div>
+
+  <!-- SYNTHÈSE -->
+  <div class="synthese-card reveal-el">
+    <div class="synthese-tag">📌 Synthèse globale & perspectives 2026</div>
+    <div class="synthese-title">Python Invaincu — L'Hybridation Intelligente</div>
+    <p class="synthese-text">
+      Au terme de cette période de veille, le constat est clair : le développement moderne ne repose plus sur un seul langage, mais sur une <strong>hybridation intelligente</strong>. Python a réussi son pari de rester le n°1 mondial en se modernisant de l'intérieur (JIT, No-GIL) et en s'ouvrant à Rust pour son outillage.<br><br>
+      En tant que futur professionnel, je retiens que <strong>l'adaptabilité est la compétence clé</strong>. Maîtriser Python en 2026, c'est savoir orchestrer des agents IA, optimiser ses déploiements avec des outils natifs et intégrer la <strong>sobriété numérique (Green Computing)</strong> dans chaque ligne de code pour réduire l'empreinte carbone d'une IA de plus en plus gourmande.
+    </p>
+    <div class="synthese-pills">
+      <span class="synthese-pill">🐍 TIOBE 2026 : Python Invaincu</span>
+      <span class="synthese-pill">🦀 Focus : Sécurité & Performance</span>
+      <span class="synthese-pill">🤖 Ère des Agents IA</span>
+      <span class="synthese-pill">🌿 Green Computing</span>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="footer-name">Alexandre Guiblain</div>
+  <div class="footer-sub">BTS SIO — Option SLAM · Veille Technologique 2025–2026</div>
+  <a href="index.html" class="footer-back">← Retour au portfolio</a>
+</footer>
+
+<script>
+// Progress bar
+const pbar = document.getElementById('pbar');
+window.addEventListener('scroll', () => {
+  pbar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+});
+
+// Nav hide
+let lastY = 0;
+const topbar = document.getElementById('topbar');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  topbar.classList.toggle('hidden', y > lastY && y > 80);
+  lastY = y;
+});
+
+// Dark mode
+const btn = document.getElementById('theme-toggle');
+const html = document.documentElement;
+const saved = localStorage.getItem('theme') || 'light';
+html.setAttribute('data-theme', saved);
+btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+btn.addEventListener('click', () => {
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  btn.textContent = next === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('theme', next);
+});
+
+// Toggle entry accordion
+function toggleEntry(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('on'), i * 80);
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal-el, .entry, .zoom-section, .synthese-card').forEach(el => obs.observe(el));
+
+// Open first entry by default
+document.getElementById('e1').classList.add('open');
+</script>
+</body>
+</html>
