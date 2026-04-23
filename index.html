@@ -1323,14 +1323,34 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
     <h2 class="section-title">Travaillons ensemble</h2>
     <p class="section-sub">Une opportunité de stage, un projet ou une question ? Je suis disponible et réactif.</p>
     <div class="contact-wrapper">
-      <div class="contact-form-card reveal">
+      <form action="https://formspree.io/f/mvzdveer" method="POST" class="contact-form-card reveal">
         <h3>Envoyer un message</h3>
-        <div class="form-group"><label class="form-label">Nom complet</label><input class="form-input" type="text" placeholder="Votre nom"></div>
-        <div class="form-group"><label class="form-label">Adresse email</label><input class="form-input" type="email" placeholder="votre@email.com"></div>
-        <div class="form-group"><label class="form-label">Objet</label><input class="form-input" type="text" placeholder="Stage / Alternance / Projet / Autre"></div>
-        <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Décrivez votre projet ou opportunité..."></textarea></div>
-        <button class="btn-primary" style="width:100%;justify-content:center;font-size:14px;" onclick="this.textContent='✅ Message envoyé !';setTimeout(()=>this.textContent='🚀 Envoyer le message',3000)">🚀 Envoyer le message</button>
-      </div>
+        
+        <div class="form-group">
+          <label class="form-label">Nom complet</label>
+          <input class="form-input" name="nom" type="text" placeholder="Votre nom" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Adresse email</label>
+          <input class="form-input" name="email" type="email" placeholder="votre@email.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Objet</label>
+          <input class="form-input" name="objet" type="text" placeholder="Stage / Alternance / Projet / Autre">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" name="message" placeholder="Décrivez votre projet ou opportunité..." required></textarea>
+        </div>
+        
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:14px;">
+          🚀 Envoyer le message
+        </button>
+      </form>
+    </div>
       <div class="reveal">
         <h3 style="font-size:19px;font-weight:700;margin-bottom:22px;color:var(--text)">Retrouvez-moi sur</h3>
         <ul class="contact-side-links">
