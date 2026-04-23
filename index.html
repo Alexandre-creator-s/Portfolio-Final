@@ -1316,15 +1316,18 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
+  
+<!-- CONTACT --> 
+<section id="contact" style="padding: 80px 0;">
   <div class="section-inner">
     <div class="section-tag">Contact</div>
     <h2 class="section-title">Travaillons ensemble</h2>
     <p class="section-sub">Une opportunité de stage, un projet ou une question ? Je suis disponible et réactif.</p>
-    <div class="contact-wrapper">
+    
+    <div class="contact-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+      
       <form action="https://formspree.io/f/mvzdveer" method="POST" class="contact-form-card reveal">
-        <h3>Envoyer un message</h3>
+        <h3 style="font-size:19px; font-weight:700; margin-bottom:20px;">Envoyer un message</h3>
         
         <div class="form-group">
           <label class="form-label">Nom complet</label>
@@ -1343,27 +1346,74 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
         
         <div class="form-group">
           <label class="form-label">Message</label>
-          <textarea class="form-textarea" name="message" placeholder="Décrivez votre projet ou opportunité..." required></textarea>
+          <textarea class="form-textarea" name="message" rows="5" placeholder="Décrivez votre projet ou opportunité..." required></textarea>
         </div>
         
-        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:14px;">
+        <button type="submit" class="btn-primary" style="width:100%; justify-content:center; font-size:14px; padding: 12px;">
           🚀 Envoyer le message
         </button>
       </form>
-    </div>
+
       <div class="reveal">
-        <h3 style="font-size:19px;font-weight:700;margin-bottom:22px;color:var(--text)">Retrouvez-moi sur</h3>
-        <ul class="contact-side-links">
-          <li><a class="contact-link-item" href=""><div class="cl-icon" style="background:#fef2f2">📧</div><div><div class="cl-title">Email</div><div class="cl-sub"><span class="info-value">alexandre.guiblain2@gmail.com</span></div></div></a></li>
-          <li><a class="contact-link-item" href="https://www.linkedin.com/feed/"><div class="cl-icon" style="background:#eff6ff">💼</div><div><div class="cl-title">LinkedIn</div><div class="cl-sub">linkedin.com/in/alexandre-guiblain</div></div></a></li>
-          <li><a class="contact-link-item" href="https://github.com/Alexandre-creator-s"><div class="cl-icon" style="background:var(--bg-soft)">🐙</div><div><div class="cl-title">GitHub</div><div class="cl-sub">github.com/alexandre-guiblain</div></div></a></li>
-          <li><a class="contact-link-item" href="CV alexandre Final.pdf"><div class="cl-icon" style="background:#f0fdf4">📄</div><div><div class="cl-title">Consulter mon CV</div><div class="cl-sub">Format PDF — Mis à jour 2026</div></div></a></li>
-          <li><a class="contact-link-item" href="Lettre de Motivation Alternance.pdf"><div class="cl-icon" style="background:#f0fdf4">📄</div><div><div class="cl-title">Consulter ma Lettre de Motivation</div><div class="cl-sub">Format PDF — Mis à jour 2026</div></div></a></li>
+        <h3 style="font-size:19px; font-weight:700; margin-bottom:22px; color:var(--text)">Retrouvez-moi sur</h3>
+        <ul class="contact-side-links" style="list-style: none; padding: 0;">
+          
+          <li>
+            <a class="contact-link-item" href="mailto:alexandre.guiblain2@gmail.com">
+              <div class="cl-icon" style="background:#fef2f2">📧</div>
+              <div>
+                <div class="cl-title">Email</div>
+                <div class="cl-sub"><span class="info-value">alexandre.guiblain2@gmail.com</span></div>
+              </div>
+            </a>
+          </li>
+          
+          <li>
+            <a class="contact-link-item" href="https://linkedin.com/in/alexandre-guiblain" target="_blank">
+              <div class="cl-icon" style="background:#eff6ff">💼</div>
+              <div>
+                <div class="cl-title">LinkedIn</div>
+                <div class="cl-sub">linkedin.com/in/alexandre-guiblain</div>
+              </div>
+            </a>
+          </li>
+          
+          <li>
+            <a class="contact-link-item" href="https://github.com/Alexandre-creator-s" target="_blank">
+              <div class="cl-icon" style="background:var(--bg-soft)">🐙</div>
+              <div>
+                <div class="cl-title">GitHub</div>
+                <div class="cl-sub">github.com/alexandre-guiblain</div>
+              </div>
+            </a>
+          </li>
+          
+          <hr style="border: 0; border-top: 1px solid var(--border); margin: 20px 0;">
+
+          <li>
+            <a class="contact-link-item" href="CV alexandre Final.pdf" download>
+              <div class="cl-icon" style="background:#f0fdf4">📄</div>
+              <div>
+                <div class="cl-title">Consulter mon CV</div>
+                <div class="cl-sub">Format PDF — Mis à jour 2026</div>
+              </div>
+            </a>
+          </li>
+          
+          <li>
+            <a class="contact-link-item" href="Lettre de Motivation Alternance.pdf" download>
+              <div class="cl-icon" style="background:#f0fdf4">📄</div>
+              <div>
+                <div class="cl-title">Lettre de Motivation</div>
+                <div class="cl-sub">Format PDF — Candidature 2026</div>
+              </div>
+            </a>
+          </li>
+          
         </ul>
       </div>
-    </div>
-  </div>
-</section>
+      
+    </div> </div> </section>
 
 <!-- BACK TO TOP -->
 <button id="back-to-top" title="Retour en haut">↑</button>
