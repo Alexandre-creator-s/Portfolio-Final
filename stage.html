@@ -353,8 +353,8 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); over
   <h1 class="page-h1">Mes Stages en Entreprise</h1>
   <p class="page-sub">Détail des missions réalisées durant mon parcours en BTS SIO.</p>
   <div class="stats-row">
-    <div class="stat-item"><div class="stat-num">2</div><div class="stat-lbl">Stages effectués</div></div>
-    <div class="stat-item"><div class="stat-num">11</div><div class="stat-lbl">Semaines de stage</div></div>
+    <div class="stat-item"><div class="stat-num">4</div><div class="stat-lbl">Stages effectués</div></div>
+    <div class="stat-item"><div class="stat-num">27</div><div class="stat-lbl">Semaines de stage</div></div>
     <div class="stat-item"><div class="stat-num">10+</div><div class="stat-lbl">Missions réalisées</div></div>
   </div>
 </header>
@@ -365,7 +365,28 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); over
 
     <div class="timeline-alt">
 
+      <!-- Mairie Savigny -->
       <div class="tla-item right">
+        <div class="tla-empty"></div>
+        <div class="tla-dot-wrap"><div class="tla-dot"></div></div>
+        <div class="tla-card" data-modal="mairie">
+          <div class="tla-card-icon">🏛️</div>
+          <span class="tla-period">JAN – FÉV 2026</span>
+          <h3 class="tla-company">Mairie de Savigny-le-Temple</h3>
+          <p class="tla-role">Technicien Support & Développeur (SIO 2)</p>
+          <div class="tla-divider"></div>
+          <p class="tla-desc">Stage de 2ème année au sein de la Direction des Systèmes d'Information (DSI). Missions polyvalentes entre le support utilisateur de proximité et le développement d'outils internes.</p>
+          <ul class="tla-tasks">
+            <li class="tla-task"><div class="tla-task-check">✓</div>Maintenance et gestion du parc informatique</li>
+            <li class="tla-task"><div class="tla-task-check">✓</div>Assistance et dépannage technique aux utilisateurs</li>
+            <li class="tla-task"><div class="tla-task-check">✓</div>Développement d'une application interne (MairieOS)</li>
+          </ul>
+          <button class="detail-btn" onclick="openModal('mairie')">Détails</button>
+        </div>
+      </div>
+
+      <!-- VRAI VALORISENS -->
+      <div class="tla-item left">
         <div class="tla-empty"></div>
         <div class="tla-dot-wrap"><div class="tla-dot"></div></div>
         <div class="tla-card" data-modal="valorisens">
@@ -384,20 +405,41 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); over
         </div>
       </div>
 
-      <div class="tla-item left">
-        <div class="tla-card" data-modal="mairie">
-          <div class="tla-card-icon">🏛️</div>
-          <span class="tla-period">JAN – FÉV 2026</span>
-          <h3 class="tla-company">Mairie de Savigny-le-Temple</h3>
-          <p class="tla-role">Technicien Support & Développeur (SIO 2)</p>
+      <!-- AKTO -->
+      <div class="tla-item right">
+        <div class="tla-empty"></div>
+        <div class="tla-dot-wrap"><div class="tla-dot"></div></div>
+        <div class="tla-card" data-modal="akto">
+          <div class="tla-card-icon">🏢</div>
+          <span class="tla-period">SEPTEMBRE – NOVEMBRE 2023</span>
+          <h3 class="tla-company">AKTO</h3>
+          <p class="tla-role">Support Informatique (Bac Pro SN)</p>
           <div class="tla-divider"></div>
-          <p class="tla-desc">Stage de 2ème année au sein de la Direction des Systèmes d'Information (DSI). Missions polyvalentes entre le support utilisateur de proximité et le développement d'outils internes.</p>
+          <p class="tla-desc">Stage de 3ème année axé sur l'assistance technique et la gestion de parc. Mon rôle principal consistait à dépanner les collaborateurs au quotidien et à veiller au bon fonctionnement de l'ensemble du parc informatique.</p>
           <ul class="tla-tasks">
-            <li class="tla-task"><div class="tla-task-check">✓</div>Maintenance et gestion du parc informatique</li>
-            <li class="tla-task"><div class="tla-task-check">✓</div>Assistance et dépannage technique aux utilisateurs</li>
-            <li class="tla-task"><div class="tla-task-check">✓</div>Développement d'une application interne (MairieOS)</li>
+            <li class="tla-task"><div class="tla-task-check">✓</div>Prise en charge des tickets de support informatique interne</li>
+            <li class="tla-task"><div class="tla-task-check">✓</div>Maintenance préventive et corrective du parc informatique</li>
+            <li class="tla-task"><div class="tla-task-check">✓</div>Assistance aux utilisateurs sur les outils bureautiques</li>
           </ul>
-          <button class="detail-btn" onclick="openModal('mairie')">Détails</button>
+          <button class="detail-btn" onclick="openModal('akto')">Détails</button>
+        </div>
+      </div>
+      
+      <!-- RTE  -->
+      <div class="tla-item left">
+        <div class="tla-card" data-modal="rte">
+          <div class="tla-card-icon">⚡</div>
+          <span class="tla-period">MAI – JUILLET 2023</span>
+          <h3 class="tla-company">RTE</h3>
+          <p class="tla-role">Maintenance Réseau (Bac Pro SN)</p>
+          <div class="tla-divider"></div>
+          <p class="tla-desc">Stage de 2ème année axé sur la maintenance réseau et l'infrastructure. Mon rôle principal consistait à participer à la supervision des équipements et à assurer le raccordement technique sur le site.</p>
+          <ul class="tla-tasks">
+            <li class="tla-task"><div class="tla-task-check">✓</div>Participation à la maintenance du réseau informatique interne</li>
+            <li class="tla-task"><div class="tla-task-check">✓</div>Câblage et raccordement d'équipements réseau</li>
+            <li class="tla-task"><div class="tla-task-check">✓</div>Découverte de l'infrastructure IT d'un grand groupe industriel</li>
+          </ul>
+          <button class="detail-btn" onclick="openModal('rte')">Détails</button>
         </div>
         <div class="tla-dot-wrap"><div class="tla-dot"></div></div>
         <div class="tla-empty"></div>
@@ -504,6 +546,38 @@ const modals = {
       'Brassage réseau et brassage de prises RJ45 en armoire technique'
     ],
     report: 'GUIBLAIN-Alexandre-rapport de stage-SIO2.pdf' // CHEMIN VERS TON PDF
+  },
+
+  akto: {
+    icon: '🏢', period: 'SEPTEMBRE – NOVEMBRE 2023',
+    title: 'AKTO', role: 'Support Informatique — Stage SN 3ème année',
+    desc: 'Stage de 8 semaines au sein d\'un organisme paritaire collecteur agréé (OPCO). Ma mission principale était d\'assurer le bon fonctionnement des équipements et d\'accompagner les collaborateurs au quotidien dans la résolution de leurs incidents informatiques.',
+    chips: ['Support IT','Maintenance','Helpdesk','Office 365'],
+    missions: [
+      'Prise en charge des tickets de support informatique interne',
+      'Maintenance préventive et corrective du parc informatique',
+      'Assistance aux utilisateurs sur les outils bureautiques Office 365',
+      'Participation à l\'inventaire des équipements informatiques',
+      'Préparation et déploiement de nouveaux postes de travail',
+      'Configuration et dépannage des périphériques réseau',
+    ],
+    report: ''
+  },
+
+  rte: {
+    icon: '⚡', period: 'MAI – JUILLET 2023',
+    title: 'RTE — Réseau de Transport d\'Électricité', role: 'Maintenance Réseau — Stage SN 2ème année',
+    desc: 'Stage de 8 semaines au sein de la Direction des Systèmes d\'Information (DSI). Ma mission principale était d\'assurer le bon fonctionnement des infrastructures réseau et d\'intervenir techniquement sur les équipements du site.',
+    chips: ['Réseau','Infrastructure','Câblage RJ45'],
+    missions: [
+      'Participation à la maintenance du réseau informatique interne du site',
+      'Câblage et raccordement d\'équipements réseau (baies, switches)',
+      'Tests de connectivité et diagnostic réseau de base',
+      'Découverte de l\'infrastructure IT dans un grand groupe industriel énergétique',
+      'Surveillance et supervision du trafic réseau local',
+      'Remplacement et mise à niveau de câbles défectueux',
+    ],
+    report: ''
   }
 };
 
