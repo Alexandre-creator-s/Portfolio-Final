@@ -3,59 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mes Stages — Alexandre Guiblain</title>
-<meta name="description" content="Découvrez mes expériences de stages professionnels en BTS SIO SLAM.">
-<meta property="og:title" content="Mes Stages — Alexandre Guiblain">
-<meta property="og:description" content="Découvrez mes expériences de stages professionnels en BTS SIO SLAM.">
+<title>Veille Technologique — Alexandre Guiblain</title>
+<meta name="description" content="Veille technologique de Alexandre Guiblain : évolution de Python/Rust et cybersécurité applicative.">
+<meta property="og:title" content="Veille Technologique — Alexandre Guiblain">
+<meta property="og:description" content="Deux axes de veille : l'écosystème Python moderne et la cybersécurité des applications web.">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>💻</text></svg>">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🔐</text></svg>">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@1,400&display=swap');
 
 :root {
   --blue:        #2563eb;
   --blue-light:  #3b82f6;
   --blue-pale:   #eff6ff;
   --blue-mid:    #dbeafe;
+  --cyan:        #06b6d4;
+  --cyan-pale:   #ecfeff;
+  --purple:      #7c3aed;
+  --purple-pale: #f5f3ff;
+  --purple-mid:  #ede9fe;
+  --green:       #16a34a;
+  --green-pale:  #f0fdf4;
+  --orange:      #ea580c;
+  --orange-pale: #fff7ed;
+  --red:         #dc2626;
+  --red-pale:    #fef2f2;
+  --red-mid:     #fecaca;
   --text:        #1e293b;
-  --text-muted:  #64748b;
-  --text-light:  #94a3b8;
+  --muted:       #64748b;
+  --light:       #94a3b8;
   --bg:          #ffffff;
   --bg-soft:     #f8fafc;
-  --bg-card:     rgba(255, 255, 255, 0.9);
+  --bg-card:     rgba(255,255,255,0.9);
   --border:      #e2e8f0;
-  --shadow-sm:   0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
-  --shadow-md:   0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05);
-  --shadow-lg:   0 12px 40px rgba(37,99,235,.12), 0 4px 12px rgba(0,0,0,.06);
-  --radius: 20px;
-  --font: 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif;
+  --shadow-sm:   0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.05);
+  --shadow-md:   0 4px 16px rgba(0,0,0,.08),0 2px 6px rgba(0,0,0,.05);
+  --shadow-lg:   0 12px 40px rgba(37,99,235,.12),0 4px 12px rgba(0,0,0,.06);
+  --font: 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif;
+  --font-serif: 'Lora',Georgia,serif;
+  --radius: 16px;
 }
 [data-theme="dark"] {
   --blue:        #3b82f6;
   --blue-pale:   #1e3a5f;
   --blue-mid:    #1d4ed8;
+  --cyan-pale:   #0e3a3f;
+  --purple-pale: #2d1f52;
+  --purple-mid:  #3b2378;
+  --green-pale:  #0f2d1a;
+  --orange-pale: #2d1505;
+  --red-pale:    #2d0a0a;
+  --red-mid:     #7f1d1d;
   --text:        #f1f5f9;
-  --text-muted:  #94a3b8;
-  --text-light:  #64748b;
+  --muted:       #94a3b8;
+  --light:       #64748b;
   --bg:          #0f172a;
   --bg-soft:     #1e293b;
-  --bg-card:     rgba(30, 41, 59, 0.9);
+  --bg-card:     rgba(30,41,59,0.9);
   --border:      #334155;
   --shadow-sm:   0 1px 3px rgba(0,0,0,.4);
   --shadow-md:   0 4px 16px rgba(0,0,0,.4);
   --shadow-lg:   0 12px 40px rgba(0,0,0,.5);
 }
-[data-theme="dark"] .page-header { background: linear-gradient(160deg,#0f172a 0%,#1e293b 60%,#0f172a 100%); }
 [data-theme="dark"] .topbar { background: rgba(15,23,42,.96); }
+[data-theme="dark"] .page-hero { background: linear-gradient(160deg,#0f172a 0%,#1e293b 60%,#0f172a 100%); }
+[data-theme="dark"] .tab-btn { background: var(--bg-soft); }
+[data-theme="dark"] .tab-btn.active[data-tab="python"] { background: var(--blue); color: #fff; border-color: var(--blue); }
+[data-theme="dark"] .tab-btn.active[data-tab="cyber"] { background: var(--red); color: #fff; border-color: var(--red); }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: var(--font); color: var(--text); background: var(--bg); overflow-x: hidden; transition: background .3s, color .3s; }
+body { font-family: var(--font); color: var(--text); background: var(--bg); overflow-x: hidden; transition: background .3s,color .3s; line-height: 1.6; }
 
-/* Background Orbs & Grid */
 .bg-grid {
   position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-image: linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
   background-size: 40px 40px; opacity: 0.15;
 }
 .hero-particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
@@ -69,15 +91,12 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); over
   100% { transform: translateY(-15px) translateX(-35px) scale(0.9); }
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, var(--blue), #60a5fa, var(--blue));
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 4s linear infinite;
-  display: inline-block;
+#pbar {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  height: 3px; width: 0%;
+  background: linear-gradient(90deg,var(--blue),var(--cyan));
+  transition: width .1s linear; border-radius: 0 2px 2px 0;
 }
-@keyframes shine { to { background-position: 200% center; } }
 
 /* ── TOP BAR ── */
 .topbar {
@@ -87,8 +106,7 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); over
   border-bottom: 1px solid var(--border);
   padding: 0 60px; height: 60px;
   display: flex; align-items: center; justify-content: space-between;
-  box-shadow: var(--shadow-sm);
-  transition: transform .35s ease, background .3s;
+  box-shadow: var(--shadow-sm); transition: transform .35s ease,background .3s;
 }
 .topbar.hidden { transform: translateY(-100%); }
 .back-btn {
@@ -108,417 +126,723 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); over
 }
 .theme-toggle:hover { border-color: var(--blue); background: var(--blue-pale); }
 
-/* ── PAGE HEADER ── */
-.page-header {
-  background: linear-gradient(160deg, var(--bg-soft) 0%, var(--blue-pale) 60%, var(--bg) 100%);
+/* ── HERO ── */
+.page-hero {
+  background: linear-gradient(160deg,var(--bg-soft) 0%,var(--blue-pale) 60%,var(--bg) 100%);
   padding: 120px 60px 80px; text-align: center; position: relative; overflow: hidden;
 }
-.page-header::before {
+.page-hero::before {
   content: ''; position: absolute; right: -100px; top: -100px;
   width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(37,99,235,.07) 0%, transparent 70%);
+  background: radial-gradient(circle,rgba(37,99,235,.07) 0%,transparent 70%);
 }
-.page-header::after {
+.page-hero::after {
   content: ''; position: absolute; left: -80px; bottom: -80px;
   width: 350px; height: 350px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(96,165,250,.08) 0%, transparent 70%);
+  background: radial-gradient(circle,rgba(6,182,212,.08) 0%,transparent 70%);
 }
-.page-tag {
+.hero-tag {
   display: inline-flex; align-items: center; gap: 7px;
   background: var(--blue-pale); border: 1.5px solid var(--blue-mid);
   color: var(--blue); font-size: 12px; font-weight: 700;
   padding: 6px 16px; border-radius: 100px; letter-spacing: .5px;
   margin-bottom: 20px; position: relative; z-index: 1;
 }
-.page-tag-dot { width:6px;height:6px;border-radius:50%;background:var(--blue);animation:blink 1.6s ease infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
-.page-h1 {
-  font-size: clamp(38px,6vw,64px); font-weight: 800;
-  letter-spacing: -2px; line-height: 1.1;
-  margin-bottom: 14px; position: relative; z-index: 1;
+.hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); animation: pulse 1.8s ease infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.2} }
+.hero-h1 {
+  font-size: clamp(36px,6vw,60px); font-weight: 800;
+  color: var(--text); letter-spacing: -2px; line-height: 1.1;
+  margin-bottom: 12px; position: relative; z-index: 1;
 }
-.page-sub {
-  font-size: 16px; color: var(--text-muted); max-width: 480px;
-  margin: 0 auto; line-height: 1.7; position: relative; z-index: 1;
+.hero-h1 span {
+  background: linear-gradient(135deg,var(--blue),var(--cyan),var(--blue));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
 }
-
-/* ── STATS ROW ── */
-.stats-row {
+@keyframes shine { to { background-position: 200% center; } }
+.hero-sub {
+  font-size: 16px; color: var(--muted); max-width: 620px;
+  margin: 0 auto 48px; line-height: 1.75; position: relative; z-index: 1;
+  font-family: var(--font-serif); font-style: italic;
+}
+.hero-stats {
   display: flex; justify-content: center; gap: 0;
-  max-width: 600px; margin: 48px auto 0;
+  max-width: 700px; margin: 0 auto;
   background: var(--bg-card); border-radius: var(--radius);
   border: 1px solid var(--border); overflow: hidden;
   box-shadow: var(--shadow-md); position: relative; z-index: 1;
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
-.stat-item { flex: 1; padding: 20px 28px; text-align: center; border-right: 1px solid var(--border); }
-.stat-item:last-child { border-right: none; }
-.stat-num { font-size: 30px; font-weight: 800; color: var(--blue); line-height: 1; }
-.stat-lbl { font-size: 12px; color: var(--text-muted); margin-top: 5px; font-weight: 500; }
+.hero-stat { flex: 1; padding: 20px 28px; text-align: center; border-right: 1px solid var(--border); }
+.hero-stat:last-child { border-right: none; }
+.hero-stat-n { font-size: 28px; font-weight: 800; color: var(--blue); line-height: 1; }
+.hero-stat-n.red { color: var(--red); }
+.hero-stat-l { font-size: 12px; color: var(--muted); margin-top: 5px; }
 
-/* ── TIMELINE ALTERNÉE ── */
-.tl-section { padding: 80px 60px 60px; }
-.tl-section-inner { max-width: 1000px; margin: 0 auto; }
-.tl-section-title {
-  font-size: 22px; font-weight: 800; color: var(--text-muted);
-  letter-spacing: 1px; text-transform: uppercase;
-  text-align: center; margin-bottom: 60px;
-  display: flex; align-items: center; gap: 16px; justify-content: center;
+/* ── TABS ── */
+.tabs-wrapper {
+  max-width: 900px; margin: 0 auto;
+  padding: 40px 60px 0;
+  display: flex; gap: 12px; flex-wrap: wrap;
 }
-.tl-section-title::before, .tl-section-title::after {
-  content: ''; flex: 1; height: 1px; background: var(--border);
+.tab-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 12px;
+  border: 1.5px solid var(--border); background: var(--bg-soft);
+  font-family: var(--font); font-size: 14px; font-weight: 700; cursor: pointer;
+  transition: all .25s; color: var(--muted);
 }
+.tab-btn:hover { border-color: var(--blue); color: var(--blue); }
+.tab-btn.active[data-tab="python"] { background: var(--blue); color: #fff; border-color: var(--blue); box-shadow: 0 4px 14px rgba(37,99,235,.3); }
+.tab-btn.active[data-tab="cyber"] { background: var(--red); color: #fff; border-color: var(--red); box-shadow: 0 4px 14px rgba(220,38,38,.3); }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
 
-/* Timeline centrale */
-.timeline-alt { position: relative; padding: 0 0 40px; }
-.timeline-alt::before {
-  content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
-  width: 2px; background: linear-gradient(180deg, var(--blue), #60a5fa, transparent);
-  transform: translateX(-50%); border-radius: 2px;
-}
+/* ── CONTENT ── */
+.content { max-width: 900px; margin: 0 auto; padding: 48px 60px 80px; }
 
-.tla-item {
-  display: grid; grid-template-columns: 1fr 60px 1fr;
-  gap: 0; margin-bottom: 56px; align-items: start; position: relative;
-}
-.tla-item:last-child { margin-bottom: 0; }
-
-/* Dot central */
-.tla-dot-wrap { display: flex; align-items: flex-start; justify-content: center; padding-top: 36px; position: relative; z-index: 2; }
-.tla-dot {
-  width: 20px; height: 20px; border-radius: 50%;
-  background: var(--bg); border: 3px solid var(--blue);
-  box-shadow: 0 0 0 4px var(--blue-pale); transition: all .3s;
-}
-.tla-item:hover .tla-dot { background: var(--blue); box-shadow: 0 0 0 6px var(--blue-pale), 0 0 20px rgba(37,99,235,.3); }
-
-/* Carte stage */
-.tla-card {
-  background: var(--bg-card); border: 1.5px solid var(--border);
-  border-radius: var(--radius); padding: 32px;
-  box-shadow: var(--shadow-md); transition: all .4s;
-  opacity: 0; transform: translateY(24px);
+.intro-card,.entry,.zoom-section,.synthese-card {
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
-.tla-card.on { opacity: 1; transform: translateY(0); }
-.tla-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--blue-mid); }
 
-/* Gauche : card à droite de la colonne gauche */
-.tla-item.left .tla-card { grid-column: 1; }
-.tla-item.left .tla-dot-wrap { grid-column: 2; }
-.tla-item.left .tla-empty { grid-column: 3; }
+.intro-card {
+  background: var(--bg-card); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 36px;
+  box-shadow: var(--shadow-md); margin-bottom: 48px;
+  position: relative; overflow: hidden;
+}
+.intro-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 5px; background: linear-gradient(180deg,var(--blue),var(--cyan));
+  border-radius: 4px 0 0 4px;
+}
+.intro-card.cyber::before { background: linear-gradient(180deg,var(--red),var(--purple)); }
 
-/* Droite : card dans colonne droite */
-.tla-item.right .tla-empty { grid-column: 1; }
-.tla-item.right .tla-dot-wrap { grid-column: 2; }
-.tla-item.right .tla-card { grid-column: 3; }
+.intro-card-title { font-size: 13px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+.intro-card.cyber .intro-card-title { color: var(--red); }
+.intro-card-text { font-size: 15.5px; color: var(--muted); line-height: 1.85; }
+.intro-card-text strong { color: var(--text); }
 
-.tla-card-icon {
-  width: 52px; height: 52px; border-radius: 14px;
-  background: var(--blue-pale); display: flex; align-items: center;
-  justify-content: center; font-size: 24px; margin-bottom: 16px;
+.phase-heading {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 36px;
 }
-.tla-period {
-  display: inline-block; background: var(--blue-pale); color: var(--blue);
-  font-size: 11px; font-weight: 800; padding: 5px 12px;
-  border-radius: 100px; letter-spacing: 1px; margin-bottom: 12px;
-  text-transform: uppercase;
-}
-.tla-company { font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 5px; }
-.tla-role { font-size: 14px; color: var(--blue); font-weight: 700; margin-bottom: 20px; }
-.tla-divider { height: 1px; background: var(--border); margin-bottom: 18px; }
-.tla-desc { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 18px; }
-.tla-tasks { list-style: none; margin-bottom: 22px; }
-.tla-task {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 13.5px; color: var(--text-muted); padding: 6px 0;
-  border-bottom: 1px solid rgba(0,0,0,.04);
-}
-.tla-task:last-child { border-bottom: none; }
-.tla-task-check {
-  width: 18px; height: 18px; border-radius: 5px;
-  background: var(--blue-pale); display: flex; align-items: center;
-  justify-content: center; flex-shrink: 0; margin-top: 2px;
-  font-size: 10px; color: var(--blue); font-weight: 800;
-}
-.detail-btn {
+.phase-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--bg); border: 1.5px solid var(--border);
-  color: var(--text); padding: 10px 20px; border-radius: 10px;
-  font-size: 13px; font-weight: 700; text-decoration: none;
-  cursor: pointer; transition: all .25s;
-}
-.detail-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-pale); box-shadow: 0 0 10px rgba(37,99,235,.2); }
-
-/* ── MODAL DÉTAIL ── */
-.modal-overlay {
-  position: fixed; inset: 0; z-index: 500;
-  background: rgba(0,0,0,.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  display: flex; align-items: center; justify-content: center; padding: 20px;
-  opacity: 0; pointer-events: none; transition: opacity .3s;
-}
-.modal-overlay.open { opacity: 1; pointer-events: all; }
-.modal-box {
-  background: var(--bg-card); border-radius: var(--radius);
-  border: 1px solid var(--border); box-shadow: var(--shadow-lg);
-  width: 100%; max-width: 680px; max-height: 88vh;
-  overflow-y: auto; position: relative;
-  transform: scale(.94) translateY(20px);
-  transition: transform .4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-}
-.modal-overlay.open .modal-box { transform: scale(1) translateY(0); }
-.modal-close {
-  position: sticky; top: 16px; left: 100%; margin-right: 16px; margin-top: 16px;
-  width: 34px; height: 34px; border-radius: 50%;
-  background: var(--border); color: var(--text); border: none;
-  font-size: 15px; cursor: pointer; display: flex; align-items: center;
-  justify-content: center; transition: all .2s; z-index: 10;
-}
-.modal-close:hover { background: var(--blue); color: #fff; transform: rotate(90deg); }
-.modal-inner { padding: 0 32px 32px; margin-top: -34px; }
-.modal-header-icon {
-  width: 72px; height: 72px; border-radius: 18px;
-  background: var(--blue-pale); display: flex; align-items: center;
-  justify-content: center; font-size: 34px; margin-bottom: 20px;
-}
-.modal-period {
-  display: inline-block; background: linear-gradient(135deg,var(--blue),#60a5fa);
-  color: #fff; font-size: 11.5px; font-weight: 800;
-  padding: 5px 14px; border-radius: 100px; margin-bottom: 12px;
-}
-.modal-title { font-size: 26px; font-weight: 800; color: var(--text); margin-bottom: 5px; }
-.modal-role { font-size: 15px; color: var(--blue); font-weight: 700; margin-bottom: 20px; }
-.modal-section { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin: 22px 0 10px; }
-.modal-desc-text { font-size: 14.5px; color: var(--text-muted); line-height: 1.8; }
-.modal-chips { display: flex; flex-wrap: wrap; gap: 7px; }
-.modal-chip {
-  padding: 5px 13px; background: var(--bg); border: 1px solid var(--border);
-  border-radius: 8px; font-size: 12px; font-weight: 600; color: var(--text-muted);
-}
-.modal-missions { list-style: none; }
-.modal-mission {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 14px; color: var(--text-muted); padding: 8px 0;
-  border-bottom: 1px solid var(--border);
-}
-.modal-mission:last-child { border-bottom: none; }
-.modal-mission-dot {
-  width: 20px; height: 20px; border-radius: 6px;
-  background: var(--blue-pale); color: var(--blue);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 800; flex-shrink: 0; margin-top: 1px;
-}
-
-/* ── BOUTON RAPPORT DANS MODAL ── */
-.modal-footer {
-  margin-top: 32px; padding-top: 24px; border-top: 1.5px solid var(--border); text-align: center;
-}
-.report-btn {
-  display: inline-flex; align-items: center; gap: 10px;
   background: var(--blue); color: #fff;
-  padding: 14px 28px; border-radius: 12px;
-  font-size: 14px; font-weight: 700;
-  text-decoration: none; transition: all .25s;
-  box-shadow: 0 4px 12px rgba(37,99,235,.3);
+  font-size: 11px; font-weight: 800; letter-spacing: 1px;
+  padding: 7px 16px; border-radius: 100px; flex-shrink: 0;
 }
-.report-btn:hover {
-  background: #1d4ed8; transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(37,99,235,.4), 0 0 15px rgba(37,99,235,.2);
+.phase-badge.red { background: var(--red); }
+.phase-badge.purple { background: var(--purple); }
+.phase-line { flex: 1; height: 1px; background: var(--border); }
+
+.entry {
+  background: var(--bg-card); border: 1.5px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-md); margin-bottom: 28px;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease,transform .6s cubic-bezier(.4,0,.2,1),box-shadow .3s,border-color .3s;
 }
+.entry.on { opacity: 1; transform: translateY(0); }
+.entry:hover { box-shadow: var(--shadow-lg); border-color: var(--blue-mid); }
+.entry.cyber-entry:hover { border-color: var(--red-mid); }
+
+.entry-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 22px 28px; cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background .2s;
+  user-select: none;
+}
+.entry-date-badge {
+  padding: 6px 14px; border-radius: 100px;
+  font-size: 11px; font-weight: 800; letter-spacing: .5px;
+  flex-shrink: 0; text-transform: uppercase;
+}
+.entry-title-wrap { flex: 1; }
+.entry-title { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 3px; }
+.entry-subtitle { font-size: 13px; color: var(--muted); }
+.entry-chevron {
+  font-size: 14px; color: var(--light); transition: transform .3s;
+}
+.entry.open .entry-chevron { transform: rotate(180deg); }
+
+.entry-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height .5s cubic-bezier(.4,0,.2,1),padding .3s;
+  padding: 0 28px;
+}
+.entry.open .entry-body { max-height: 2000px; padding: 28px; }
+
+.entry-text { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
+.entry-text strong { color: var(--text); }
+
+.entry-highlight {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--blue-pale); border: 1px solid var(--blue-mid);
+  border-radius: 12px; padding: 16px; margin-bottom: 16px;
+  font-size: 14px; color: var(--text); line-height: 1.7;
+}
+.entry-highlight.red-hl {
+  background: var(--red-pale); border-color: var(--red-mid);
+}
+.entry-highlight.purple-hl {
+  background: var(--purple-pale); border-color: var(--purple-mid);
+}
+.entry-highlight-icon { font-size: 20px; flex-shrink: 0; }
+
+/* Impact tag inside entry */
+.impact-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 800; letter-spacing: 1px;
+  text-transform: uppercase; padding: 4px 12px;
+  border-radius: 100px; margin-bottom: 12px;
+}
+.impact-tag.high { background: var(--red-pale); color: var(--red); }
+.impact-tag.med  { background: var(--orange-pale); color: var(--orange); }
+.impact-tag.low  { background: var(--green-pale); color: var(--green); }
+
+.entry-source-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+
+.entry-source {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px;
+  background: var(--blue); border-radius: 8px;
+  color: #fff; text-decoration: none;
+  font-size: 13px; font-weight: 600; transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(37,99,235,.2);
+}
+.entry-source:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37,99,235,.3); }
+.entry-source.red-src { background: var(--red); box-shadow: 0 4px 12px rgba(220,38,38,.2); }
+.entry-source.red-src:hover { background: #b91c1c; box-shadow: 0 6px 16px rgba(220,38,38,.3); }
+.entry-source.ghost {
+  background: transparent; color: var(--muted);
+  border: 1.5px solid var(--border); box-shadow: none;
+}
+.entry-source.ghost:hover { background: var(--bg-soft); color: var(--text); }
+
+/* ── ZOOM / SYNTHESE ── */
+.zoom-section {
+  background: var(--bg-card); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 36px;
+  box-shadow: var(--shadow-md); margin-bottom: 48px;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s,transform .6s;
+}
+.zoom-section.on { opacity: 1; transform: translateY(0); }
+.zoom-title { font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.zoom-sub { font-size: 14.5px; color: var(--muted); font-style: italic; margin-bottom: 28px; }
+.zoom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 22px; }
+.zoom-item { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.zoom-item-name { font-size: 15px; font-weight: 800; color: var(--blue); margin-bottom: 6px; }
+.zoom-item-name.red { color: var(--red); }
+.zoom-item-tag { font-size: 10px; padding: 2px 8px; border-radius: 6px; background: var(--blue-pale); color: var(--blue); font-weight: 700; }
+.zoom-item-tag.red { background: var(--red-pale); color: var(--red); }
+.zoom-item-desc { font-size: 13.5px; color: var(--muted); }
+.zoom-callout {
+  background: linear-gradient(135deg,var(--blue-pale),var(--cyan-pale));
+  border: 1px solid var(--blue-mid); border-radius: 12px;
+  padding: 18px; font-size: 14px; color: var(--text);
+}
+.zoom-callout.red-callout {
+  background: linear-gradient(135deg,var(--red-pale),var(--purple-pale));
+  border-color: var(--red-mid);
+}
+
+/* OWASP mini-list */
+.owasp-list { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.owasp-item {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px;
+}
+.owasp-rank {
+  font-size: 11px; font-weight: 900; padding: 4px 8px; border-radius: 6px;
+  background: var(--red-pale); color: var(--red); flex-shrink: 0; font-family: monospace;
+}
+.owasp-name { font-size: 14px; font-weight: 700; color: var(--text); }
+.owasp-desc { font-size: 12.5px; color: var(--muted); }
+
+.synthese-card {
+  background: linear-gradient(135deg,var(--blue) 0%,#1d4ed8 50%,#0e7490 100%);
+  border-radius: var(--radius); padding: 44px; color: #fff; margin-bottom: 64px;
+  opacity: 0; transform: translateY(24px); transition: opacity .6s,transform .6s;
+  box-shadow: var(--shadow-md);
+}
+.synthese-card.cyber-synth {
+  background: linear-gradient(135deg,#7c3aed 0%,var(--red) 60%,#b91c1c 100%);
+}
+.synthese-card.on { opacity: 1; transform: translateY(0); }
+.synthese-tag { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 14px; }
+.synthese-title { font-size: 24px; font-weight: 800; margin-bottom: 16px; }
+.synthese-text { font-size: 15px; line-height: 1.85; color: rgba(255,255,255,.9); }
 
 /* ── FOOTER ── */
-.page-footer {
-  background: #020617; color: #94a3b8;
-  padding: 40px 60px; text-align: center; border-top: 1px solid var(--border);
-}
-.page-footer a {
-  display: inline-flex; align-items: center; gap: 8px;
-  color: #fff; text-decoration: none; font-weight: 700;
-  font-size: 14px; background: var(--blue); padding: 12px 24px;
-  border-radius: 10px; margin-top: 16px; transition: all .25s;
-}
-.page-footer a:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37,99,235,.3); }
+.page-footer { background: #020617; color: #94a3b8; padding: 44px 60px; text-align: center; border-top: 1px solid var(--border); }
+.footer-name { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.footer-sub { font-size: 14px; }
 
-/* ── SCROLL PROGRESS ── */
-#pbar {
-  position: fixed; top: 0; left: 0; z-index: 9999;
-  height: 3px; width: 0%;
-  background: linear-gradient(90deg,var(--blue),#60a5fa);
-  transition: width .1s linear; border-radius: 0 2px 2px 0;
+/* Reveal animations */
+.reveal-el {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .6s,transform .6s;
 }
+.reveal-el.on { opacity: 1; transform: translateY(0); }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 780px) {
-  .topbar, .tl-section { padding: 0 20px; }
-  .page-header { padding: 100px 20px 60px; }
-  .tl-section { padding: 60px 20px 40px; }
-  .timeline-alt::before { left: 20px; }
-  .tla-item { grid-template-columns: 40px 1fr; gap: 12px; }
-  .tla-item.left .tla-card, .tla-item.right .tla-card { grid-column: 2; grid-row: 1; }
-  .tla-item.left .tla-dot-wrap, .tla-item.right .tla-dot-wrap { grid-column: 1; grid-row: 1; }
-  .tla-empty { display: none; }
-  .stats-row { flex-direction: column; }
-  .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
-  .stat-item:last-child { border-bottom: none; }
-  .page-footer { padding: 36px 20px; }
+  .topbar { padding: 0 20px; }
+  .page-hero,.content { padding-left: 20px; padding-right: 20px; }
+  .tabs-wrapper { padding: 24px 20px 0; }
+  .zoom-grid { grid-template-columns: 1fr; }
+  .topbar-title { display: none; }
 }
 </style>
 </head>
 <body>
 
 <div class="bg-grid"></div>
-
 <div id="pbar"></div>
 
 <div class="topbar" id="topbar">
-  <a href="index.html" class="back-btn">← Retour au portfolio</a>
-  <span class="topbar-title">Mes Stages · Alexandre Guiblain</span>
+  <a href="index.html" class="back-btn">← Retour</a>
+  <span class="topbar-title">Veille Technologique · Alexandre Guiblain</span>
   <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
 </div>
 
-<header class="page-header">
+<header class="page-hero">
   <div class="hero-particles">
     <div class="hero-particle"></div>
     <div class="hero-particle"></div>
     <div class="hero-particle"></div>
   </div>
-
-  <h1 class="page-h1 gradient-text">Mes Stages en Entreprise</h1>
-  <p class="page-sub">Détail des missions réalisées durant mon parcours en BTS SIO.</p>
-  <div class="stats-row">
-    <div class="stat-item"><div class="stat-num">4</div><div class="stat-lbl">Stages effectués</div></div>
-    <div class="stat-item"><div class="stat-num">27</div><div class="stat-lbl">Semaines de stage</div></div>
-    <div class="stat-item"><div class="stat-num">10+</div><div class="stat-lbl">Missions réalisées</div></div>
+  <h1 class="hero-h1">🔐 Veille <span>Technologique</span></h1>
+  <p class="hero-sub">Deux axes de veille : l'évolution de l'écosystème Python & Rust, et la cybersécurité des applications web modernes.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-n">2</div><div class="hero-stat-l">Axes de veille</div></div>
+    <div class="hero-stat"><div class="hero-stat-n">8</div><div class="hero-stat-l">Étapes clés</div></div>
+    <div class="hero-stat"><div class="hero-stat-n red">OWASP</div><div class="hero-stat-l">Référentiel sécu</div></div>
+    <div class="hero-stat"><div class="hero-stat-n">IA</div><div class="hero-stat-l">Agents & Local</div></div>
   </div>
 </header>
 
-<section class="tl-section">
-  <div class="tl-section-inner">
-    <div class="tl-section-title">Parcours chronologique</div>
-
-    <div class="timeline-alt">
-
-      <!-- Mairie Savigny -->
-      <div class="tla-item right">
-        <div class="tla-empty"></div>
-        <div class="tla-dot-wrap"><div class="tla-dot"></div></div>
-        <div class="tla-card" data-modal="mairie">
-          <div class="tla-card-icon">🏛️</div>
-          <span class="tla-period">JAN – FÉV 2026</span>
-          <h3 class="tla-company">Mairie de Savigny-le-Temple</h3>
-          <p class="tla-role">Technicien Support & Développeur (SIO 2)</p>
-          <div class="tla-divider"></div>
-          <p class="tla-desc">Stage de 2ème année au sein de la Direction des Systèmes d'Information (DSI). Missions polyvalentes entre le support utilisateur de proximité et le développement d'outils internes.</p>
-          <ul class="tla-tasks">
-            <li class="tla-task"><div class="tla-task-check">✓</div>Maintenance et gestion du parc informatique</li>
-            <li class="tla-task"><div class="tla-task-check">✓</div>Assistance et dépannage technique aux utilisateurs</li>
-            <li class="tla-task"><div class="tla-task-check">✓</div>Développement d'une application interne (MairieOS)</li>
-          </ul>
-          <button class="detail-btn" onclick="openModal('mairie')">Détails</button>
-        </div>
-      </div>
-
-      <!-- VRAI VALORISENS -->
-      <div class="tla-item left">
-        <div class="tla-empty"></div>
-        <div class="tla-dot-wrap"><div class="tla-dot"></div></div>
-        <div class="tla-card" data-modal="valorisens">
-          <div class="tla-card-icon">💻</div>
-          <span class="tla-period">MAI – JUIN 2025</span>
-          <h3 class="tla-company">Valorisens</h3>
-          <p class="tla-role">Développeur Web (SIO 1)</p>
-          <div class="tla-divider"></div>
-          <p class="tla-desc">Stage de 1re année centré sur la refonte complète du site internet de l'organisme. Amélioration de l'interface utilisateur et de la gestion des contenus pédagogiques</p>
-          <ul class="tla-tasks">
-            <li class="tla-task"><div class="tla-task-check">✓</div>Refonte intégrale du site vitrine sous WordPress</li>
-            <li class="tla-task"><div class="tla-task-check">✓</div>Optimisation de l'ergonomie et du responsive design</li>
-            <li class="tla-task"><div class="tla-task-check">✓</div>Intégration de nouvelles fonctionnalités et contenus</li>
-          </ul>
-          <button class="detail-btn" onclick="openModal('valorisens')">Détails</button>
-        </div>
-      </div>
-
-      <!-- AKTO -->
-      <div class="tla-item right">
-        <div class="tla-empty"></div>
-        <div class="tla-dot-wrap"><div class="tla-dot"></div></div>
-        <div class="tla-card" data-modal="akto">
-          <div class="tla-card-icon">🏢</div>
-          <span class="tla-period">SEPTEMBRE – NOVEMBRE 2023</span>
-          <h3 class="tla-company">AKTO</h3>
-          <p class="tla-role">Support Informatique (Bac Pro SN)</p>
-          <div class="tla-divider"></div>
-          <p class="tla-desc">Stage de 3ème année axé sur l'assistance technique et la gestion de parc. Mon rôle principal consistait à dépanner les collaborateurs au quotidien et à veiller au bon fonctionnement de l'ensemble du parc informatique.</p>
-          <ul class="tla-tasks">
-            <li class="tla-task"><div class="tla-task-check">✓</div>Prise en charge des tickets de support informatique interne</li>
-            <li class="tla-task"><div class="tla-task-check">✓</div>Maintenance préventive et corrective du parc informatique</li>
-            <li class="tla-task"><div class="tla-task-check">✓</div>Assistance aux utilisateurs sur les outils bureautiques</li>
-          </ul>
-          <button class="detail-btn" onclick="openModal('akto')">Détails</button>
-        </div>
-      </div>
-      
-      <!-- RTE  -->
-      <div class="tla-item left">
-        <div class="tla-card" data-modal="rte">
-          <div class="tla-card-icon">⚡</div>
-          <span class="tla-period">MAI – JUILLET 2023</span>
-          <h3 class="tla-company">RTE</h3>
-          <p class="tla-role">Maintenance Réseau (Bac Pro SN)</p>
-          <div class="tla-divider"></div>
-          <p class="tla-desc">Stage de 2ème année axé sur la maintenance réseau et l'infrastructure. Mon rôle principal consistait à participer à la supervision des équipements et à assurer le raccordement technique sur le site.</p>
-          <ul class="tla-tasks">
-            <li class="tla-task"><div class="tla-task-check">✓</div>Participation à la maintenance du réseau informatique interne</li>
-            <li class="tla-task"><div class="tla-task-check">✓</div>Câblage et raccordement d'équipements réseau</li>
-            <li class="tla-task"><div class="tla-task-check">✓</div>Découverte de l'infrastructure IT d'un grand groupe industriel</li>
-          </ul>
-          <button class="detail-btn" onclick="openModal('rte')">Détails</button>
-        </div>
-        <div class="tla-dot-wrap"><div class="tla-dot"></div></div>
-        <div class="tla-empty"></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="modal-overlay" id="modal-overlay">
-  <div class="modal-box">
-    <button class="modal-close" id="modal-close" aria-label="Fermer">✕</button>
-    <div class="modal-inner">
-      <div class="modal-header-icon" id="m-icon">💻</div>
-      <span class="modal-period" id="m-period"></span>
-      <h2 class="modal-title" id="m-title"></h2>
-      <p class="modal-role" id="m-role"></p>
-      <div class="modal-section">Description</div>
-      <p class="modal-desc-text" id="m-desc"></p>
-      <div class="modal-section">Technologies utilisées</div>
-      <div class="modal-chips" id="m-chips"></div>
-      <div class="modal-section">Missions réalisées</div>
-      <ul class="modal-missions" id="m-missions"></ul>
-      
-      <div class="modal-footer">
-        <a href="#" id="m-report-link" class="report-btn" target="_blank">
-          📄 Consulter le rapport de stage (PDF)
-        </a>
-      </div>
-    </div>
-  </div>
+<!-- TAB SWITCHER -->
+<div class="tabs-wrapper">
+  <button class="tab-btn active" data-tab="python" onclick="switchTab('python')">
+    🐍 Python &amp; Rust
+  </button>
+  <button class="tab-btn" data-tab="cyber" onclick="switchTab('cyber')">
+    🔐 Cybersécurité
+  </button>
 </div>
 
+<div class="content">
+
+  <!-- ════════════════════════════ TAB PYTHON ════════════════════════════ -->
+  <div class="tab-pane active" id="tab-python">
+
+    <div class="intro-card reveal-el">
+      <div class="intro-card-title">🎯 Introduction &amp; Problématique</div>
+      <p class="intro-card-text">
+        Ma veille technologique porte sur <strong>l'évolution du langage Python</strong> et son rôle dans l'informatique moderne.<br><br>
+        Aujourd'hui, Python est utilisé partout : <strong>web, data, intelligence artificielle et automatisation</strong>. Mais il souffre d'une limite historique : <strong>des performances inférieures aux langages compilés</strong> comme C++ ou Rust.<br><br>
+        👉 Problématique : <strong>Comment Python reste-t-il le langage le plus utilisé tout en améliorant ses performances ?</strong><br><br>
+        Ma veille montre que Python évolue grâce à de nouvelles versions majeures et à l'intégration croissante de <strong>Rust</strong> dans son écosystème. Je m'appuie sur des flux RSS (Feedly), des newsletters tech et des sites spécialisés pour suivre cette actualité.
+      </p>
+    </div>
+
+    <div class="phase-heading reveal-el">
+      <span class="phase-badge">📅 PHASE 1</span>
+      <div class="phase-line"></div>
+    </div>
+
+    <div class="entry reveal-el" id="e1">
+      <div class="entry-header" onclick="toggleEntry('e1')">
+        <span class="entry-date-badge" style="background:var(--blue-pale);color:var(--blue)">Jan. 2025</span>
+        <div class="entry-title-wrap">
+          <div class="entry-title">Python 3.13 : Plus de puissance</div>
+          <div class="entry-subtitle">Libération du GIL · Compilateur JIT</div>
+        </div>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-text">
+          Avec <strong>Python 3.13</strong>, le langage franchit une étape majeure. La grande nouveauté est la suppression optionnelle du <strong>GIL (Global Interpreter Lock)</strong>, un verrou qui empêchait l'exécution simultanée de plusieurs threads Python. Sa levée permet d'exploiter pleinement les <strong>processeurs multi-cœurs</strong> modernes.
+        </p>
+        <div class="entry-highlight">
+          <span class="entry-highlight-icon">⚡</span>
+          <span>Python gagne en vitesse grâce au <strong>multithreading réel</strong> et à un début de <strong>compilateur JIT</strong> qui traduit le code à la volée pour l'exécuter plus rapidement.</span>
+        </div>
+        <div class="entry-source-row">
+          <a href="https://www.lemondeinformatique.fr/" target="_blank" class="entry-source">🔗 Le Monde Informatique</a>
+          <a href="https://docs.python.org/3.13/whatsnew/3.13.html" target="_blank" class="entry-source ghost">📄 Documentation officielle</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry reveal-el" id="e2">
+      <div class="entry-header" onclick="toggleEntry('e2')">
+        <span class="entry-date-badge" style="background:var(--cyan-pale);color:var(--cyan)">Fév. 2025</span>
+        <div class="entry-title-wrap">
+          <div class="entry-title">Polars : La rapidité de Rust en Data Science</div>
+          <div class="entry-subtitle">Data Science · Multithread · Alternative Pandas</div>
+        </div>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-text">
+          J'ai découvert <strong>Polars</strong>, une librairie de traitement de données pour Python, entièrement développée en <strong>Rust</strong>. Contrairement à Pandas, qui est limité par le GIL et fonctionne sur un seul cœur, Polars exploite le <strong>multithreading natif</strong> de Rust pour paralléliser les calculs automatiquement.
+        </p>
+        <div class="entry-highlight">
+          <span class="entry-highlight-icon">📊</span>
+          <span>Résultat concret : traitement de datasets jusqu'à <strong>10 à 30 fois plus rapide</strong> que Pandas sur de gros volumes de données, avec une syntaxe proche et une API moderne.</span>
+        </div>
+        <div class="entry-source-row">
+          <a href="https://www.journaldunet.com/" target="_blank" class="entry-source">🔗 Journal du Net</a>
+          <a href="https://pola.rs/" target="_blank" class="entry-source ghost">📄 Site officiel Polars</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-heading reveal-el" style="margin-top:56px">
+      <span class="phase-badge" style="background:var(--purple)">📅 PHASE 2</span>
+      <div class="phase-line"></div>
+    </div>
+
+    <div class="entry reveal-el" id="e3">
+      <div class="entry-header" onclick="toggleEntry('e3')">
+        <span class="entry-date-badge" style="background:var(--purple-pale);color:var(--purple)">Mai 2025</span>
+        <div class="entry-title-wrap">
+          <div class="entry-title">uv : La gestion de projet Python réinventée</div>
+          <div class="entry-subtitle">Outillage · Environnements · Rapidité</div>
+        </div>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-text">
+          L'outil <strong>uv</strong>, développé par Astral (les mêmes que Ruff), simplifie radicalement la gestion des projets Python. Il remplace en un seul binaire : <strong>pip, venv, pyenv et pip-tools</strong>. Écrit en Rust, il s'impose comme le remplaçant moderne de la chaîne d'outils classique.
+        </p>
+        <div class="entry-highlight">
+          <span class="entry-highlight-icon">🚀</span>
+          <span>Création d'un environnement virtuel et installation des dépendances en <strong>moins d'1 seconde</strong> — contre 30 secondes ou plus avec pip classique. Un gain de temps considérable au quotidien.</span>
+        </div>
+        <div class="entry-source-row">
+          <a href="https://www.itforbusiness.fr/" target="_blank" class="entry-source">🔗 IT for Business</a>
+          <a href="https://github.com/astral-sh/uv" target="_blank" class="entry-source ghost">📄 GitHub astral-sh/uv</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry reveal-el" id="e4">
+      <div class="entry-header" onclick="toggleEntry('e4')">
+        <span class="entry-date-badge" style="background:var(--green-pale);color:var(--green)">Sept. 2025</span>
+        <div class="entry-title-wrap">
+          <div class="entry-title">L'essor de l'IA locale avec Ollama</div>
+          <div class="entry-subtitle">Confidentialité · Performance · LLM on-premise</div>
+        </div>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-text">
+          Une tendance forte émerge : <strong>l'IA locale</strong>. Avec des outils comme <strong>Ollama</strong> ou <strong>LM Studio</strong>, il est désormais possible de faire tourner des modèles de langage (LLM) directement sur son PC, sans envoyer de données à des services cloud externes. Python est le langage central pour interagir avec ces modèles via des API locales.
+        </p>
+        <div class="entry-highlight">
+          <span class="entry-highlight-icon">🔒</span>
+          <span>Avantages clés : <strong>confidentialité totale des données</strong> (enjeu critique en entreprise), zéro coût d'API et possibilité de travailler hors ligne. Un atout direct pour la <strong>cybersécurité</strong>.</span>
+        </div>
+        <div class="entry-source-row">
+          <a href="https://www.zdnet.fr/" target="_blank" class="entry-source">🔗 ZDNet France</a>
+          <a href="https://ollama.com/" target="_blank" class="entry-source ghost">📄 ollama.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry reveal-el" id="e5">
+      <div class="entry-header" onclick="toggleEntry('e5')">
+        <span class="entry-date-badge" style="background:var(--orange-pale);color:var(--orange)">Jan. 2026</span>
+        <div class="entry-title-wrap">
+          <div class="entry-title">L'ère des Agents IA autonomes</div>
+          <div class="entry-subtitle">Automatisation · Supervision · DevOps</div>
+        </div>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <p class="entry-text">
+          Les <strong>agents IA</strong> (comme GitHub Copilot Agent, Devin ou Claude Code) sont capables de travailler de façon autonome : écrire du code, corriger des bugs, lancer des tests et créer des pull requests sans intervention humaine. Python est le langage le plus utilisé pour <strong>orchestrer ces agents</strong> via des frameworks comme LangChain ou CrewAI.
+        </p>
+        <div class="entry-highlight">
+          <span class="entry-highlight-icon">🤖</span>
+          <span>Le rôle du développeur évolue : on passe de l'écriture de code ligne à ligne à la <strong>supervision et prompt-engineering d'agents IA</strong>. Une compétence clé pour 2026 et au-delà.</span>
+        </div>
+        <div class="entry-source-row">
+          <a href="https://www.usine-digitale.fr/" target="_blank" class="entry-source">🔗 L'Usine Digitale</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="zoom-section reveal-el" style="margin-top:56px">
+      <div class="zoom-title">🔬 Zoom Technique : Python × Rust</div>
+      <p class="zoom-sub">Pourquoi Rust est devenu le moteur caché de l'écosystème Python ?</p>
+      <p class="entry-text" style="margin-bottom:24px">
+        Paradoxalement, beaucoup des outils Python les plus modernes sont écrits en <strong>Rust</strong> pour bénéficier de ses performances et de sa sécurité mémoire. Python garde sa facilité d'utilisation, tandis que Rust assure la vitesse sous le capot.
+      </p>
+      <div class="zoom-grid">
+        <div class="zoom-item">
+          <div class="zoom-item-name">⚡ Ruff <span class="zoom-item-tag">Linter</span></div>
+          <p class="zoom-item-desc">Linter et formateur Python. Remplace flake8, isort et black. 100× plus rapide.</p>
+        </div>
+        <div class="zoom-item">
+          <div class="zoom-item-name">🛡️ Pydantic V2 <span class="zoom-item-tag">Validation</span></div>
+          <p class="zoom-item-desc">Validation de données 20× plus rapide grâce à un cœur Rust. Utilisé dans FastAPI.</p>
+        </div>
+        <div class="zoom-item">
+          <div class="zoom-item-name">📦 Polars <span class="zoom-item-tag">Data</span></div>
+          <p class="zoom-item-desc">Alternative Rust à Pandas. Multithreading natif, 10-30× plus rapide sur gros datasets.</p>
+        </div>
+        <div class="zoom-item">
+          <div class="zoom-item-name">🚀 uv <span class="zoom-item-tag">Outillage</span></div>
+          <p class="zoom-item-desc">Gestionnaire de projet Python. Remplace pip + venv + pyenv en un seul outil ultra-rapide.</p>
+        </div>
+      </div>
+      <div class="zoom-callout">
+        💡 <strong>Analyse :</strong> Python conserve sa simplicité et sa popularité, mais gagne en puissance grâce à Rust. Cette synergie est centrale dans l'informatique moderne en 2026 — que ce soit en data science, IA ou cybersécurité.
+      </div>
+    </div>
+
+    <div class="synthese-card reveal-el">
+      <div class="synthese-tag">📌 Synthèse globale — Axe Python & Rust</div>
+      <div class="synthese-title">Conclusion de la veille</div>
+      <p class="synthese-text">
+        Ma veille confirme que <strong>Python reste le langage dominant</strong> grâce à une évolution constante.<br><br>
+        Il gagne en performance avec <strong>Python 3.13</strong> (suppression du GIL, JIT) et grâce à l'adoption massive de <strong>Rust</strong> dans son écosystème d'outils.<br><br>
+        Il se renforce dans <strong>l'IA, la data et l'automatisation</strong> — des domaines en forte croissance dans les entreprises.<br><br>
+        👉 Conclusion : <strong>Python évolue pour rester dominant, et Rust en est le catalyseur invisible.</strong>
+      </p>
+    </div>
+
+  </div><!-- /tab-python -->
+
+  <!-- ════════════════════════════ TAB CYBER ════════════════════════════ -->
+  <div class="tab-pane" id="tab-cyber">
+
+    <div class="intro-card cyber reveal-el">
+      <div class="intro-card-title">🎯 Introduction &amp; Problématique</div>
+      <p class="intro-card-text">
+        Cette seconde veille porte sur la <strong>cybersécurité des applications web</strong>, un domaine directement lié à mon projet d'alternance en sécurité informatique.<br><br>
+        En BTS SIO SLAM, j'ai développé plusieurs applications web (PHP, Symfony, MySQL). Mais <strong>concevoir une appli ne suffit pas : encore faut-il qu'elle soit sécurisée</strong>. Les failles applicatives représentent aujourd'hui la première cause de compromission des systèmes d'information.<br><br>
+        👉 Problématique : <strong>Comment sécuriser une application web contre les menaces actuelles les plus courantes ?</strong><br><br>
+        Je me base sur le référentiel <strong>OWASP Top 10</strong>, des articles spécialisés (ANSSI, CERT-FR, ZDNet Sécu), et ma pratique sur la plateforme <strong>TryHackMe</strong>.
+      </p>
+    </div>
+
+    <div class="phase-heading reveal-el">
+      <span class="phase-badge red">🔴 PHASE 1 — Les menaces</span>
+      <div class="phase-line"></div>
+    </div>
+
+    <div class="entry cyber-entry reveal-el" id="c1">
+      <div class="entry-header" onclick="toggleEntry('c1')">
+        <span class="entry-date-badge" style="background:var(--red-pale);color:var(--red)">Sept. 2025</span>
+        <div class="entry-title-wrap">
+          <div class="entry-title">OWASP Top 10 : Les failles web incontournables</div>
+          <div class="entry-subtitle">Référentiel · Injection · Authentification</div>
+        </div>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <span class="impact-tag high">🔴 Impact critique</span>
+        <p class="entry-text">
+          L'<strong>OWASP Top 10</strong> est le référentiel mondial des risques de sécurité web. Il classe les 10 vulnérabilités les plus répandues et les plus dangereuses pour les applications. En tant que développeur SLAM, connaître ces failles est indispensable pour <strong>écrire du code sécurisé dès la conception</strong> (approche <em>Security by Design</em>).
+        </p>
+        <ul class="owasp-list">
+          <li class="owasp-item">
+            <span class="owasp-rank">A01</span>
+            <div><div class="owasp-name">Broken Access Control</div><div class="owasp-desc">Accès non autorisé à des ressources ou fonctions protégées.</div></div>
+          </li>
+          <li class="owasp-item">
+            <span class="owasp-rank">A02</span>
+            <div><div class="owasp-name">Cryptographic Failures</div><div class="owasp-desc">Données sensibles mal chiffrées ou exposées en clair.</div></div>
+          </li>
+          <li class="owasp-item">
+            <span class="owasp-rank">A03</span>
+            <div><div class="owasp-name">Injection (SQL, XSS…)</div><div class="owasp-desc">Injection de code malveillant via des entrées non filtrées.</div></div>
+          </li>
+          <li class="owasp-item">
+            <span class="owasp-rank">A07</span>
+            <div><div class="owasp-name">Identification &amp; Auth Failures</div><div class="owasp-desc">Mots de passe faibles, sessions non sécurisées, absence de 2FA.</div></div>
+          </li>
+        </ul>
+        <div class="entry-highlight red-hl">
+          <span class="entry-highlight-icon">🛡️</span>
+          <span>Dans mes propres projets Symfony et PHP, j'ai appliqué des <strong>requêtes préparées</strong> contre les injections SQL, le <strong>hachage bcrypt</strong> pour les mots de passe, et la <strong>validation des entrées</strong> côté serveur.</span>
+        </div>
+        <div class="entry-source-row">
+          <a href="https://owasp.org/www-project-top-ten/" target="_blank" class="entry-source red-src">🔗 OWASP Top 10</a>
+          <a href="https://www.cert.ssi.gouv.fr/" target="_blank" class="entry-source ghost">📄 CERT-FR</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry cyber-entry reveal-el" id="c2">
+      <div class="entry-header" onclick="toggleEntry('c2')">
+        <span class="entry-date-badge" style="background:var(--orange-pale);color:var(--orange)">Oct. 2025</span>
+        <div class="entry-title-wrap">
+          <div class="entry-title">Injections SQL &amp; XSS : Comment s'en protéger</div>
+          <div class="entry-subtitle">Injection · Cross-Site Scripting · PHP / Symfony</div>
+        </div>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <span class="impact-tag high">🔴 Impact critique</span>
+        <p class="entry-text">
+          L'<strong>injection SQL</strong> consiste à insérer du code SQL malveillant dans un formulaire pour manipuler la base de données — lire des données confidentielles, supprimer des tables ou contourner une authentification. Le <strong>XSS (Cross-Site Scripting)</strong> permet d'injecter du JavaScript dans une page vue par d'autres utilisateurs, pour voler leurs sessions ou les rediriger.
+        </p>
+        <div class="entry-highlight red-hl">
+          <span class="entry-highlight-icon">💉</span>
+          <span>Contre-mesures : <strong>requêtes préparées PDO</strong> (PHP) ou <strong>Doctrine ORM</strong> (Symfony) contre l'injection SQL, <strong>échappement des sorties</strong> avec htmlspecialchars() ou Twig contre le XSS, et <strong>Content Security Policy</strong> dans les headers HTTP.</span>
+        </div>
+        <div class="entry-source-row">
+          <a href="https://www.ssi.gouv.fr/guide/recommandations-pour-la-securisation-des-sites-web/" target="_blank" class="entry-source red-src">🔗 Guide ANSSI</a>
+          <a href="https://portswigger.net/web-security/sql-injection" target="_blank" class="entry-source ghost">📄 PortSwigger Labs</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-heading reveal-el" style="margin-top:56px">
+      <span class="phase-badge purple">🟣 PHASE 2 — Les bonnes pratiques</span>
+      <div class="phase-line"></div>
+    </div>
+
+    <div class="entry cyber-entry reveal-el" id="c3">
+      <div class="entry-header" onclick="toggleEntry('c3')">
+        <span class="entry-date-badge" style="background:var(--purple-pale);color:var(--purple)">Nov. 2025</span>
+        <div class="entry-title-wrap">
+          <div class="entry-title">Authentification sécurisée &amp; JWT</div>
+          <div class="entry-subtitle">Sessions · Tokens · 2FA · Hachage</div>
+        </div>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <span class="impact-tag med">🟠 Impact important</span>
+        <p class="entry-text">
+          La gestion de l'authentification est l'un des points les plus critiques d'une application. Un mot de passe stocké en clair, une session sans expiration ou un token JWT sans signature correcte peuvent compromettre l'ensemble d'un système. Les bonnes pratiques modernes incluent le <strong>hachage bcrypt/Argon2</strong>, les <strong>tokens JWT signés</strong> pour les API, et la <strong>double authentification (2FA)</strong>.
+        </p>
+        <div class="entry-highlight purple-hl">
+          <span class="entry-highlight-icon">🔑</span>
+          <span>Dans le projet Campus HelpDesk, j'ai implémenté des sessions PHP sécurisées avec <strong>régénération d'ID de session</strong> après connexion et des <strong>mots de passe hachés en bcrypt</strong> — mesures directement issues de cette veille.</span>
+        </div>
+        <div class="entry-source-row">
+          <a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html" target="_blank" class="entry-source red-src">🔗 OWASP Auth Cheat Sheet</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry cyber-entry reveal-el" id="c4">
+      <div class="entry-header" onclick="toggleEntry('c4')">
+        <span class="entry-date-badge" style="background:var(--blue-pale);color:var(--blue)">Jan. 2026</span>
+        <div class="entry-title-wrap">
+          <div class="entry-title">HTTPS, Headers HTTP &amp; RGPD</div>
+          <div class="entry-subtitle">Chiffrement · Conformité · CSP · HSTS</div>
+        </div>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <span class="impact-tag med">🟠 Impact important</span>
+        <p class="entry-text">
+          Le <strong>HTTPS</strong> (TLS/SSL) est aujourd'hui obligatoire pour chiffrer les échanges entre le navigateur et le serveur. Mais la sécurité HTTP ne s'arrête pas là : des headers comme <strong>Content-Security-Policy (CSP)</strong>, <strong>HSTS</strong>, <strong>X-Frame-Options</strong> ou <strong>Referrer-Policy</strong> renforcent considérablement la protection contre les attaques XSS, clickjacking et MITM. Le <strong>RGPD</strong> impose par ailleurs des obligations légales sur la collecte et le traitement des données personnelles.
+        </p>
+        <div class="entry-highlight">
+          <span class="entry-highlight-icon">🌐</span>
+          <span>Un outil comme <strong>Security Headers (securityheaders.com)</strong> permet d'analyser les headers d'un site en quelques secondes et d'identifier les manques — une pratique que j'applique sur mes propres projets.</span>
+        </div>
+        <div class="entry-source-row">
+          <a href="https://securityheaders.com/" target="_blank" class="entry-source red-src">🔗 Security Headers</a>
+          <a href="https://www.cnil.fr/fr/rgpd-de-quoi-parle-t-on" target="_blank" class="entry-source ghost">📄 CNIL — RGPD</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry cyber-entry reveal-el" id="c5">
+      <div class="entry-header" onclick="toggleEntry('c5')">
+        <span class="entry-date-badge" style="background:var(--green-pale);color:var(--green)">Mars 2026</span>
+        <div class="entry-title-wrap">
+          <div class="entry-title">Pratique CTF sur TryHackMe</div>
+          <div class="entry-subtitle">Pentest · Hands-on · OWASP Juice Shop</div>
+        </div>
+        <span class="entry-chevron">▼</span>
+      </div>
+      <div class="entry-body">
+        <span class="impact-tag low">🟢 Mise en pratique</span>
+        <p class="entry-text">
+          Pour compléter ma veille théorique, j'ai commencé à pratiquer la cybersécurité sur la plateforme <strong>TryHackMe</strong>. Elle propose des environnements virtuels (rooms) pour apprendre à identifier et exploiter des vulnérabilités dans un cadre légal et pédagogique. J'ai notamment travaillé sur <strong>OWASP Juice Shop</strong>, une application volontairement vulnérable, et des rooms dédiées aux injections SQL et au XSS.
+        </p>
+        <div class="entry-highlight">
+          <span class="entry-highlight-icon">🎯</span>
+          <span>La pratique CTF est très valorisée par les recruteurs en cybersécurité : elle prouve une <strong>démarche active d'apprentissage</strong> et une capacité à analyser des systèmes réels dans une posture d'attaquant — indispensable pour mieux défendre.</span>
+        </div>
+        <div class="entry-source-row">
+          <a href="https://tryhackme.com/" target="_blank" class="entry-source red-src">🔗 TryHackMe</a>
+          <a href="https://owasp.org/www-project-juice-shop/" target="_blank" class="entry-source ghost">📄 OWASP Juice Shop</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="zoom-section reveal-el" style="margin-top:56px">
+      <div class="zoom-title">🔬 Zoom Technique : Sécurité applicative en pratique</div>
+      <p class="zoom-sub">Les outils du quotidien pour auditer et renforcer une application web.</p>
+      <p class="entry-text" style="margin-bottom:24px">
+        Plusieurs outils permettent d'identifier rapidement les vulnérabilités d'une application web, que ce soit en phase de développement ou lors d'un audit de sécurité.
+      </p>
+      <div class="zoom-grid">
+        <div class="zoom-item">
+          <div class="zoom-item-name red">🕷️ Burp Suite <span class="zoom-item-tag red">Pentest</span></div>
+          <p class="zoom-item-desc">Proxy d'interception HTTP. Permet d'analyser et modifier les requêtes en temps réel pour tester les failles.</p>
+        </div>
+        <div class="zoom-item">
+          <div class="zoom-item-name red">🔍 OWASP ZAP <span class="zoom-item-tag red">Scanner</span></div>
+          <p class="zoom-item-desc">Scanner de vulnérabilités web open-source. Alternative gratuite à Burp Suite, idéal pour débuter.</p>
+        </div>
+        <div class="zoom-item">
+          <div class="zoom-item-name red">🌐 Nmap <span class="zoom-item-tag red">Réseau</span></div>
+          <p class="zoom-item-desc">Scanner de ports et de services. Permet de cartographier une infrastructure et d'identifier les services exposés.</p>
+        </div>
+        <div class="zoom-item">
+          <div class="zoom-item-name red">🔐 Kali Linux <span class="zoom-item-tag red">OS dédié</span></div>
+          <p class="zoom-item-desc">Distribution Linux spécialisée en pentest. Inclut nativement Burp Suite, Nmap, Wireshark et +600 outils sécu.</p>
+        </div>
+      </div>
+      <div class="zoom-callout red-callout">
+        💡 <strong>Analyse :</strong> Mon background SLAM (développement PHP/Symfony/MySQL) est un atout direct en cybersécurité applicative : je comprends comment les failles naissent dans le code, ce qui me permet de mieux les identifier et les corriger. C'est la valeur ajoutée du profil "dev qui comprend la sécu".
+      </div>
+    </div>
+
+    <div class="synthese-card cyber-synth reveal-el">
+      <div class="synthese-tag">📌 Synthèse globale — Axe Cybersécurité</div>
+      <div class="synthese-title">Conclusion de la veille</div>
+      <p class="synthese-text">
+        Cette veille m'a permis de comprendre que <strong>la sécurité n'est pas une étape finale mais une démarche intégrée dès le développement</strong> (<em>Security by Design</em>).<br><br>
+        Les failles comme <strong>l'injection SQL, le XSS ou les défauts d'authentification</strong> sont évitables si le développeur applique les bonnes pratiques OWASP dès l'écriture du code.<br><br>
+        Mon profil SLAM me permet d'aborder la cybersécurité avec une vision concrète : je sais comment les vulnérabilités naissent dans le code, et comment les corriger.<br><br>
+        👉 Conclusion : <strong>Développeur et sécurité ne s'opposent pas — ils se complètent. Mon objectif en alternance est d'appliquer cette double compétence.</strong>
+      </p>
+    </div>
+
+  </div><!-- /tab-cyber -->
+
+</div><!-- /content -->
+
 <footer class="page-footer">
-  <div>Alexandre Guiblain — BTS SIO SLAM · 2024–2026</div>
-  <a href="index.html">← Retour au portfolio</a>
+  <div class="footer-name">Alexandre Guiblain</div>
+  <div class="footer-sub">BTS SIO — Veille Technologique 2025–2026</div>
 </footer>
 
 <script>
-// Progress bar & Nav hide (Optimized with requestAnimationFrame)
+// Progress bar & Nav hide
 const pbar = document.getElementById('pbar');
 const topbar = document.getElementById('topbar');
-let lastY = 0;
-let ticking = false;
-
+let lastY = 0, ticking = false;
 window.addEventListener('scroll', () => {
   if (!ticking) {
     window.requestAnimationFrame(() => {
@@ -532,132 +856,49 @@ window.addEventListener('scroll', () => {
   }
 });
 
+// Toggle accordion entries
+function toggleEntry(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+// Tab switching
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelector(`.tab-btn[data-tab="${tab}"]`).classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+  // Re-trigger reveal for newly shown tab
+  setTimeout(() => {
+    document.querySelectorAll(`#tab-${tab} .reveal-el, #tab-${tab} .entry, #tab-${tab} .zoom-section, #tab-${tab} .synthese-card`).forEach(el => {
+      if (!el.classList.contains('on')) el.classList.add('on');
+    });
+  }, 50);
+}
+
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('on'), i * 80);
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal-el, .entry, .zoom-section, .synthese-card').forEach(el => obs.observe(el));
+
+// Open first entries by default
+document.getElementById('e1').classList.add('open');
+document.getElementById('c1').classList.add('open');
+
 // Dark mode
 const btn = document.getElementById('theme-toggle');
 const html = document.documentElement;
-
-// Detect system preference or local storage
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const saved = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
-
 html.setAttribute('data-theme', saved);
 btn.textContent = saved === 'dark' ? '☀️' : '🌙';
-
 btn.addEventListener('click', () => {
   const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
   btn.textContent = next === 'dark' ? '☀️' : '🌙';
   localStorage.setItem('theme', next);
-});
-
-// Reveal cards
-const obs = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) setTimeout(() => e.target.classList.add('on'), i * 120);
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.tla-card').forEach(c => obs.observe(c));
-
-// Modal data
-const modals = {
-  valorisens: {
-    icon: '💻', period: 'MAI – JUILLET 2025',
-    title: 'Valorisens', role: 'Développeur Web — Stage SIO 1ère année',
-    desc: 'Stage de 6 semaines au sein d\'un organisme spécialisé dans l\'approche sensorielle. Ma mission principale était de moderniser la plateforme web pour faciliter la gestion interne et l\'accès aux formations.',
-    chips: ['WordPress', 'Elementor Pro', 'JetPlugins', 'Environnement de test (Pré-production)'],
-    missions: [
-      'Refonte complète du site internet avec WordPress et Elementor',
-      'Création de pages spécifiques (Accueil, Contact, Formations)',
-      'Optimisation de l\'affichage sur tablettes et smartphones (Responsive)',
-      'Correction de bugs d\'affichage et de navigation',
-      'Validation des modifications sur un site de test avant mise en ligne',
-      'Participation aux réunions d\'avancement et de suivi de projet'
-    ],
-    report: 'GUIBLAIN-Alexandre-rapport%20de%20stage-SIO1%201.pdf'
-  },
-  mairie: {
-    icon: '🏛️', period: 'JAN – FÉV 2026',
-    title: 'Mairie de Savigny-le-Temple', role: 'Technicien Support & Développeur — Stage SIO 2ème année',
-    desc: 'Immersion au cœur du service informatique d\'une collectivité territoriale. J\'ai assuré le maintien en condition opérationnelle du parc informatique tout en développant une interface centralisée pour optimiser le travail quotidien des agents de la DSI.',
-    chips: ['GLPI (Ticketing)', 'Active Directory', 'HTML/CSS/JS (MairieOS)'],
-    missions: [
-      'Assistance technique et support aux agents de la mairie',
-      'Préparation et déploiement de postes informatiques (Masterisation)',
-      'Gestion des incidents et des demandes via l\'outil GLPI',
-      'Développement de l\'application "MairieOS" (Portail d\'outils DSI)',
-      'Maintenance matérielle (Remplacement d\'écrans, claviers, composants)',
-      'Brassage réseau et brassage de prises RJ45 en armoire technique'
-    ],
-    report: 'GUIBLAIN-Alexandre-rapport%20de%20stage-SIO2.pdf'
-  },
-  akto: {
-    icon: '🏢', period: 'SEPTEMBRE – NOVEMBRE 2023',
-    title: 'AKTO', role: 'Support Informatique — Stage SN 3ème année',
-    desc: 'Stage de 8 semaines au sein d\'un organisme paritaire collecteur agréé (OPCO). Ma mission principale était d\'assurer le bon fonctionnement des équipements et d\'accompagner les collaborateurs au quotidien dans la résolution de leurs incidents informatiques.',
-    chips: ['Support IT','Maintenance','Helpdesk','Office 365'],
-    missions: [
-      'Prise en charge des tickets de support informatique interne',
-      'Maintenance préventive et corrective du parc informatique',
-      'Assistance aux utilisateurs sur les outils bureautiques Office 365',
-      'Participation à l\'inventaire des équipements informatiques',
-      'Préparation et déploiement de nouveaux postes de travail',
-      'Configuration et dépannage des périphériques réseau',
-    ],
-    report: ''
-  },
-  rte: {
-    icon: '⚡', period: 'MAI – JUILLET 2023',
-    title: 'RTE — Réseau de Transport d\'Électricité', role: 'Maintenance Réseau — Stage SN 2ème année',
-    desc: 'Stage de 8 semaines au sein de la Direction des Systèmes d\'Information (DSI). Ma mission principale était d\'assurer le bon fonctionnement des infrastructures réseau et d\'intervenir techniquement sur les équipements du site.',
-    chips: ['Réseau','Infrastructure','Câblage RJ45'],
-    missions: [
-      'Participation à la maintenance du réseau informatique interne du site',
-      'Câblage et raccordement d\'équipements réseau (baies, switches)',
-      'Tests de connectivité et diagnostic réseau de base',
-      'Découverte de l\'infrastructure IT dans un grand groupe industriel énergétique',
-      'Surveillance et supervision du trafic réseau local',
-      'Remplacement et mise à niveau de câbles défectueux',
-    ],
-    report: ''
-  }
-};
-
-function openModal(key) {
-  const d = modals[key]; if (!d) return;
-  document.getElementById('m-icon').textContent = d.icon;
-  document.getElementById('m-period').textContent = d.period;
-  document.getElementById('m-title').textContent = d.title;
-  document.getElementById('m-role').textContent = d.role;
-  document.getElementById('m-desc').textContent = d.desc;
-  document.getElementById('m-chips').innerHTML = d.chips.map(c => `<span class="modal-chip">${c}</span>`).join('');
-  document.getElementById('m-missions').innerHTML = d.missions.map(m => `<li class="modal-mission"><div class="modal-mission-dot">✓</div>${m}</li>`).join('');
-  
-  const reportLink = document.getElementById('m-report-link');
-  if (d.report) {
-    reportLink.href = d.report;
-    reportLink.style.display = 'inline-flex';
-  } else {
-    reportLink.style.display = 'none';
-  }
-  
-  document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-document.getElementById('modal-close').addEventListener('click', () => {
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-});
-document.getElementById('modal-overlay').addEventListener('click', e => {
-  if (e.target === e.currentTarget) {
-    e.currentTarget.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    document.getElementById('modal-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
 });
 </script>
 </body>
