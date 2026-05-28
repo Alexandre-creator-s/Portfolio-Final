@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alexandre Guiblain — Portfolio BTS SIO SLAM</title>
+<meta name="description" content="Portfolio professionnel de Alexandre Guiblain, étudiant en BTS SIO option SLAM. Découvrez mes compétences, projets et expériences de développement d'applications.">
+<meta property="og:title" content="Alexandre Guiblain — Portfolio BTS SIO SLAM">
+<meta property="og:description" content="Découvrez mes compétences et projets de développement logiciel et web.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>💻</text></svg>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
 
@@ -77,6 +83,7 @@ nav {
   position: fixed; top: 3px; left: 0; right: 0; z-index: 100;
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   padding: 0 60px;
   display: flex; justify-content: space-between; align-items: center;
@@ -108,7 +115,39 @@ nav {
   font-weight: 600 !important;
   transition: all 0.2s !important;
 }
-.nav-cv:hover { background: #1d4ed8 !important; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,.3) !important; }
+.nav-cv:hover {
+  background: #1d4ed8 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37,99,235,.3), 0 0 15px rgba(37,99,235,.4) !important;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+}
+.hamburger span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
 
 /* ── HERO ── */
 .hero {
@@ -132,6 +171,31 @@ nav {
   background: radial-gradient(circle, rgba(96,165,250,.08) 0%, transparent 65%);
   pointer-events: none;
 }
+/* Floating Particles */
+.hero-particles {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.08;
+  animation: floatAround 15s ease-in-out infinite alternate;
+}
+.hero-particle:nth-child(1) { width: 40px; height: 40px; left: 10%; top: 20%; animation-delay: 0s; animation-duration: 20s; }
+.hero-particle:nth-child(2) { width: 80px; height: 80px; right: 15%; top: 30%; animation-delay: -5s; animation-duration: 25s; opacity: 0.05; background: #60a5fa; }
+.hero-particle:nth-child(3) { width: 50px; height: 50px; left: 45%; bottom: 15%; animation-delay: -2s; animation-duration: 18s; opacity: 0.06; }
+.hero-particle:nth-child(4) { width: 30px; height: 30px; right: 40%; top: 75%; animation-delay: -8s; animation-duration: 22s; opacity: 0.07; }
+
+@keyframes floatAround {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  50% { transform: translateY(-40px) translateX(25px) scale(1.15); }
+  100% { transform: translateY(-15px) translateX(-35px) scale(0.9); }
+}
+
 .hero-layout {
   display: grid; grid-template-columns: 1fr auto;
   gap: 60px; align-items: center;
@@ -156,7 +220,17 @@ nav {
   margin-bottom: 6px;
   animation: fadeUp .7s .08s ease both;
 }
-.hero-name-color { color: var(--blue); }
+.hero-name-color {
+  background: linear-gradient(135deg, var(--blue), #60a5fa, var(--blue));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+  display: inline-block;
+}
+@keyframes shine {
+  to { background-position: 200% center; }
+}
 
 .hero-typewriter {
   font-family: var(--font-serif);
@@ -189,23 +263,34 @@ nav {
   transition: all .25s; border: none; cursor: pointer;
   box-shadow: 0 4px 14px rgba(37,99,235,.3);
 }
-.btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,.38); }
+.btn-primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37,99,235,.38), 0 0 15px rgba(37,99,235,.4);
+}
 .btn-secondary {
   display: inline-flex; align-items: center; gap: 8px;
-  background: #fff; color: var(--text);
+  background: var(--bg-card); color: var(--text);
   padding: 13px 28px; border-radius: 10px;
   font-weight: 600; font-size: 14px; text-decoration: none;
   border: 1.5px solid var(--border); transition: all .25s;
   box-shadow: var(--shadow-sm);
 }
-.btn-secondary:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn-secondary:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md), 0 0 10px rgba(96,165,250,.2);
+}
 
 .hero-stats-row {
   display: flex; gap: 0; margin-top: 48px;
-  background: #fff; border: 1px solid var(--border);
+  background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--radius); box-shadow: var(--shadow-card);
   overflow: hidden;
   animation: fadeUp .7s .4s ease both;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .hero-stat {
   flex: 1; padding: 20px 24px;
@@ -223,7 +308,7 @@ nav {
   width: 240px; height: 240px;
   border-radius: 24px;
   background: linear-gradient(135deg, var(--blue-pale), var(--blue-mid));
-  border: 3px solid #fff;
+  border: 3px solid var(--border);
   box-shadow: var(--shadow-lg);
   display: flex; align-items: center; justify-content: center;
   font-size: 80px; font-weight: 800; color: var(--blue);
@@ -265,6 +350,9 @@ section { padding: 100px 60px; position: relative; }
   background: var(--bg-card); border-radius: var(--radius);
   border: 1px solid var(--border); padding: 36px;
   box-shadow: var(--shadow-card); transition: all .3s;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  will-change: transform, opacity;
 }
 .about-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
 .about-intro { font-size: 15.5px; color: var(--text-muted); line-height: 1.85; margin-bottom: 24px; }
@@ -292,7 +380,7 @@ section { padding: 100px 60px; position: relative; }
 .hobbies-row { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
 .hobby {
   display: flex; align-items: center; gap: 8px;
-  background: #fff; border: 1px solid var(--border);
+  background: var(--bg-card); border: 1px solid var(--border);
   border-radius: 10px; padding: 10px 16px;
   font-size: 13px; font-weight: 500; color: var(--text-muted);
   box-shadow: var(--shadow-sm);
@@ -304,6 +392,9 @@ section { padding: 100px 60px; position: relative; }
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 28px;
   box-shadow: var(--shadow-card); transition: all .3s;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  will-change: transform, opacity;
 }
 .skill-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
 .skill-card-header {
@@ -334,9 +425,10 @@ section { padding: 100px 60px; position: relative; }
   border-radius: 12px; padding: 14px 10px;
   text-align: center; transition: all .25s;
   box-shadow: var(--shadow-sm);
+  will-change: transform;
 }
 .tech-item:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.tech-emoji { font-size: 24px; margin-bottom: 6px; }
+.tech-emoji, .tech-item i { font-size: 24px; margin-bottom: 6px; display: inline-block; }
 .tech-name { font-size: 11px; font-weight: 600; color: var(--text-muted); }
 
 /* ── PROJECTS ── */
@@ -808,13 +900,47 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
 .bts-btn-text { font-size: 15px; font-weight: 800; color: var(--blue); }
 
 /* ── REVEAL ── */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s cubic-bezier(.4,0,.2,1); }
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.4,0,.2,1);
+  will-change: transform, opacity;
+}
 .reveal.on { opacity: 1; transform: translateY(0); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 960px) {
   nav { padding: 0 20px; }
-  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+    gap: 12px;
+    transform: translateY(-150%);
+    transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+    box-shadow: var(--shadow-md);
+    z-index: 99;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .nav-links.open {
+    transform: translateY(0);
+  }
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+  .nav-links a {
+    display: block;
+    padding: 10px;
+  }
   section { padding: 70px 20px; }
   .hero { padding: 90px 20px 70px; }
   .hero-layout { grid-template-columns: 1fr; }
@@ -855,11 +981,26 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
     <li><a href="#contact">Contact</a></li>
     <li><a href="#contact" class="nav-cv">📄 Mon CV</a></li>
   </ul>
-  <button class="theme-toggle" id="theme-toggle" title="Mode sombre/clair">🌙</button>
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <button class="theme-toggle" id="theme-toggle" title="Mode sombre/clair" aria-label="Basculer le thème sombre/clair">🌙</button>
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
 </nav>
+
+<main id="main-content">
 
 <!-- HERO -->
 <section class="hero" id="top">
+  <div class="hero-particles">
+    <div class="hero-particle"></div>
+    <div class="hero-particle"></div>
+    <div class="hero-particle"></div>
+    <div class="hero-particle"></div>
+  </div>
   <div class="hero-layout">
     <div>
       <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span> BTS SIO — Option SLAM · Promotion 2024–2026</div>
@@ -1044,7 +1185,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
         </div>
         <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">HTML / CSS</span><span class="skillbar-pct">95%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="95%"></div></div></div>
         <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">JavaScript</span><span class="skillbar-pct">45%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="45%"></div></div></div>
-        <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">PHP</span><span class="skillbar-pct">50%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="75%"></div></div></div>
+        <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">PHP</span><span class="skillbar-pct">50%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="50%"></div></div></div>
       </div>
       <div class="skill-card reveal">
         <div class="skill-card-header">
@@ -1067,13 +1208,13 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
       </div>
     </div>
     <div class="tech-grid reveal">
-      <div class="tech-item"><div class="tech-emoji">🌐</div><div class="tech-name">HTML5</div></div>
-      <div class="tech-item"><div class="tech-emoji">🎨</div><div class="tech-name">CSS3</div></div>
-      <div class="tech-item"><div class="tech-emoji">⚡</div><div class="tech-name">JavaScript</div></div>
-      <div class="tech-item"><div class="tech-emoji">🐘</div><div class="tech-name">PHP</div></div>
-      <div class="tech-item"><div class="tech-emoji">🐍</div><div class="tech-name">Python</div></div>
-      <div class="tech-item"><div class="tech-emoji">☕</div><div class="tech-name">Java</div></div>
-      <div class="tech-item"><div class="tech-emoji">🗄️</div><div class="tech-name">MySQL</div></div>
+      <div class="tech-item"><i class="devicon-html5-plain colored"></i><div class="tech-name">HTML5</div></div>
+      <div class="tech-item"><i class="devicon-css3-plain colored"></i><div class="tech-name">CSS3</div></div>
+      <div class="tech-item"><i class="devicon-javascript-plain colored"></i><div class="tech-name">JavaScript</div></div>
+      <div class="tech-item"><i class="devicon-php-plain colored"></i><div class="tech-name">PHP</div></div>
+      <div class="tech-item"><i class="devicon-python-plain colored"></i><div class="tech-name">Python</div></div>
+      <div class="tech-item"><i class="devicon-java-plain colored"></i><div class="tech-name">Java</div></div>
+      <div class="tech-item"><i class="devicon-mysql-plain colored"></i><div class="tech-name">MySQL</div></div>
     </div>
   </div>
 </section>
@@ -1171,7 +1312,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
           <span class="proj-period">Février à Mars 2026</span>
           <h3 class="proj-title">APPLICATION WEB — Campus HelpDesk</h3>
           <p class="proj-desc">Application web interne de gestion de tickets d interventions informatiques pour le campus.</p>
-          <div class="proj-chips"><span class="proj-chip">HTML/CSS</span><span class="proj-chip">PHP</span><span class="proj-chip">JavaScrip</span></div>
+          <div class="proj-chips"><span class="proj-chip">HTML/CSS</span><span class="proj-chip">PHP</span><span class="proj-chip">JavaScript</span></div>
           <a class="proj-link">Voir le projet →</a>
         </div>
       </div>
@@ -1246,7 +1387,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
       <div class="veille-card reveal">
         <div class="veille-icon-wrap" style="background:#f0fdf4">☁️</div>
         <div class="veille-cat">IA & Automatisation</div>
-        <h4 class="veille-title">gents IA et IA locale</h4>
+        <h4 class="veille-title">Agents IA et IA locale</h4>
         <p class="veille-desc">Veille sur les bibliothèques permettant de faire tourner des LLM localement et sur l'essor des agents autonomes.</p>
         <div class="veille-date">🗓 Mise à jour : Janvier 2026</div>
       </div>
@@ -1391,7 +1532,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
           <hr style="border: 0; border-top: 1px solid var(--border); margin: 20px 0;">
 
           <li>
-            <a class="contact-link-item" href="CV alexandre Final.pdf" download>
+            <a class="contact-link-item" href="CV%20alexandre%20Final.pdf" download>
               <div class="cl-icon" style="background:#f0fdf4">📄</div>
               <div>
                 <div class="cl-title">Consulter mon CV</div>
@@ -1401,7 +1542,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
           </li>
           
           <li>
-            <a class="contact-link-item" href="Lettre de Motivation Alternance.pdf" download>
+            <a class="contact-link-item" href="Lettre%20de%20Motivation%20Alternance.pdf" download>
               <div class="cl-icon" style="background:#f0fdf4">📄</div>
               <div>
                 <div class="cl-title">Lettre de Motivation</div>
@@ -1416,7 +1557,9 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
     </div> </div> </section>
 
 <!-- BACK TO TOP -->
-<button id="back-to-top" title="Retour en haut">↑</button>
+<button id="back-to-top" title="Retour en haut" aria-label="Retourner en haut de la page">↑</button>
+
+</main>
 
 <!-- MODAL PROJET -->
 <div class="modal-overlay" id="modal-overlay">
@@ -1436,7 +1579,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
     <span>🌐</span> Voir le site du projet
 </a>
     </div>
-    <button class="modal-close" id="modal-close">✕</button>
+    <button class="modal-close" id="modal-close" aria-label="Fermer la modale">✕</button>
   </div>
 </div>
 
@@ -1444,6 +1587,13 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
 <footer>
   <div class="footer-name">Alexandre Guiblain</div>
   <div class="footer-sub">BTS SIO — Option SLAM · Développeur d'applications</div>
+  
+  <div class="footer-socials" style="margin: 15px 0 20px; display: flex; justify-content: center; gap: 20px; font-size: 22px;">
+    <a href="https://www.linkedin.com/in/alexandre-guiblain-0b78763ba/" target="_blank" aria-label="LinkedIn de Alexandre" style="color: var(--text-light); transition: color 0.2s;"><i class="devicon-linkedin-plain"></i></a>
+    <a href="https://github.com/Alexandre-creator-s" target="_blank" aria-label="GitHub de Alexandre" style="color: var(--text-light); transition: color 0.2s;"><i class="devicon-github-original"></i></a>
+    <a href="mailto:alexandre.guiblain2@gmail.com" aria-label="Email de Alexandre" style="color: var(--text-light); transition: color 0.2s; text-decoration: none;">📧</a>
+  </div>
+
   <div class="footer-links">
     <a href="#about">À propos</a>
     <a href="#skills">Compétences</a>
@@ -1454,13 +1604,81 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
   <div class="footer-bottom">© 2026 Alexandre Guiblain — Tous droits réservés · Fait avec ❤️ en HTML / CSS / JS</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── SCROLL PROGRESS BAR ──
+<script>
+// ── ELEMENTS ──
 const bar = document.getElementById('progress-bar');
+const btt = document.getElementById('back-to-top');
+const navEl = document.querySelector('nav');
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cv)');
+const hamburger = document.getElementById('hamburger');
+const navLinksContainer = document.querySelector('.nav-links');
+
+// ── HAMBURGER MENU ──
+if (hamburger && navLinksContainer) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinksContainer.classList.toggle('open');
+    hamburger.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Fermer le menu au clic sur un lien
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinksContainer.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+    });
+  });
+}
+
+// ── SCROLL EVENT OPTIMIZATION (throttled with rAF) ──
+let lastScrollY = window.scrollY;
+let scrollTicking = false;
+
+function handleScrollUpdates() {
+  const y = window.scrollY;
+  
+  // 1. Scroll progress bar
+  if (bar) {
+    const pct = y / (document.body.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = pct + '%';
+  }
+  
+  // 2. Active nav link
+  sections.forEach(s => {
+    if (y >= s.offsetTop - 120) {
+      const activeId = s.id;
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + activeId);
+      });
+    }
+  });
+  
+  // 3. Nav hide on scroll
+  if (navEl) {
+    if (y > lastScrollY && y > 80) {
+      navEl.classList.add('hidden-nav');
+    } else {
+      navEl.classList.remove('hidden-nav');
+    }
+  }
+  
+  // 4. Back to top visibility
+  if (btt) {
+    btt.classList.toggle('visible', y > 400);
+  }
+  
+  lastScrollY = y;
+  scrollTicking = false;
+}
+
 window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-  bar.style.width = pct + '%';
-});
+  if (!scrollTicking) {
+    window.requestAnimationFrame(handleScrollUpdates);
+    scrollTicking = true;
+  }
+}, { passive: true });
 
 // ── TYPEWRITER ──
 const phrases = [
@@ -1472,6 +1690,7 @@ const phrases = [
 let pi = 0, ci = 0, deleting = false;
 const el = document.getElementById('typewriter-text');
 function type() {
+  if (!el) return;
   const current = phrases[pi];
   if (!deleting) {
     el.textContent = current.substring(0, ci + 1);
@@ -1487,23 +1706,22 @@ function type() {
 type();
 
 // ── COUNTER ANIMATION ──
-function animateCount(el) {
-  const target = parseInt(el.dataset.count);
-  const suffix = el.dataset.count.includes('+') ? '+' : '';
+function animateCount(counterEl) {
+  const target = parseInt(counterEl.dataset.count);
+  const suffix = counterEl.dataset.count.includes('+') ? '+' : '';
   let start = 0;
   const step = target / 40;
   const interval = setInterval(() => {
     start += step;
-    if (start >= target) { el.textContent = target + suffix; clearInterval(interval); return; }
-    el.textContent = Math.floor(start) + suffix;
+    if (start >= target) { counterEl.textContent = target + suffix; clearInterval(interval); return; }
+    counterEl.textContent = Math.floor(start) + suffix;
   }, 40);
 }
 const statsObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      document.querySelectorAll('.hero-stat-num').forEach(el => {
-        el.dataset.count = el.dataset.count;
-        animateCount(el);
+      document.querySelectorAll('.hero-stat-num').forEach(counterEl => {
+        animateCount(counterEl);
       });
       statsObserver.disconnect();
     }
@@ -1518,7 +1736,7 @@ const revealObs = new IntersectionObserver(entries => {
     if (e.isIntersecting) setTimeout(() => e.target.classList.add('on'), i * 70);
   });
 }, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+document.querySelectorAll('.reveal').forEach(revealEl => revealObs.observe(revealEl));
 
 // ── SKILL BARS ──
 const barObs = new IntersectionObserver(entries => {
@@ -1531,7 +1749,7 @@ const barObs = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.25 });
-document.querySelectorAll('.skill-card').forEach(el => barObs.observe(el));
+document.querySelectorAll('.skill-card').forEach(cardEl => barObs.observe(cardEl));
 
 // ── 3D HOVER ON PROJECT CARDS ──
 document.querySelectorAll('.proj-card').forEach(card => {
@@ -1561,44 +1779,26 @@ document.querySelectorAll('.proj-filter-btn').forEach(btn => {
   });
 });
 
-// ── ACTIVE NAV LINKS ──
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cv)');
-window.addEventListener('scroll', () => {
-  let cur = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 90) cur = s.id; });
-  navLinks.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
-  });
-});
-
 // ── DARK MODE TOGGLE ──
 const themeBtn = document.getElementById('theme-toggle');
 const htmlEl = document.documentElement;
-const saved = localStorage.getItem('theme') || 'light';
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+const saved = localStorage.getItem('theme') || systemTheme;
 htmlEl.setAttribute('data-theme', saved);
-themeBtn.textContent = saved === 'dark' ? '☀️' : '🌙';
-themeBtn.addEventListener('click', () => {
-  const next = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  htmlEl.setAttribute('data-theme', next);
-  themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
-  localStorage.setItem('theme', next);
-});
+if (themeBtn) {
+  themeBtn.textContent = saved === 'dark' ? '☀️' : '🌙';
+  themeBtn.addEventListener('click', () => {
+    const next = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    htmlEl.setAttribute('data-theme', next);
+    themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', next);
+  });
+}
 
-// ── NAV HIDE ON SCROLL ──
-let lastScrollY = 0;
-const navEl = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  if (y > lastScrollY && y > 80) navEl.classList.add('hidden-nav');
-  else navEl.classList.remove('hidden-nav');
-  lastScrollY = y;
-});
-
-// ── BACK TO TOP ──
-const btt = document.getElementById('back-to-top');
-window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 400));
-btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+// ── BACK TO TOP CLICK ──
+if (btt) {
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
 
 // ── E5/E6 TABS ──
 document.querySelectorAll('.e5e6-tab').forEach(tab => {
@@ -1631,7 +1831,7 @@ const modalData = {
   'valorisens': {
     emoji:'🏛️', period:'Mai à Juillet 2025',
     title:'Stage 1er année — Valorisens',
-    desc:'Refonte complète du site internet de Valorisens, structure spécialisée dans la formation et le bien-être (Snoezelen, communication gestuelle, parentalité). Mission réalisée en autonomie lors de mon stage de 1ère année BTS SIO en Teletravaille.',
+    desc:'Refonte complète du site internet de Valorisens, structure spécialisée dans la formation et le bien-être (Snoezelen, communication gestuelle, parentalité). Mission réalisée en autonomie lors de mon stage de 1ère année BTS SIO en télétravail.',
     chips:['WordPress','Elementor','Plugins WP','HTML/CSS'],
     features:['Refonte complète de la page d accueil avec mise en avant des services','Création de pages dédiées par formation (Snoezelen, SAP, gestion du stress)','Intégration d un formulaire de contact fonctionnel','Tests sur environnement de recette avant mise en production','Gestion du contenu via l administration WordPress'],
     siteLink: 'https://valorisens.fr/'
@@ -1674,13 +1874,13 @@ function openModal(key) {
   document.getElementById('modal-features').innerHTML = d.features.map(f=>`<li class="modal-feature"><div class="modal-feature-dot">✓</div>${f}</li>`).join('');
 
   // --- PARTIE MODIFIÉE POUR LE LIEN ---
-  const btnSite = document.querySelector('.modal-box .btn-primary'); // On cible le bouton de la modale
+  const btnSite = document.querySelector('.modal-box .btn-primary');
   if (btnSite && d.siteLink) {
-    btnSite.href = d.siteLink; // On donne le lien individuel
-    btnSite.target = "_blank"; // Pour ouvrir dans un nouvel onglet
-    btnSite.style.display = "inline-flex"; // On l'affiche
+    btnSite.href = d.siteLink;
+    btnSite.target = "_blank";
+    btnSite.style.display = "inline-flex";
   } else if (btnSite) {
-    btnSite.style.display = "none"; // On cache le bouton s'il n'y a pas de lien
+    btnSite.style.display = "none";
   }
   // ------------------------------------
 
