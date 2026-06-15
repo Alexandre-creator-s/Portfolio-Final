@@ -386,6 +386,64 @@ section { padding: 100px 60px; position: relative; }
   box-shadow: var(--shadow-sm);
 }
 
+/* --- Style du Bouton Professionnel (Version Compacte) --- */
+
+.btn-professionnel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espace réduit entre le texte et la flèche */
+  
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13.5px; /* Police légèrement plus petite pour plus de finesse */
+  color: #ffffff !important; 
+  letter-spacing: 0.3px; 
+  
+  /* Même dégradé bleu professionnel */
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  
+  /* C'est ici que la magie opère : des marges intérieures réduites */
+  padding: 10px 22px; 
+  border-radius: 50px; 
+  
+  /* Ombre légèrement adoucie pour correspondre à la taille */
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Style spécifique de la flèche --- */
+.btn-professionnel .fleche {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* --- EFFETS AU SURVOL (Hover) --- */
+
+.btn-professionnel:hover {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  transform: translateY(-2px); /* Soulèvement un peu plus subtil */
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+}
+
+.btn-professionnel:hover .fleche {
+  transform: translateX(4px); /* Déplacement de la flèche plus doux */
+}
+
+/* --- Effet au clic (Active) --- */
+.btn-professionnel:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
+}
+
+
+
+
+
+
 /* ── SKILLS ── */
 .skills-top { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 32px; }
 .skill-card {
@@ -1042,12 +1100,21 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
   <div class="section-inner">
     <div class="section-tag">À propos</div>
     <h2 class="section-title">Qui suis-je ?</h2>
+    
     <div class="about-grid">
+      <!-- Colonne de gauche : Présentation, Bouton, Tags et Hobbies -->
       <div>
         <div class="about-card reveal">
-          <p class="about-intro">Je m'appelle <strong>Alexandre Guiblain</strong>, étudiant en BTS SIO option SLAM au <strong>Lycée Saint Aspais</strong>, a <strong>Melun</strong>.</p>
+          <p class="about-intro">Je m'appelle <strong>Alexandre Guiblain</strong>, étudiant en BTS SIO option SLAM au <strong>Lycée Saint Aspais</strong>, à <strong>Melun</strong>.</p>
           <p class="about-intro">Passionné par l'informatique depuis mon adolescence, j'ai choisi cette formation pour transformer ma passion en compétences professionnelles. J'aime résoudre des problèmes complexes grâce au code, concevoir des interfaces soignées et travailler en équipe sur des projets concrets.</p>
           <p class="about-intro">Mon objectif : rejoindre une entreprise dynamique en alternance pour continuer à progresser et apporter ma valeur.</p>
+          
+          <div class="bouton-container" style="margin-top: 20px; margin-bottom: 25px;">
+            <a href="histoire.html" class="btn-professionnel">
+                Découvrir mon parcours en détail <span class="fleche">→</span>
+            </a>
+          </div>
+
           <div class="about-tags">
             <span class="about-tag">💻 Développeur Web</span>
             <span class="about-tag">🎓 BTS SIO SLAM</span>
@@ -1056,7 +1123,8 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
             <span class="about-tag">🔍 Curieux</span>
           </div>
         </div>
-        <div class="hobbies-row reveal" style="margin-top:20px;">
+        
+        <div class="hobbies-row reveal" style="margin-top: 20px;">
           <div class="hobby">🎮 Gaming</div>
           <div class="hobby">🎵 Musique</div>
           <div class="hobby">📚 Tech Veille</div>
@@ -1064,8 +1132,10 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
           <div class="hobby">🎨 Design</div>
         </div>
       </div>
+
+      <!-- Colonne de droite : Informations personnelles -->
       <div class="about-card reveal">
-        <h3 style="font-size:17px;font-weight:700;margin-bottom:20px;color:var(--text)">Informations personnelles</h3>
+        <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 20px; color: var(--text)">Informations personnelles</h3>
         <ul class="info-rows">
           <li class="info-row"><div class="info-icon">📅</div><div><div class="info-label">Âge</div><div class="info-value">19 ans</div></div></li>
           <li class="info-row"><div class="info-icon">📍</div><div><div class="info-label">Ville</div><div class="info-value">Savigny-le-Temple, France</div></div></li>
@@ -1500,11 +1570,11 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
         <ul class="contact-side-links" style="list-style: none; padding: 0;">
           
           <li>
-            <a class="contact-link-item" href="mailto:alexandre.guiblain2@gmail.com">
+            <a class="contact-link-item">
               <div class="cl-icon" style="background:#fef2f2">📧</div>
               <div>
                 <div class="cl-title">Email</div>
-                <div class="cl-sub"><span class="info-value">alexandre.guiblain2@gmail.com</span></div>
+                <div class="cl-sub">alexandre.guiblain2@gmail.com</div>
               </div>
             </a>
           </li>
@@ -1591,7 +1661,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
   <div class="footer-socials" style="margin: 15px 0 20px; display: flex; justify-content: center; gap: 20px; font-size: 22px;">
     <a href="https://www.linkedin.com/in/alexandre-guiblain-0b78763ba/" target="_blank" aria-label="LinkedIn de Alexandre" style="color: var(--text-light); transition: color 0.2s;"><i class="devicon-linkedin-plain"></i></a>
     <a href="https://github.com/Alexandre-creator-s" target="_blank" aria-label="GitHub de Alexandre" style="color: var(--text-light); transition: color 0.2s;"><i class="devicon-github-original"></i></a>
-    <a href="mailto:alexandre.guiblain2@gmail.com" aria-label="Email de Alexandre" style="color: var(--text-light); transition: color 0.2s; text-decoration: none;">📧</a>
   </div>
 
   <div class="footer-links">
