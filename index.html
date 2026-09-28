@@ -171,7 +171,7 @@ nav {
   background: radial-gradient(circle, rgba(96,165,250,.08) 0%, transparent 65%);
   pointer-events: none;
 }
-/* Floating Particles */
+
 .hero-particles {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
@@ -386,63 +386,40 @@ section { padding: 100px 60px; position: relative; }
   box-shadow: var(--shadow-sm);
 }
 
-/* --- Style du Bouton Professionnel (Version Compacte) --- */
-
 .btn-professionnel {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* Espace réduit entre le texte et la flèche */
-  
+  gap: 8px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 13.5px; /* Police légèrement plus petite pour plus de finesse */
+  font-size: 13.5px;
   color: #ffffff !important; 
   letter-spacing: 0.3px; 
-  
-  /* Même dégradé bleu professionnel */
   background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  
-  /* C'est ici que la magie opère : des marges intérieures réduites */
   padding: 10px 22px; 
   border-radius: 50px; 
-  
-  /* Ombre légèrement adoucie pour correspondre à la taille */
   box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
-  
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
-
-/* --- Style spécifique de la flèche --- */
 .btn-professionnel .fleche {
   display: inline-block;
   transition: transform 0.3s ease;
 }
-
-/* --- EFFETS AU SURVOL (Hover) --- */
-
 .btn-professionnel:hover {
   background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-  transform: translateY(-2px); /* Soulèvement un peu plus subtil */
+  transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
 }
-
 .btn-professionnel:hover .fleche {
-  transform: translateX(4px); /* Déplacement de la flèche plus doux */
+  transform: translateX(4px);
 }
-
-/* --- Effet au clic (Active) --- */
 .btn-professionnel:active {
   transform: translateY(0);
   box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
 }
-
-
-
-
-
 
 /* ── SKILLS ── */
 .skills-top { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 32px; }
@@ -474,7 +451,6 @@ section { padding: 100px 60px; position: relative; }
   width: 0%; transition: width 1.3s cubic-bezier(.4,0,.2,1);
 }
 
-/* Tech logos grid */
 .tech-grid {
   display: grid; grid-template-columns: repeat(8, 1fr); gap: 14px; margin-top: 12px;
 }
@@ -518,6 +494,7 @@ section { padding: 100px 60px; position: relative; }
   box-shadow: var(--shadow-card); transition: all .35s;
   transform-style: preserve-3d;
   display: flex; flex-direction: column;
+  cursor: pointer;
 }
 .proj-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px) rotateX(2deg); }
 .proj-card.hidden { display: none; }
@@ -534,6 +511,7 @@ section { padding: 100px 60px; position: relative; }
   background: linear-gradient(135deg, var(--blue), #60a5fa);
   color: #fff; font-size: 11.5px; font-weight: 700;
   padding: 5px 14px; border-radius: 100px; margin-bottom: 12px;
+  width: fit-content;
 }
 .proj-title { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
 .proj-desc { color: var(--text-muted); font-size: 13px; line-height: 1.7; margin-bottom: 16px; flex: 1; }
@@ -743,7 +721,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
   font-size: 80px; position: relative; overflow: hidden;
   border-radius: 20px 20px 0 0;
 }
-.modal-header-img { width:100%; height:100%; object-fit:cover; }
 .modal-close {
   position: absolute; top: 14px; right: 14px;
   width: 36px; height: 36px; border-radius: 50%;
@@ -781,55 +758,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
   justify-content: center; flex-shrink: 0; margin-top: 1px; font-size: 11px;
 }
 .modal-btn { display: inline-flex; align-items: center; gap: 8px; }
-
-/* ── E5/E6 TABLEAU ── */
-.e5e6-tabs {
-  display: flex; gap: 0; margin-bottom: 32px;
-  border-radius: 12px; overflow: hidden;
-  border: 1px solid var(--border); width: fit-content;
-}
-.e5e6-tab {
-  padding: 12px 28px; font-size: 14px; font-weight: 700;
-  background: var(--bg-card); color: var(--text-muted);
-  border: none; cursor: pointer; transition: all .25s;
-  border-right: 1px solid var(--border);
-}
-.e5e6-tab:last-child { border-right: none; }
-.e5e6-tab.active { background: var(--blue); color: #fff; }
-.e5e6-tab:hover:not(.active) { background: var(--blue-pale); color: var(--blue); }
-.e5e6-panel { display: none; }
-.e5e6-panel.active { display: block; }
-.e5e6-table {
-  width: 100%; border-collapse: collapse;
-  border-radius: var(--radius); overflow: hidden;
-  box-shadow: var(--shadow-card); border: 1px solid var(--border);
-}
-.e5e6-table th {
-  background: var(--blue); color: #fff;
-  padding: 14px 18px; font-size: 13px; font-weight: 700;
-  text-align: left; letter-spacing: .3px;
-}
-.e5e6-table td {
-  padding: 13px 18px; font-size: 13.5px; color: var(--text-muted);
-  border-bottom: 1px solid var(--border); background: var(--bg-card);
-  vertical-align: middle;
-}
-.e5e6-table tr:last-child td { border-bottom: none; }
-.e5e6-table tr:hover td { background: var(--blue-pale); }
-.e5e6-table td:first-child { color: var(--text); font-weight: 600; }
-.status-badge {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 4px 10px; border-radius: 100px;
-  font-size: 11.5px; font-weight: 700;
-}
-.status-done    { background: #dcfce7; color: #16a34a; }
-.status-wip     { background: #fef9c3; color: #ca8a04; }
-.status-pending { background: #f1f5f9; color: #64748b; }
-[data-theme="dark"] .status-done    { background: #14532d; color: #4ade80; }
-[data-theme="dark"] .status-wip     { background: #713f12; color: #fbbf24; }
-[data-theme="dark"] .status-pending { background: #1e293b; color: #94a3b8; }
-.e5e6-legend { display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
-.e5e6-legend-item { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-muted); }
 
 /* ── EXPÉRIENCES PROFESSIONNELLES ── */
 .xp-layout {
@@ -1035,7 +963,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
     <li><a href="#projects">Projets</a></li>
     <li><a href="#stages">Stages</a></li>
     <li><a href="#veille">Veille</a></li>
-    <!-- <li><a href="#e5e6">E5/E6</a></li> -->
     <li><a href="#contact">Contact</a></li>
     <li><a href="#contact" class="nav-cv">📄 Mon CV</a></li>
   </ul>
@@ -1067,7 +994,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
         <span class="hero-name-color">Guiblain</span>
       </h1>
       <p class="hero-typewriter"><span id="typewriter-text"></span></p>
-      <p class="hero-desc">Étudiant en Licence Informatique spécialité Cybersécurité, passionné par le développement logiciel, le web et la sécurité informatique. Je conçois des solutions numériques robustes, sûres et élégantes</p>
+      <p class="hero-desc">Étudiant en Licence Informatique spécialité Cybersécurité, passionné par le développement logiciel, le web et la sécurité informatique. Je conçois des solutions numériques robustes, sûres et élégantes.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn-primary">🚀 Voir mes projets</a>
         <a href="#contact" class="btn-secondary">✉️ Me contacter</a>
@@ -1102,7 +1029,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
     <h2 class="section-title">Qui suis-je ?</h2>
     
     <div class="about-grid">
-      <!-- Colonne de gauche : Présentation, Bouton, Tags et Hobbies -->
       <div>
         <div class="about-card reveal">
           <p class="about-intro">Je m'appelle <strong>Alexandre Guiblain</strong>, titulaire d'un BTS SIO SLAM et étudiant en Licence Informatique au <strong>Campus Saint Aspais</strong>, à <strong>Melun</strong>.</p>
@@ -1133,7 +1059,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
         </div>
       </div>
 
-      <!-- Colonne de droite : Informations personnelles -->
       <div class="about-card reveal">
         <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 20px; color: var(--text)">Informations personnelles</h3>
         <ul class="info-rows">
@@ -1150,7 +1075,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
   </div>
 </section>
 
-<!-- BTS SIO -->
+<!-- BTS SIO / LICENCE -->
 <section id="bts-sio">
   <div class="section-inner">
     <div class="section-tag">Ma Formation</div>
@@ -1162,7 +1087,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
       Découvrez les deux spécialités phares de ce diplôme qui m'ouvrent les portes du monde numérique.
     </p>
 
-    <!-- 3 cartes stats -->
     <div class="bts-cards-top reveal">
       <div class="bts-top-card">
         <div class="bts-top-icon">🎓</div>
@@ -1181,9 +1105,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
       </div>
     </div>
 
-    <!-- 2 options -->
     <div class="bts-options reveal">
-      <!-- SISR -->
       <div class="bts-option-card">
         <div class="bts-option-icon" style="background:#f0fdf4">🖥️</div>
         <h3 class="bts-option-title">Parcours Développement Web & Logiciel</h3>
@@ -1200,7 +1122,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
         </div>
       </div>
 
-      <!-- SLAM — Ma spécialité -->
       <div class="bts-option-card bts-option-active">
         <span class="bts-specialite-badge">Ma Spécialité</span>
         <div class="bts-option-icon" style="background:rgba(37,99,235,0.15)">💻</div>
@@ -1219,16 +1140,8 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
       </div>
     </div>
 
-    <!-- Boutons bas -->
     <div class="bts-btns reveal">
-      <!--<a href="https://www.francecompetences.fr/recherche/rncp/40792/" target="_blank" class="bts-btn-link">
-        <div class="bts-btn-icon" style="background:#eff6ff">📄</div>
-        <div>
-          <div class="bts-btn-label">CONSULTER LE</div>
-          <div class="bts-btn-text">Référentiel BTS SIO</div> 
-        </div>
-      </a> -->
-      <a href="https://institutionsaintaspais.fr/campus/" class="bts-btn-link">
+      <a href="https://institutionsaintaspais.fr/campus/" target="_blank" class="bts-btn-link">
         <div class="bts-btn-icon" style="background:#f0fdf4">🏫</div>
         <div>
           <div class="bts-btn-label">DÉCOUVRIR LE</div>
@@ -1238,8 +1151,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
     </div>
   </div>
 </section>
-
-
 
 <!-- SKILLS -->
 <section id="skills">
@@ -1341,7 +1252,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
         </div>
         <div class="proj-body">
           <span class="proj-period">Mai à Juillet 2025</span>
-          <h3 class="proj-title">Stage 1er année — Valorisens</h3>
+          <h3 class="proj-title">Stage 1ère année — Valorisens</h3>
           <p class="proj-desc">Refonte complète du site internet de Valorisens, structure spécialisée dans la formation et le bien-être.</p>
           <div class="proj-chips"><span class="proj-chip">WordPress</span><span class="proj-chip">Elementor</span></div>
           <a class="proj-link">Voir le projet →</a>
@@ -1381,7 +1292,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
         <div class="proj-body">
           <span class="proj-period">Février à Mars 2026</span>
           <h3 class="proj-title">APPLICATION WEB — Campus HelpDesk</h3>
-          <p class="proj-desc">Application web interne de gestion de tickets d interventions informatiques pour le campus.</p>
+          <p class="proj-desc">Application web interne de gestion de tickets d'interventions informatiques pour le campus.</p>
           <div class="proj-chips"><span class="proj-chip">HTML/CSS</span><span class="proj-chip">PHP</span><span class="proj-chip">JavaScript</span></div>
           <a class="proj-link">Voir le projet →</a>
         </div>
@@ -1397,7 +1308,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
     <div class="section-tag">Expériences</div>
     <h2 class="section-title">Expériences Professionnelles</h2>
     <div class="xp-layout">
-      <!-- Gauche : texte -->
       <div class="xp-left reveal">
         <div class="xp-underline"></div>
         <p class="xp-intro">
@@ -1418,7 +1328,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
           </li>
         </ul>
       </div>
-      <!-- Droite : carte fiches -->
       <div class="xp-right reveal">
         <div class="xp-fiche-card">
           <div class="xp-fiche-icon">💻</div>
@@ -1438,7 +1347,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
     <h2 class="section-title">Veille & Certifications</h2>
     <p class="section-sub">Je me tiens informé des dernières évolutions du secteur et renforce mes compétences par des certifications.</p>
 
-    <!-- 3 cartes thèmes -->
     <div class="veille-grid">
       <div class="veille-card reveal">
         <div class="veille-icon-wrap" style="background:var(--blue-pale)">🤖</div>
@@ -1463,9 +1371,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
       </div>
     </div>
 
-    <!-- Bloc Veille détaillée -->
     <div class="xp-layout" style="margin-top:48px">
-      <!-- Gauche : texte -->
       <div class="xp-left reveal">
         <div class="xp-underline"></div>
         <p class="xp-intro">
@@ -1478,7 +1384,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
           </li>
           <li class="xp-point">
             <div class="xp-point-icon">🔔</div>
-            <div><strong>Alertes :</strong> Google Alerts configurées sur les mots-clés "Python 2025", "Rust", "IA".</div>
+            <div><strong>Alertes :</strong> Google Alerts configurées sur les mots-clés "Python 2026", "Rust", "IA".</div>
           </li>
           <li class="xp-point">
             <div class="xp-point-icon">🌐</div>
@@ -1486,7 +1392,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
           </li>
         </ul>
       </div>
-      <!-- Droite : carte accès -->
       <div class="xp-right reveal">
         <div class="xp-fiche-card">
           <div class="xp-fiche-icon">🖥️</div>
@@ -1497,7 +1402,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
       </div>
     </div>
 
-    <!-- Certifications -->
     <h3 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:22px;">Certifications obtenues</h3>
     <div class="certs-grid">
       <div class="cert-card reveal"><div class="cert-icon">🏅</div><div><div class="cert-name">Cisco — Introduction to Cybersecurity</div><div class="cert-org">Cisco Networking Academy</div><div class="cert-year">2024</div></div></div>
@@ -1527,7 +1431,6 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
   </div>
 </section>
 
-  
 <!-- CONTACT --> 
 <section id="contact" style="padding: 80px 0;">
   <div class="section-inner">
@@ -1570,7 +1473,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
         <ul class="contact-side-links" style="list-style: none; padding: 0;">
           
           <li>
-            <a class="contact-link-item">
+            <a class="contact-link-item" href="mailto:alexandre.guiblain2@gmail.com">
               <div class="cl-icon" style="background:#fef2f2">📧</div>
               <div>
                 <div class="cl-title">Email</div>
@@ -1624,7 +1527,9 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
         </ul>
       </div>
       
-    </div> </div> </section>
+    </div>
+  </div>
+</section>
 
 <!-- BACK TO TOP -->
 <button id="back-to-top" title="Retour en haut" aria-label="Retourner en haut de la page">↑</button>
@@ -1646,8 +1551,8 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
       <div class="modal-section-title">Fonctionnalités principales</div>
       <ul class="modal-features" id="modal-features"></ul>
       <a id="modal-site-btn" href="#" target="_blank" class="btn-primary modal-btn" style="text-decoration: none;">
-    <span>🌐</span> Voir le site du projet
-</a>
+        <span>🌐</span> Voir le site du projet
+      </a>
     </div>
     <button class="modal-close" id="modal-close" aria-label="Fermer la modale">✕</button>
   </div>
@@ -1656,11 +1561,11 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
 <!-- FOOTER -->
 <footer>
   <div class="footer-name">Alexandre Guiblain</div>
-  <div class="footer-sub">BTS SIO — Option SLAM · Développeur d'applications</div>
+  <div class="footer-sub">Licence Informatique · Développeur d'applications</div>
   
   <div class="footer-socials" style="margin: 15px 0 20px; display: flex; justify-content: center; gap: 20px; font-size: 22px;">
-    <a href="https://www.linkedin.com/in/alexandre-guiblain-0b78763ba/" target="_blank" aria-label="LinkedIn de Alexandre" style="color: var(--text-light); transition: color 0.2s;"><i class="devicon-linkedin-plain"></i></a>
-    <a href="https://github.com/Alexandre-creator-s" target="_blank" aria-label="GitHub de Alexandre" style="color: var(--text-light); transition: color 0.2s;"><i class="devicon-github-original"></i></a>
+    <a href="https://www.linkedin.com/in/alexandre-guiblain-0b78763ba/" target="_blank" aria-label="LinkedIn d'Alexandre" style="color: var(--text-light); transition: color 0.2s;"><i class="devicon-linkedin-plain"></i></a>
+    <a href="https://github.com/Alexandre-creator-s" target="_blank" aria-label="GitHub d'Alexandre" style="color: var(--text-light); transition: color 0.2s;"><i class="devicon-github-original"></i></a>
   </div>
 
   <div class="footer-links">
@@ -1670,7 +1575,7 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
     <a href="#stages">Stages</a>
     <a href="#contact">Contact</a>
   </div>
-  <div class="footer-bottom">© 2026 Alexandre Guiblain — Tous droits réservés · Fait avec ❤️ en HTML / CSS / JS</div>
+  <div class="footer-bottom">© <span id="current-year">2026</span> Alexandre Guiblain — Tous droits réservés · Fait avec ❤️ en HTML / CSS / JS</div>
 </footer>
 
 <script>
@@ -1691,30 +1596,27 @@ if (hamburger && navLinksContainer) {
     hamburger.setAttribute('aria-expanded', isOpen);
   });
 
-  // Fermer le menu au clic sur un lien
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       navLinksContainer.classList.remove('open');
       hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', false);
+      hamburger.setAttribute('aria-expanded', 'false');
     });
   });
 }
 
-// ── SCROLL EVENT OPTIMIZATION (throttled with rAF) ──
+// ── SCROLL EVENT OPTIMIZATION ──
 let lastScrollY = window.scrollY;
 let scrollTicking = false;
 
 function handleScrollUpdates() {
   const y = window.scrollY;
   
-  // 1. Scroll progress bar
   if (bar) {
     const pct = y / (document.body.scrollHeight - window.innerHeight) * 100;
     bar.style.width = pct + '%';
   }
   
-  // 2. Active nav link
   sections.forEach(s => {
     if (y >= s.offsetTop - 120) {
       const activeId = s.id;
@@ -1724,7 +1626,6 @@ function handleScrollUpdates() {
     }
   });
   
-  // 3. Nav hide on scroll
   if (navEl) {
     if (y > lastScrollY && y > 80) {
       navEl.classList.add('hidden-nav');
@@ -1733,7 +1634,6 @@ function handleScrollUpdates() {
     }
   }
   
-  // 4. Back to top visibility
   if (btt) {
     btt.classList.toggle('visible', y > 400);
   }
@@ -1870,17 +1770,7 @@ if (btt) {
   btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
-// ── E5/E6 TABS ──
-document.querySelectorAll('.e5e6-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.e5e6-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.e5e6-panel').forEach(p => p.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-  });
-});
-
-// ── PROJECT MODAL DATA ──
+// ── PROJECT MODAL DATA & FUNCTIONS ──
 const modalData = {
   'site-internet-koo': {
     emoji:'🍽️', period:'Septembre à Décembre 2024',
@@ -1899,18 +1789,18 @@ const modalData = {
     siteLink: 'https://alexandre-creator.alwaysdata.net/'
   },
   'valorisens': {
-    emoji:'🏛️', period:'Mai à Juillet 2025',
-    title:'Stage 1er année — Valorisens',
+    emoji:'🌿', period:'Mai à Juillet 2025',
+    title:'Stage 1ère année — Valorisens',
     desc:'Refonte complète du site internet de Valorisens, structure spécialisée dans la formation et le bien-être (Snoezelen, communication gestuelle, parentalité). Mission réalisée en autonomie lors de mon stage de 1ère année BTS SIO en télétravail.',
     chips:['WordPress','Elementor','Plugins WP','HTML/CSS'],
-    features:['Refonte complète de la page d accueil avec mise en avant des services','Création de pages dédiées par formation (Snoezelen, SAP, gestion du stress)','Intégration d un formulaire de contact fonctionnel','Tests sur environnement de recette avant mise en production','Gestion du contenu via l administration WordPress'],
+    features:['Refonte complète de la page d\'accueil avec mise en avant des services','Création de pages dédiées par formation (Snoezelen, SAP, gestion du stress)','Intégration d\'un formulaire de contact fonctionnel','Tests sur environnement de recette avant mise en production','Gestion du contenu via l\'administration WordPress'],
     siteLink: 'https://valorisens.fr/'
   },
   'stock': {
-    emoji:'📦', period:'Octobre 2025 à Mars 2026',
+    emoji:'🤺', period:'Octobre 2025 à Mars 2026',
     title:'APPLICATION WEB — SEF Escrime',
     desc:'Webapp de gestion de club sportif développée avec Symfony 7.1 pour la M2L (Maison des Ligues de Lorraine). Permet aux adhérents de suivre leurs performances, aux entraîneurs de gérer les équipes et à l\'administration de piloter le club.',
-    chips:['Symfony 7.1','PHP','MySQL',' Twig','JavaScript','Bootstrap','Doctrine ORM'],
+    chips:['Symfony 7.1','PHP','MySQL','Twig','JavaScript','Bootstrap','Doctrine ORM'],
     features:['3 interfaces dédiées : Sportif, Animateur (entraîneur) et Administrateur','Suivi des performances et objectifs sportifs individuels','Gestion des compétitions, inscriptions et planification','Indice de performance calculé selon compétences et résultats en compétition','Authentification sécurisée avec gestion RGPD'],
     siteLink: ''
   },
@@ -1919,15 +1809,15 @@ const modalData = {
     title:'Stage 2ème année — Site Mairie',
     desc:'Interface web de gestion municipale développée en parallèle de mon stage à la DSI de la Mairie de Savigny-le-Temple. Simule un système d\'information pour une mairie avec tableau de bord, gestion de tickets, agenda et administration des services.',
     chips:['HTML/CSS','PHP','MySQL','Bootstrap','UwAmp'],
-    features:['Tableau de bord principal avec file d attente en temps réel','Gestion des tickets citoyens par service et bureau','Agenda des rendez-vous et accueil citoyen ','Gestion des services municipaux (État Civil, DSI, Travaux Urbains…)','Recensement et suivi des citoyens'],
+    features:['Tableau de bord principal avec file d\'attente en temps réel','Gestion des tickets citoyens par service et bureau','Agenda des rendez-vous et accueil citoyen','Gestion des services municipaux (État Civil, DSI, Travaux Urbains…)','Recensement et suivi des citoyens'],
     siteLink: ''
   },
   'dashboard': {
-    emoji:'📊', period:'Février à Mars 2026',
+    emoji:'🎫', period:'Février à Mars 2026',
     title:'APPLICATION WEB — Campus HelpDesk',
     desc:'Application web interne de gestion de tickets d\'interventions informatiques pour le campus. Les étudiants déclarent leurs incidents (panne, Wi-Fi, matériel) et les techniciens les prennent en charge avec un suivi complet de l\'état des demandes.',
     chips:['PHP','MySQL','HTML/CSS','Bootstrap','JavaScript','PDO'],
-    features:['Authentification par rôles (Étudiant / Technicien / Admin)','Création de tickets avec titre, catégorie et priorité','Suivi du statut en temps réel (OPEN → IN_PROGRESS → RESOLVED → CLOSED)','Filtres par statut et priorité pour les techniciens','Contrôle d accès strict (étudiant limité à ses propres tickets)'],
+    features:['Authentification par rôles (Étudiant / Technicien / Admin)','Création de tickets avec titre, catégorie et priorité','Suivi du statut en temps réel (OPEN → IN_PROGRESS → RESOLVED → CLOSED)','Filtres par statut et priorité pour les techniciens','Contrôle d\'accès strict (étudiant limité à ses propres tickets)'],
     siteLink: 'https://alexandre-creator.alwaysdata.net/campus-helpdesk/public/index.php?route=login'
   }           
 };
@@ -1943,31 +1833,53 @@ function openModal(key) {
   document.getElementById('modal-chips').innerHTML = d.chips.map(c=>`<span class="modal-chip">${c}</span>`).join('');
   document.getElementById('modal-features').innerHTML = d.features.map(f=>`<li class="modal-feature"><div class="modal-feature-dot">✓</div>${f}</li>`).join('');
 
-  // --- PARTIE MODIFIÉE POUR LE LIEN ---
-  const btnSite = document.querySelector('.modal-box .btn-primary');
-  if (btnSite && d.siteLink) {
-    btnSite.href = d.siteLink;
-    btnSite.target = "_blank";
-    btnSite.style.display = "inline-flex";
-  } else if (btnSite) {
-    btnSite.style.display = "none";
+  const btnSite = document.getElementById('modal-site-btn');
+  if (btnSite) {
+    if (d.siteLink) {
+      btnSite.href = d.siteLink;
+      btnSite.style.display = "inline-flex";
+    } else {
+      btnSite.style.display = "none";
+    }
   }
-  // ------------------------------------
 
   document.getElementById('modal-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
+
 function closeModal() {
   document.getElementById('modal-overlay').classList.remove('open');
   document.body.style.overflow = '';
 }
-document.getElementById('modal-close').addEventListener('click', closeModal);
-document.getElementById('modal-overlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── LISTENERS MODALE ──
 document.querySelectorAll('.proj-card[data-modal]').forEach(card => {
-  card.style.cursor = 'pointer';
-  card.addEventListener('click', () => openModal(card.dataset.modal));
+  card.addEventListener('click', () => {
+    openModal(card.dataset.modal);
+  });
 });
+
+const closeBtn = document.getElementById('modal-close');
+const modalOverlay = document.getElementById('modal-overlay');
+
+if (closeBtn) closeBtn.addEventListener('click', closeModal);
+if (modalOverlay) {
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('open')) {
+    closeModal();
+  }
+});
+
+// Année dynamique footer
+const currentYearEl = document.getElementById('current-year');
+if (currentYearEl) {
+  currentYearEl.textContent = new Date().getFullYear();
+}
 </script>
 </body>
 </html>
