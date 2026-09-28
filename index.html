@@ -464,6 +464,75 @@ section { padding: 100px 60px; position: relative; }
 .tech-item:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: var(--shadow-md); }
 .tech-emoji, .tech-item i { font-size: 24px; margin-bottom: 6px; display: inline-block; }
 .tech-name { font-size: 11px; font-weight: 600; color: var(--text-muted); }
+/* ── SKILLS UPDATE ── */
+.skills-top {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.skill-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.skill-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.skill-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.badge-advanced {
+  background: var(--blue-pale);
+  color: var(--blue);
+  border: 1px solid var(--blue-mid);
+}
+
+.badge-inter {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.badge-basic {
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .badge-inter {
+  background: #78350f;
+  color: #fef3c7;
+  border-color: #92400e;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
 
 /* ── PROJECTS ── */
 .proj-intro-text {
@@ -1152,50 +1221,154 @@ nav { transition: transform .35s cubic-bezier(.4,0,.2,1), background .3s; }
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- SKILLS (Version optimisée & structurée) -->
 <section id="skills">
   <div class="section-inner">
     <div class="section-tag">Compétences</div>
     <h2 class="section-title">Mon stack technique</h2>
-    <p class="section-sub">Les langages, frameworks et outils que je maîtrise pour concevoir des applications de qualité.</p>
+    <p class="section-sub">Les langages, frameworks, outils et architectures réseaux que j'utilise au quotidien.</p>
+    
     <div class="skills-top">
+      <!-- Card 1: Front-end -->
       <div class="skill-card reveal">
         <div class="skill-card-header">
           <div class="skill-card-icon" style="background:var(--blue-pale)">🌐</div>
-          <div class="skill-card-title">Développement Web</div>
+          <div class="skill-card-title">Front-end & UI</div>
         </div>
-        <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">HTML / CSS</span><span class="skillbar-pct">95%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="95%"></div></div></div>
-        <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">JavaScript</span><span class="skillbar-pct">45%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="45%"></div></div></div>
-        <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">PHP</span><span class="skillbar-pct">50%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="50%"></div></div></div>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">HTML5 / CSS3</span>
+            <span class="skill-badge badge-advanced">Maîtrisé</span>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">JavaScript (ES6+)</span>
+            <span class="skill-badge badge-inter">Intermédiaire</span>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Bootstrap / Responsive</span>
+            <span class="skill-badge badge-advanced">Avancé</span>
+          </div>
+        </div>
       </div>
+
+      <!-- Card 2: Back-end & BDD -->
       <div class="skill-card reveal">
         <div class="skill-card-header">
           <div class="skill-card-icon" style="background:#f0fdf4">⚙️</div>
-          <div class="skill-card-title">Langages & Backend</div>
+          <div class="skill-card-title">Back-end & BDD</div>
         </div>
-        <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">Python</span><span class="skillbar-pct">20%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="20%"></div></div></div>
-        <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">Java</span><span class="skillbar-pct">50%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="50%"></div></div></div>
-        <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">SQL / MySQL</span><span class="skillbar-pct">85%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="85%"></div></div></div>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">PHP & Symfony 7</span>
+            <span class="skill-badge badge-advanced">Avancé</span>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">SQL & MySQL (Doctrine ORM / PDO)</span>
+            <span class="skill-badge badge-advanced">Maîtrisé</span>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Java & Python</span>
+            <span class="skill-badge badge-basic">Notions</span>
+          </div>
+        </div>
       </div>
+
+      <!-- Card 3: Outils & Méthodes -->
       <div class="skill-card reveal">
         <div class="skill-card-header">
           <div class="skill-card-icon" style="background:#fdf4ff">🛠️</div>
           <div class="skill-card-title">Outils & Méthodes</div>
         </div>
-        <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">Git / GitHub</span><span class="skillbar-pct">90%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="90%"></div></div></div>
-        <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">VS Code</span><span class="skillbar-pct">92%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="92%"></div></div></div>
-        <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">UwAmp / XAMPP</span><span class="skillbar-pct">80%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="80%"></div></div></div>
-        <div class="skillbar"><div class="skillbar-row"><span class="skillbar-name">AGILE / Scrum</span><span class="skillbar-pct">75%</span></div><div class="skillbar-track"><div class="skillbar-fill" data-w="75%"></div></div></div>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Git / GitHub</span>
+            <span class="skill-badge badge-advanced">Avancé</span>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">VS Code / Environnement Dev</span>
+            <span class="skill-badge badge-advanced">Quotidien</span>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Méthodes Agile / Scrum</span>
+            <span class="skill-badge badge-inter">Gestion de projet</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Réseaux & Cybersécurité -->
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-card-icon" style="background:#fff7ed">🛡️</div>
+          <div class="skill-card-title">Réseaux & Cybersécurité</div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Cisco Packet Tracer & Wireshark</span>
+            <span class="skill-badge badge-inter">Pratique</span>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Architecture TCP/IP & VLAN</span>
+            <span class="skill-badge badge-inter">Notions avancées</span>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Sécurité Web (OWASP, SQLi, XSS)</span>
+            <span class="skill-badge badge-advanced">Bonnes pratiques</span>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Environnement Linux & Bash</span>
+            <span class="skill-badge badge-basic">Notions</span>
+          </div>
+        </div>
       </div>
     </div>
+    
+    <!-- Grille d'icônes centralisée -->
     <div class="tech-grid reveal">
       <div class="tech-item"><i class="devicon-html5-plain colored"></i><div class="tech-name">HTML5</div></div>
       <div class="tech-item"><i class="devicon-css3-plain colored"></i><div class="tech-name">CSS3</div></div>
       <div class="tech-item"><i class="devicon-javascript-plain colored"></i><div class="tech-name">JavaScript</div></div>
+      <div class="tech-item"><i class="devicon-bootstrap-plain colored"></i><div class="tech-name">Bootstrap</div></div>
       <div class="tech-item"><i class="devicon-php-plain colored"></i><div class="tech-name">PHP</div></div>
-      <div class="tech-item"><i class="devicon-python-plain colored"></i><div class="tech-name">Python</div></div>
-      <div class="tech-item"><i class="devicon-java-plain colored"></i><div class="tech-name">Java</div></div>
+      <div class="tech-item"><i class="devicon-symfony-original colored"></i><div class="tech-name">Symfony</div></div>
       <div class="tech-item"><i class="devicon-mysql-plain colored"></i><div class="tech-name">MySQL</div></div>
+      <div class="tech-item"><i class="devicon-git-plain colored"></i><div class="tech-name">Git</div></div>
+      <div class="tech-item"><i class="devicon-java-plain colored"></i><div class="tech-name">Java</div></div>
+      <div class="tech-item"><i class="devicon-python-plain colored"></i><div class="tech-name">Python</div></div>
+      <div class="tech-item"><i class="devicon-linux-plain colored"></i><div class="tech-name">Linux</div></div>
+      <div class="tech-item"><i class="devicon-bash-plain colored"></i><div class="tech-name">Bash</div></div>
+      <div class="tech-item"><div class="tech-name">Packet Tracer</div></div>
+      <div class="tech-item"><div class="tech-name">Wireshark</div></div>
     </div>
   </div>
 </section>
